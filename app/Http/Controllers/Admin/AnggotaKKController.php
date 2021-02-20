@@ -46,7 +46,8 @@ class AnggotaKKController extends Controller
         $akk = new anggota();
         $akk->nik = $request->get('nik');
         $akk->nama = $request->get('nama');
-        $akk->ttl = $request->get('ttl');
+        $akk->tempat_lahir = $request->get('tempat_lahir');
+        $akk->tanggal_lahir = $request->get('tanggal_lahir');
         $akk->jenis_kelamin = $request->get('jenis_kelemin');
         $akk->pendidikan = $request->get('pendidikan');
         $akk->agama = $request->get('agama');
@@ -54,6 +55,7 @@ class AnggotaKKController extends Controller
         $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
         $akk->status = $request->get('status');
         $akk->no_kk = $request->get('no_kk');
+        $akk->role = 'warga';
         $akk->save();
         return redirect('anggota')->with('msg','Anggota KK Berhasil di simpan');
     }
@@ -95,13 +97,15 @@ class AnggotaKKController extends Controller
         $akk = anggota::where('nik','=',$id)->first();
         $akk->nik = $request->get('nik');
         $akk->nama = $request->get('nama');
-        $akk->ttl = $request->get('ttl');
+        $akk->tempat_lahir = $request->get('tempat_lahir');
+        $akk->tanggal_lahir = $request->get('tanggal_lahir');
         $akk->jenis_kelamin = $request->get('jenis_kelemin');
         $akk->pendidikan = $request->get('pendidikan');
         $akk->agama = $request->get('agama');
         $akk->pekerjaan = $request->get('pekerjaan');
         $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
         $akk->status = $request->get('status');
+        $akk->role = 'warga';
         $akk->save();
         return redirect('anggota')->with('msg','Anggota KK Berhasil di Edit');
     }

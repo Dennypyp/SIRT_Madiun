@@ -16,7 +16,8 @@ class CreateAnggotaKkTable extends Migration
         Schema::create('anggota_kk', function (Blueprint $table) {
             $table->string('nik',20)->primary();
             $table->string('nama',100);
-            $table->date('ttl');
+            $table->string('tempat_lahir',50);
+            $table->date('tanggal_lahir');
             $table->string('jenis_kelamin',10);
             $table->string('pendidikan',20);
             $table->string('agama',10);

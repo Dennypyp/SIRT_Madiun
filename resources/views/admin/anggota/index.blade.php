@@ -243,7 +243,7 @@
                                     <tr>
                                         <td><a href="{{ route('anggota.edit',[$data->nik]) }}">{{ $data->nik }}</a></td>
                                         <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->ttl }}</td>
+                                        <td>{{ $data->tempat_lahir }}, {{ format_tgl($data->tanggal_lahir) }}</td>
                                         <td>{{ $data->jenis_kelamin }}</td>
                                         <td>{{ $data->pendidikan }}</td>
                                         <td>{{ $data->agama }}</td>

@@ -229,6 +229,15 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
+                                        <label for="no_kk">No. KK</label>
+                                        <select class="form-control" id="no_kk" name="no_kk">
+                                            <option value="">-- Pilih No.KK --</option>
+                                            @foreach ($kk as $data)
+                                                <option value="{{ $data->no_kk }}">{{ $data->no_kk }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-control-label" for="nik">NIK</label>
                                         <input type="text" id="nik" name="nik" class="form-control" placeholder="NIK">
                                     </div>
@@ -237,9 +246,18 @@
                                         <input type="text" id="nama" name="nama" class="form-control"
                                             placeholder="Nama Lengkap">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="ttl">Tanggal Lahir</label>
-                                        <input type="date" id="ttl" name="ttl" class="form-control">
+                                    <label class="form-control-label" for="ttl">Tempat Tanggal Lahir</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -276,15 +294,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label" for="status">Status</label>
-                                        <input type="text" id="status" name="status" class="form-control"
-                                            placeholder="Status">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="no_kk">No. KK</label>
-                                        <select class="form-control" id="no_kk" name="no_kk">
-                                            @foreach ($kk as $data)
-                                                <option value="{{ $data->no_kk }}">{{ $data->no_kk }}</option>
-                                            @endforeach
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="Belum Kawin">Belum Kawin</option>
+                                            <option value="Kawin">Kawin</option>
+                                            <option value="Duda">Duda</option>
+                                            <option value="Janda">Janda</option>
                                         </select>
                                     </div>
                                 </div>

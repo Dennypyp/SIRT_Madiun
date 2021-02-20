@@ -242,10 +242,18 @@
                                         <input type="text" id="nama" name="nama" class="form-control"
                                             placeholder="Nama Lengkap" value="{{ $data->nama }}">
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="ttl">Tanggal Lahir</label>
-                                        <input type="date" id="ttl" name="ttl" class="form-control"
-                                            value="{{ $data->ttl }}">
+                                    <label class="form-control-label" for="ttl">Tanggal Lahir</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" value="{{ $data->tempat_lahir }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" value="{{ $data->tanggal_lahir }}">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -285,8 +293,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label" for="status">Status</label>
-                                        <input type="text" id="status" name="status" class="form-control"
-                                            placeholder="Status" value="{{ $data->status }}">
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="{{ $data->status }}">{{ $data->status }}</option>
+                                            <option value="Belum Kawin">Belum Kawin</option>
+                                            <option value="Kawin">Kawin</option>
+                                            <option value="Duda">Duda</option>
+                                            <option value="Janda">Janda</option>
+                                        </select>
                                     </div>
                                     {{-- <div class="form-group">
                                         <label for="no_kk">No. KK</label>
