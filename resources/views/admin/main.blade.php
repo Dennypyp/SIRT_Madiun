@@ -16,9 +16,9 @@
 
 <body id="page-top">
     <div id="wrapper">
-        <!-- ======= Header ======= -->
-        @include('admin.include.header')
-        <!-- End Header -->
+        <!-- ======= Sidebar ======= -->
+        @include('admin.include.sidebar')
+        <!-- End Sidebar -->
 
         <div id="content-wrapper" class="d-flex flex-column">
             <main id="main">
