@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="test_admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -26,6 +26,21 @@
     <div class="sidebar-heading">
         Interface
     </div>
+
+    {{--  Nav Warga  --}}
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWarga" aria-expanded="true"
+            aria-controls="collapseWarga">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Warga</span>
+        </a>
+        <div id="collapseWarga" class="collapse" aria-labelledby="headingWarga" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="kk">Data KK</a>
+                <a class="collapse-item" href="anggota">Data Anggota KK</a>
+            </div>
+        </div>
+    </li>
 
     {{--  <!-- Nav Item - Pages Collapse Menu -->  --}}
     <li class="nav-item">
