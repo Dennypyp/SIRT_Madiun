@@ -13,7 +13,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item {{'test_admin' == request()->segment(1) ? 'active' : ''}}">
         <a class="nav-link" href="/test_admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -28,7 +28,7 @@
     </div>
 
     {{--  Nav Warga  --}}
-    <li class="nav-item">
+    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}} {{'anggota' == request()->segment(1) ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWarga" aria-expanded="true"
             aria-controls="collapseWarga">
             <i class="fas fa-fw fa-user"></i>
@@ -38,6 +38,22 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/kk">Data KK</a>
                 <a class="collapse-item" href="/anggota">Data Anggota KK</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item {{'pengeluaran' == request()->segment(1) ? 'active' : ''}} {{'pemasukan' == request()->segment(1) ? 'active' : ''}}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKeuangan" aria-expanded="true"
+            aria-controls="collapseKeuangan">
+            <i class="fas fa-fw fa-university"></i>
+            <span>Keuangan</span>
+        </a>
+        <div id="collapseKeuangan" class="collapse" aria-labelledby="headingKeuangan" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">Dana Sosial (Jimpitan)</a>
+                <a class="collapse-item" href="/pemasukan">Pemasukan</a>
+                <a class="collapse-item" href="/pengeluaran">Pengeluaran</a>
+                <a class="collapse-item" href="#">Laporan</a>
             </div>
         </div>
     </li>
