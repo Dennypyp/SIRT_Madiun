@@ -24,6 +24,7 @@ class CreateAnggotaKkTable extends Migration
             $table->string('pekerjaan',50);
             $table->string('nama_ibu_bapak',100);
             $table->string('status',20);
+            $table->string('status_kk',50);
             $table->string('no_kk',20)->index()->nullable();
             $table->foreign('no_kk')->references('no_kk')->on('kk');
             $table->string('role');

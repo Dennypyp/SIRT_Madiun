@@ -50,7 +50,7 @@
         </a>
         <div id="collapseKeuangan" class="collapse" aria-labelledby="headingKeuangan" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Dana Sosial (Jimpitan)</a>
+                <a class="collapse-item" href="/jimpitan">Dana Sosial (Jimpitan)</a>
                 <a class="collapse-item" href="/pemasukan">Pemasukan</a>
                 <a class="collapse-item" href="/pengeluaran">Pengeluaran</a>
                 <a class="collapse-item" href="#">Laporan</a>

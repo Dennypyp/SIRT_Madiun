@@ -54,6 +54,7 @@ class AnggotaKKController extends Controller
         $akk->pekerjaan = $request->get('pekerjaan');
         $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
         $akk->status = $request->get('status');
+        $akk->status_kk = $request->get('status_kk');
         $akk->no_kk = $request->get('no_kk');
         $akk->role = 'warga';
         $akk->save();
@@ -81,6 +82,7 @@ class AnggotaKKController extends Controller
     {
         //
         $data = DB::table('anggota_kk')->where('nik','=',$id)->first();
+        // dd($data);
         return view('admin.anggota.edit', ['data'=>$data]);
     }
 
@@ -105,6 +107,7 @@ class AnggotaKKController extends Controller
         $akk->pekerjaan = $request->get('pekerjaan');
         $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
         $akk->status = $request->get('status');
+        $akk->status_kk = $request->get('status_kk');
         $akk->role = 'warga';
         $akk->save();
         return redirect('anggota')->with('msg','Anggota KK Berhasil di Edit');

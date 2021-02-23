@@ -104,6 +104,14 @@
                                             <option value="Janda">Janda</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="status">Status dalam Keluarga</label>
+                                        <select class="form-control" id="status_kk" name="status_kk">
+                                            <option value="Bapak/Kepala Keluarga">Bapak/Kepala Keluarga</option>
+                                            <option value="Ibu">Ibu</option>
+                                            <option value="Anak">Anak</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

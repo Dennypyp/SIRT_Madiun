@@ -30,6 +30,7 @@
                                 <tr>
                                     <th>NIK</th>
                                     <th>Nama</th>
+                                    <th>No. KK</th>
                                     <th>TTL</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Pendidikan</th>
@@ -37,7 +38,7 @@
                                     <th>Pekerjaan</th>
                                     <th>Nama Ibu/Bapak</th>
                                     <th>Status</th>
-                                    <th>No. KK</th>
+                                    <th>Status dalam Keluarga</th>
                                     <th>Role</th>
                                 </tr>
                             </thead>
@@ -46,6 +47,7 @@
                                     <tr>
                                         <td><a href="{{ route('anggota.edit',[$data->nik]) }}">{{ $data->nik }}</a></td>
                                         <td>{{ $data->nama }}</td>
+                                        <td>{{ $data->no_kk }}</td>
                                         <td>{{ $data->tempat_lahir }}, {{ format_tgl($data->tanggal_lahir) }}</td>
                                         <td>{{ $data->jenis_kelamin }}</td>
                                         <td>{{ $data->pendidikan }}</td>
@@ -53,7 +55,7 @@
                                         <td>{{ $data->pekerjaan }}</td>
                                         <td>{{ $data->nama_ibu_bapak }}</td>
                                         <td>{{ $data->status }}</td>
-                                        <td>{{ $data->no_kk }}</td>
+                                        <td>{{ $data->status_kk }}</td>
                                         <td>{{ $data->role }}</td>
                                     </tr>
                                 @endforeach
