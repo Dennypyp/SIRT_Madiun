@@ -28,7 +28,7 @@
 	<br/>
 	</center>
 	<hr/>
-	Tanggal DD-MM-YYYY ()
+	Tanggal {{ format_tgl(date('Y-m-d')) }}
 	<br/>
 	<br>
 	<table border="1" cellspacing="" cellpadding="4" width="100%">
@@ -64,7 +64,10 @@
 			<br/>
 			<br/>
 			<br/>
-		<p>__________________________</p>
+			<center>
+				<p>Muhammad Bisri</p>
+			</center>
+		<p style="margin-top: -30px">__________________________</p>
 		</td>
 	</tr>
 </table>
