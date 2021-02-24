@@ -15,8 +15,9 @@ class CreateUangSosialTable extends Migration
     {
         Schema::create('uang_sosial', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nik_kk',20)->index()->nullable();
-            $table->foreign('nik_kk')->references('no_kk')->on('kk');
+            $table->string('nkk',20)->index()->nullable();
+            $table->foreign('nkk')->references('no_kk')->on('kk');
+            $table->date('tanggal');
             $table->integer('jumlah');
             $table->timestamps();
         });

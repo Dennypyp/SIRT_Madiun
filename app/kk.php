@@ -9,4 +9,5 @@ class kk extends Model
     //
     protected $table = 'kk';
     protected $primaryKey = 'no_kk';  
+
 }

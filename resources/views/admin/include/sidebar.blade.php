@@ -13,8 +13,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="/test_admin">
+    <li class="nav-item {{'rt_admin' == request()->segment(1) ? 'active' : ''}}">
+        <a class="nav-link" href="/rt_admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -28,7 +28,7 @@
     </div>
 
     {{--  Nav Warga  --}}
-    <li class="nav-item">
+    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}} {{'anggota' == request()->segment(1) ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWarga" aria-expanded="true"
             aria-controls="collapseWarga">
             <i class="fas fa-fw fa-user"></i>
@@ -42,36 +42,44 @@
         </div>
     </li>
 
-    {{--  <!-- Nav Item - Pages Collapse Menu -->  --}}
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+    <li class="nav-item {{'jimpitan' == request()->segment(1) ? 'active' : ''}} {{'pengeluaran' == request()->segment(1) ? 'active' : ''}} {{'pemasukan' == request()->segment(1) ? 'active' : ''}} {{'lapkeu' == request()->segment(1) ? 'active' : ''}}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKeuangan" aria-expanded="true"
+            aria-controls="collapseKeuangan">
+            <i class="fas fa-fw fa-university"></i>
+            <span>Keuangan</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseKeuangan" class="collapse" aria-labelledby="headingKeuangan" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <a class="collapse-item" href="/jimpitan">Dana Sosial (Jimpitan)</a>
+                <a class="collapse-item" href="/pemasukan">Pemasukan</a>
+                <a class="collapse-item" href="/pengeluaran">Pengeluaran</a>
+                <a class="collapse-item" href="/lapkeu">Laporan</a>
             </div>
         </div>
     </li>
 
-    {{--  <!-- Nav Item - Utilities Collapse Menu -->  --}}
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
+    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSurat" aria-expanded="true"
+            aria-controls="collapseSurat">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Surat</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseSurat" class="collapse" aria-labelledby="headingSurat" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
+                <a class="collapse-item" href="#">Surat Masuk</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKegiatan" aria-expanded="true"
+            aria-controls="collapseKegiatan">
+            <i class="fas fa-fw fa-list-alt"></i>
+            <span>Kegiatan</span>
+        </a>
+        <div id="collapseKegiatan" class="collapse" aria-labelledby="headingKegiatan" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">Data Kegiatan</a>
             </div>
         </div>
     </li>
