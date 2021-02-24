@@ -34,7 +34,7 @@
 	<table border="1" cellspacing="" cellpadding="4" width="100%">
 	<tr>
 		<th align="center">No</th>
-		<th align="center">Nama</th>
+		<th align="center">Nama Warga</th>
         <th align="center">Jumlah</th>
 	</tr>
         @foreach($jimpitan as $item)
