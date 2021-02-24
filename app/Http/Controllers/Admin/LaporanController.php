@@ -17,7 +17,11 @@ class LaporanController extends Controller
     public function index()
     {
         //
-        return view('admin.lapkeu.index');
+        $tgl_jimpit = DB::table('uang_sosial')
+        ->select('uang_sosial.tanggal')
+        ->distinct()
+        ->get();
+        return view('admin.lapkeu.index', ["tgl_jimpit"=>$tgl_jimpit]);
     }
 
     /**
@@ -85,15 +89,28 @@ class LaporanController extends Controller
     {
         //
     }
-    public function jimpitan(){
+    public function jimpitan(Request $request){
+        // dd($request->all());
+        $pecahkan = explode('-', $request->get('bln_jimpit'));
+        // dd($pecahkan);
         $jimpitan = DB::table('uang_sosial')
         ->join('kk','kk.no_kk','=','uang_sosial.nkk')
         ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
         ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
+        ->whereMonth('uang_sosial.tanggal',$pecahkan[1])
+        ->whereYear('uang_sosial.tanggal',$pecahkan[0])
         ->get();
+        $tanggal= $request->get('bln_jimpit');
+        // dd($jimpitan);
         $total = DB::table('uang_sosial')
+        ->whereMonth('uang_sosial.tanggal',$pecahkan[1])
+        ->whereYear('uang_sosial.tanggal',$pecahkan[0])
         ->sum('uang_sosial.jumlah');
-        $pdf= PDF::loadview("admin/lapkeu/jimpitan", ["jimpitan"=>$jimpitan, 'total'=>$total]);
+        $pdf= PDF::loadview("admin/lapkeu/jimpitan", [
+            "jimpitan"=>$jimpitan, 
+            'total'=>$total, 
+            'tanggal'=>$tanggal
+        ]);
         return $pdf->download("laporan_jimpitan.pdf");
     }
 }

@@ -24,11 +24,17 @@
 </style>
 <body>
     <center>
-		<h3>RT 03/RW 01<b><br/>REKAP DANA SOSIAL (JIMPITAN)</b></h3>
+		<h3>RT 03/RW 01
+			<br>
+			REKAP DANA SOSIAL (JIMPITAN)
+			<br>
+			BULAN {{ format_bln_kap($tanggal) }}
+		</h3>
 	<br/>
 	</center>
 	<hr/>
-	Tanggal {{ format_tgl(date('Y-m-d')) }}
+	{{-- Tanggal  --}}
+	{{-- {{ format_tgl(date($tanggal)) }} --}}
 	<br/>
 	<br>
 	<table border="1" cellspacing="" cellpadding="4" width="100%">

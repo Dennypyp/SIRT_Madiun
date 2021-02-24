@@ -76,6 +76,7 @@
     <script src="{{ asset('admin/assets/js/demo/chart-pie-demo.js') }}"></script>
 
     <script src="{{ asset('admin/assets/js/demo/datatables-demo.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>
