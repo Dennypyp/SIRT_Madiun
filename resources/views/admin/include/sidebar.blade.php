@@ -58,30 +58,28 @@
         </div>
     </li>
 
-    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}} {{'anggota' == request()->segment(1) ? 'active' : ''}}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWarga" aria-expanded="true"
-            aria-controls="collapseWarga">
-            <i class="fas fa-fw fa-user"></i>
+    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSurat" aria-expanded="true"
+            aria-controls="collapseSurat">
+            <i class="fas fa-fw fa-file"></i>
             <span>Surat</span>
         </a>
-        <div id="collapseWarga" class="collapse" aria-labelledby="headingWarga" data-parent="#accordionSidebar">
+        <div id="collapseSurat" class="collapse" aria-labelledby="headingSurat" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/kk">Data KK</a>
-                <a class="collapse-item" href="/anggota">Data Anggota KK</a>
+                <a class="collapse-item" href="#">Surat Masuk</a>
             </div>
         </div>
     </li>
 
-    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}} {{'anggota' == request()->segment(1) ? 'active' : ''}}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWarga" aria-expanded="true"
-            aria-controls="collapseWarga">
-            <i class="fas fa-fw fa-user"></i>
+    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKegiatan" aria-expanded="true"
+            aria-controls="collapseKegiatan">
+            <i class="fas fa-fw fa-list-alt"></i>
             <span>Kegiatan</span>
         </a>
-        <div id="collapseWarga" class="collapse" aria-labelledby="headingWarga" data-parent="#accordionSidebar">
+        <div id="collapseKegiatan" class="collapse" aria-labelledby="headingKegiatan" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/kk">Data KK</a>
-                <a class="collapse-item" href="/anggota">Data Anggota KK</a>
+                <a class="collapse-item" href="#">Data Kegiatan</a>
             </div>
         </div>
     </li>
