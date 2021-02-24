@@ -53,7 +53,7 @@
                 <a class="collapse-item" href="/jimpitan">Dana Sosial (Jimpitan)</a>
                 <a class="collapse-item" href="/pemasukan">Pemasukan</a>
                 <a class="collapse-item" href="/pengeluaran">Pengeluaran</a>
-                <a class="collapse-item" href="#">Laporan</a>
+                <a class="collapse-item" href="/lapkeu">Laporan</a>
             </div>
         </div>
     </li>

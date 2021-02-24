@@ -1,5 +1,5 @@
 <?php 
-Route::resource('test_admin', 'admin\AdminController');
+Route::resource('rt_admin', 'admin\AdminController');
 
 Route::resource('kk', 'admin\KKController');
 Route::get('kk/destroy/{id}', 'admin\KKController@destroy');
@@ -19,4 +19,8 @@ Route::prefix('/jimpitan')->group(function ()
 {
     Route::get('/bayar/{id}', 'admin\JimpitanController@bayar')->name('jimpitan.bayar');
 });
+
+Route::resource('lapkeu', 'admin\LaporanController');
+
+Route::get('/laporan_jimpitan', 'admin\LaporanController@jimpitan');
 ?>
