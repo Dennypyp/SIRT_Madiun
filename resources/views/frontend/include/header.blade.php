@@ -10,8 +10,10 @@
           <a href="" class="close">&times;</a>
         </div><!-- az-header-menu-header -->
         <ul class="nav">
-          <li class="nav-item active show">
-            <a href="index.html" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+          <li class="nav-item">
+
+            <a href="/" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+
           </li>
           @if(Auth()->user())
           <li class="nav-item">
@@ -29,11 +31,9 @@
           </li>
           @else
           <li class="nav-item">
-            <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Pages</a>
-            <nav class="az-menu-sub">
-              <a href="/login" class="nav-link">Sign In</a>
-              <a href="/register" class="nav-link">Sign Up</a>
-            </nav>
+
+            <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
+
           </li>
           @endif
           <li class="nav-item">
@@ -108,6 +108,7 @@
             <div class="dropdown-footer"><a href="">View All Notifications</a></div>
           </div><!-- dropdown-menu -->
         </div><!-- az-header-notification -->
+
 
 @if (Auth()->user())
     <div class="dropdown az-profile-menu">
