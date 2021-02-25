@@ -10,15 +10,11 @@
           <a href="" class="close">&times;</a>
         </div><!-- az-header-menu-header -->
         <ul class="nav">
-          <li class="nav-item active show">
-            <a href="index.html" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+          <li class="nav-item">
+            <a href="/test" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Pages</a>
-            <nav class="az-menu-sub">
-              <a href="page-signin.html" class="nav-link">Sign In</a>
-              <a href="page-signup.html" class="nav-link">Sign Up</a>
-            </nav>
+            <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
           </li>
           <li class="nav-item">
             <a href="chart-chartjs.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Charts</a>
