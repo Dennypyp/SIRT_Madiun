@@ -13,13 +13,29 @@
           <li class="nav-item active show">
             <a href="index.html" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
           </li>
+          @if(Auth()->user())
+          <li class="nav-item">
+            <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> {{ Auth::user()->nama}}</a>
+            <nav class="az-menu-sub">
+              <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                    </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            </nav>
+          </li>
+          @else
           <li class="nav-item">
             <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Pages</a>
             <nav class="az-menu-sub">
-              <a href="page-signin.html" class="nav-link">Sign In</a>
-              <a href="page-signup.html" class="nav-link">Sign Up</a>
+              <a href="/login" class="nav-link">Sign In</a>
+              <a href="/register" class="nav-link">Sign Up</a>
             </nav>
           </li>
+          @endif
           <li class="nav-item">
             <a href="chart-chartjs.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Charts</a>
           </li>
@@ -49,6 +65,8 @@
         <div class="az-header-message">
           <a href="#"><i class="typcn typcn-messages"></i></a>
         </div><!-- az-header-message -->
+        
+        
         <div class="dropdown az-header-notification">
           <a href="" class="new"><i class="typcn typcn-bell"></i></a>
           <div class="dropdown-menu">
@@ -90,27 +108,48 @@
             <div class="dropdown-footer"><a href="">View All Notifications</a></div>
           </div><!-- dropdown-menu -->
         </div><!-- az-header-notification -->
-        <div class="dropdown az-profile-menu">
-          <a href="" class="az-img-user"><img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt=""></a>
-          <div class="dropdown-menu">
-            <div class="az-dropdown-header d-sm-none">
-              <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
-            </div>
-            <div class="az-header-profile">
-              <div class="az-img-user">
-                <img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt="">
-              </div><!-- az-img-user -->
-              <h6>Aziana Pechon</h6>
-              <span>Premium Member</span>
-            </div><!-- az-header-profile -->
 
-            <a href="" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My Profile</a>
-            <a href="" class="dropdown-item"><i class="typcn typcn-edit"></i> Edit Profile</a>
-            <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
-            <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
-            <a href="page-signin.html" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Sign Out</a>
-          </div><!-- dropdown-menu -->
+@if (Auth()->user())
+    <div class="dropdown az-profile-menu">
+      <a href="" class="az-img-user"><img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt=""></a>
+      <div class="dropdown-menu">
+        <div class="az-dropdown-header d-sm-none">
+          <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
         </div>
+        <div class="az-header-profile">
+          <div class="az-img-user">
+            <img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt="">
+          </div><!-- az-img-user -->
+          <h6>{{ Auth::user()->nama}}</h6>
+          <span>{{ Auth::user()->role}}</span>
+        </div><!-- az-header-profile -->
+
+        <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
+        <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
+        <a href="{{ route('logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();"></i>Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+        </form>
+      </div><!-- dropdown-menu -->
+    </div>
+@else
+      <div class="dropdown az-profile-menu">
+        <a href="" class="az-img-user"><img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt=""></a>
+        <div class="dropdown-menu">
+          <div class="az-dropdown-header d-sm-none">
+            <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
+          </div>
+          <div class="az-header-profile">
+            <div class="az-img-user">
+              <img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt="">
+            </div><!-- az-img-user -->
+          </div><!-- az-header-profile -->
+          <a href="/login" class="dropdown-item"><i class="typcn typcn-time"></i>Login</a>
+        </div><!-- dropdown-menu -->
+      </div>
+@endif
+
       </div><!-- az-header-right -->
     </div><!-- container -->
   </div><!-- az-header -->

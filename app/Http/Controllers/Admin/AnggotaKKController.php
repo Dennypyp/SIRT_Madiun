@@ -56,7 +56,6 @@ class AnggotaKKController extends Controller
         $akk->status = $request->get('status');
         $akk->status_kk = $request->get('status_kk');
         $akk->no_kk = $request->get('no_kk');
-        $akk->role = 'warga';
         $akk->save();
         return redirect('anggota')->with('msg','Anggota KK Berhasil di simpan');
     }
@@ -108,7 +107,6 @@ class AnggotaKKController extends Controller
         $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
         $akk->status = $request->get('status');
         $akk->status_kk = $request->get('status_kk');
-        $akk->role = 'warga';
         $akk->save();
         return redirect('anggota')->with('msg','Anggota KK Berhasil di Edit');
     }
