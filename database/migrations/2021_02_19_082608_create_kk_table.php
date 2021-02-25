@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuratTable extends Migration
+class CreateKKTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateSuratTable extends Migration
      */
     public function up()
     {
-        Schema::create('surat', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nik',20)->index()->nullable();
-
-            $table->string('keperluan');
-            $table->foreign('nik')->references('nik')->on('anggota_kk');
-
+        Schema::create('kk', function (Blueprint $table) {
+            $table->string('no_kk',20)->primary();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class CreateSuratTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surat');
+        Schema::dropIfExists('kk');
     }
 }
