@@ -113,8 +113,8 @@
 
         <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
         <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
-        <a href="{{ route('logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline" onclick="event.preventDefault();
-          document.getElementById('logout-form').submit();"></i>Logout</a>
+        <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();"><i class="typcn typcn-power-outline"></i>Logout</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           @csrf
         </form>
