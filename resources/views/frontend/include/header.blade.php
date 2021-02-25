@@ -11,7 +11,11 @@
         </div><!-- az-header-menu-header -->
         <ul class="nav">
           <li class="nav-item">
+<<<<<<< Updated upstream
             <a href="/test" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+=======
+            <a href="/" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+>>>>>>> Stashed changes
           </li>
           <li class="nav-item">
             <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
@@ -100,6 +104,7 @@
               <span>Premium Member</span>
             </div><!-- az-header-profile -->
 
+<<<<<<< Updated upstream
             <a href="" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My Profile</a>
             <a href="" class="dropdown-item"><i class="typcn typcn-edit"></i> Edit Profile</a>
             <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
@@ -107,6 +112,48 @@
             <a href="page-signin.html" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Sign Out</a>
           </div><!-- dropdown-menu -->
         </div>
+=======
+        @if (Auth()->user())
+    <div class="dropdown az-profile-menu">
+      <a href="" class="az-img-user"><img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt=""></a>
+      <div class="dropdown-menu">
+        <div class="az-dropdown-header d-sm-none">
+          <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
+        </div>
+        <div class="az-header-profile">
+          <div class="az-img-user">
+            <img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt="">
+          </div><!-- az-img-user -->
+          <h6>{{ Auth::user()->nama}}</h6>
+          <span>{{ Auth::user()->role}}</span>
+        </div><!-- az-header-profile -->
+
+        <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
+        <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
+        <a href="{{ route('logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();"></i>Logout</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+        </form>
+      </div><!-- dropdown-menu -->
+    </div>
+@else
+      <div class="dropdown az-profile-menu">
+        <a href="" class="az-img-user"><img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt=""></a>
+        <div class="dropdown-menu">
+          <div class="az-dropdown-header d-sm-none">
+            <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
+          </div>
+          <div class="az-header-profile">
+            <div class="az-img-user">
+              <img src="{{asset('frontend/assets/img/faces/face1.jpg')}}" alt="">
+            </div><!-- az-img-user -->
+          </div><!-- az-header-profile -->
+          <a href="/login" class="dropdown-item"><i class="typcn typcn-time"></i>Login</a>
+        </div><!-- dropdown-menu -->
+      </div>
+@endif
+>>>>>>> Stashed changes
       </div><!-- az-header-right -->
     </div><!-- container -->
   </div><!-- az-header -->
