@@ -39,7 +39,6 @@
                                     <th>Nama Ibu/Bapak</th>
                                     <th>Status</th>
                                     <th>Status dalam Keluarga</th>
-                                    <th>Role</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,7 +55,6 @@
                                         <td>{{ $data->nama_ibu_bapak }}</td>
                                         <td>{{ $data->status }}</td>
                                         <td>{{ $data->status_kk }}</td>
-                                        <td>{{ $data->role }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

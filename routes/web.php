@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 require "frontend.php";
 require "admin.php";
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('test');
+// });
 
 Auth::routes();
 
