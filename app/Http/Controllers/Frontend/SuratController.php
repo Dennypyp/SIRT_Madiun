@@ -72,7 +72,6 @@ class SuratController extends Controller
     public function edit($id)
     {
         //
-       
     }
 
     /**
@@ -85,7 +84,6 @@ class SuratController extends Controller
     public function update(Request $request, $id)
     {
         //
-      
     }
 
     /**
@@ -97,6 +95,5 @@ class SuratController extends Controller
     public function destroy($id)
     {
         //
-        
     }
 }
