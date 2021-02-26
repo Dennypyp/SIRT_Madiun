@@ -19,7 +19,7 @@
                 <div class="card-header py-3">
                     <h6 class="md-0 font-weight-bold text-primary">Edit Anggota Keluarga</h6>
                     <div class="col-11 text-right">
-                        <a href="/anggota/destroy/{{ $data->nik }}" class="btn btn-sm btn-danger">Hapus</a>
+                        <a href="" data-target="#edit" data-toggle="modal" class="btn btn-danger">Hapus</a>
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="nik">NIK</label>
-                                        <input type="text" id="nik" name="nik" class="form-control" placeholder="NIK"
+                                        <input readonly type="text" id="nik" name="nik" class="form-control" placeholder="NIK"
                                             value="{{ $data->nik }}">
                                     </div>
                                     <div class="form-group">
@@ -49,12 +49,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" value="{{ $data->tempat_lahir }}">
+                                                <input type="text" id="tempat_lahir" name="tempat_lahir"
+                                                    class="form-control" value="{{ $data->tempat_lahir }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" value="{{ $data->tanggal_lahir }}">
+                                                <input type="date" id="tanggal_lahir" name="tanggal_lahir"
+                                                    class="form-control" value="{{ $data->tanggal_lahir }}">
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +129,7 @@
                                 <div class="col text-left">
                                     <div class="col text-left">
                                         <button type="submit" name="save" class="btn btn-primary">Edit</button>
-                                        <a class="btn btn-danger" href="{{ route('anggota.index') }}"
+                                        <a class="btn btn-secondary" href="{{ route('anggota.index') }}"
                                             role="button">Kembali</a>
                                     </div>
                                 </div>
@@ -141,5 +143,24 @@
 
     </div>
     <!-- End of Main Content -->
+
+    <!-- Hapus Modal-->
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ingin Menghapus Data Warga?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Pilih "Hapus" untuk Menghapus Data</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" href="/anggota/destroy/{{ $data->nik }}">Hapus</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection

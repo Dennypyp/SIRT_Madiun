@@ -21,6 +21,15 @@
                     <div class="col-1 text-right">
                         <a href="{{ route('anggota.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                     </div>
+                    <br>
+                    @if (session('msg'))
+                    <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                        {{ session('msg') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                 </div>
 
                 <div class="card-body">
@@ -39,12 +48,13 @@
                                     <th>Nama Ibu/Bapak</th>
                                     <th>Status</th>
                                     <th>Status dalam Keluarga</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($anggota as $data)
                                     <tr>
-                                        <td><a href="{{ route('anggota.edit',[$data->nik]) }}">{{ $data->nik }}</a></td>
+                                        <td>{{ $data->nik }}</td>
                                         <td>{{ $data->nama }}</td>
                                         <td>{{ $data->no_kk }}</td>
                                         <td>{{ $data->tempat_lahir }}, {{ format_tgl($data->tanggal_lahir) }}</td>
@@ -55,6 +65,7 @@
                                         <td>{{ $data->nama_ibu_bapak }}</td>
                                         <td>{{ $data->status }}</td>
                                         <td>{{ $data->status_kk }}</td>
+                                        <td><a href="{{ route('anggota.edit',[$data->nik]) }}" class="btn btn-sm btn-info">Edit</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

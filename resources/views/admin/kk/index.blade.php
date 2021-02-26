@@ -21,6 +21,15 @@
                     <div class="col-1 text-right">
                         <a href="{{ route('kk.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                     </div>
+                    <br>
+                    @if (session('msg'))
+                    <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                        {{ session('msg') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                 </div>
                 
                 <div class="card-body">
@@ -29,12 +38,14 @@
                             <thead>
                                 <tr>
                                     <th>No. KK</th>
+                                    <th class="text-center" style="width:15%">Aksi</th>
                                 </tr>
                             </thead>
                             @foreach($kk as $item)
                             <tbody>
                                 <tr>
-                                    <td><a href="{{ route('kk.edit',[$item->no_kk]) }}">{{ $item->no_kk }}</a></td>
+                                    <td><a>{{ $item->no_kk }}</a></td>
+                                    <td class="text-center"><a href="{{ route('kk.edit',[$item->no_kk]) }}" class="btn btn-sm btn-info">Edit</a></td>
                                 </tr>
                             </tbody>
                             @endforeach
