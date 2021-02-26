@@ -39,7 +39,13 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->keperluan }}</td>
-                                        <td><a href="#"class="btn btn-sm btn-warning">Menunggu</a></td>
+                                        <td>
+                                        @if($data->status == "Menunggu")
+                                        <div class="alert alert-warning" role="alert">{{ $data->status }}</div>
+                                        @else
+                                        <div class="alert alert-info" role="alert">{{ $data->status }}</div>
+                                        @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

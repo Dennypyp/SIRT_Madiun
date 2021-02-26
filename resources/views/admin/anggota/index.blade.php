@@ -36,6 +36,7 @@
                                     <th>Pendidikan</th>
                                     <th>Agama</th>
                                     <th>Pekerjaan</th>
+                                    <th>Alamat</th>
                                     <th>Nama Ibu/Bapak</th>
                                     <th>Status</th>
                                     <th>Status dalam Keluarga</th>
@@ -52,6 +53,7 @@
                                         <td>{{ $data->pendidikan }}</td>
                                         <td>{{ $data->agama }}</td>
                                         <td>{{ $data->pekerjaan }}</td>
+                                        <td>{{ $data->alamat }}</td>
                                         <td>{{ $data->nama_ibu_bapak }}</td>
                                         <td>{{ $data->status }}</td>
                                         <td>{{ $data->status_kk }}</td>
