@@ -36,7 +36,11 @@ Route::group([
     Route::get('/surat_pengantar/{id}', 'SuratController@surat');
 
     Route::resource('kegiatan_nonfisik', 'Kegiatan_nonfisikController');
+    Route::get('kegiatan_nonfisik/destroy/{id}', 'Kegiatan_nonfisikController@destroy');
     Route::resource('kegiatan_fisik', 'Kegiatan_fisikController');
+    Route::get('kegiatan_fisik/destroy/{id}', 'Kegiatan_fisikController@destroy');
+
+    Route::get('/status_surat/{id}', 'SuratController@status_surat');
 
 });
 

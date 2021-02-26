@@ -41,14 +41,16 @@
                                     <td>{{ $item->keperluan }}</td>
                                     <td class="text-center">
                                         
-                                            <a href="#" class="btn btn-sm btn-info">Setujui</a>
-                                            <!-- <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
-        document.getElementById('setuju').submit();">Logout</a>
-        <form id="setuju" action="{{ route('logout') }}" method="POST" style="display: none;">
-          @csrf
-          <input type="hidden" name="status" value="Disetujui">
-        </form> -->
+                                            {{-- <a href="#" class="btn btn-sm btn-info">Setujui</a> --}}
+                                            @if ($item->status_surat == "Menunggu")
+                                                <a href="/status_surat/{{$item->id}}" class="btn btn-sm btn-info" >Setujui</a>
+                                                
+                                            @elseif($item->status_surat == "Disetujui")
+                                            <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
                                             <a href="/surat_pengantar/{{$item->id}}" class="btn btn-sm btn-primary">Cetak</a>
+                                            @endif
+                                        
+                                        
                                         
                                     </td>
                                 </tr>

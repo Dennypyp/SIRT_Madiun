@@ -17,7 +17,7 @@ class CreateSuratTable extends Migration
             $table->increments('id');
             $table->string('nik',20)->index()->nullable();
             $table->string('keperluan');
-            $table->string('status');
+            $table->string('status_surat');
             $table->foreign('nik')->references('nik')->on('anggota_kk');
             $table->timestamps();
         });

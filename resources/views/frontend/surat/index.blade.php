@@ -40,10 +40,10 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->keperluan }}</td>
                                         <td>
-                                        @if($data->status == "Menunggu")
-                                        <div class="alert alert-warning" role="alert">{{ $data->status }}</div>
+                                        @if($data->status_surat == "Menunggu")
+                                        <div class="alert alert-warning text-center" role="alert">{{ $data->status_surat }}</div>
                                         @else
-                                        <div class="alert alert-info" role="alert">{{ $data->status }}</div>
+                                        <div class="alert alert-info text-center" role="alert">{{ $data->status_surat }}</div>
                                         @endif
                                         </td>
                                     </tr>

@@ -35,9 +35,12 @@
 	<hr/>
     <br>
     <center>
-    <h3>SURAT PENGANTAR</h2>
-    <br>
-    <h3>NO:...../..../.../....</h2>
+    <h3>
+        SURAT PENGANTAR
+        <br>
+        NO: 0{{$no}}/03/{{ format_bln_roma(date('Y-m-d')) }}/{{date('Y')}}
+    </h3>
+    {{-- <h3></h3> --}}
     </center>
 	<br>
 	<p>Yang bertanda tangan dibawah ini Ketua RT.03 RW.01 Kelurahan Josenan, Kecamatan Taman, Kota Madiun, dengan ini menerangkan bahwa:</p>
