@@ -15,27 +15,13 @@
             <a href="/" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
 
           </li>
-          @if(Auth()->user())
-          <li class="nav-item">
-            <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> {{ Auth::user()->nama}}</a>
-            <nav class="az-menu-sub">
-              <a class="nav-link" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                    </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-            </nav>
-          </li>
-          @else
+         
           <li class="nav-item">
 
             <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
 
           </li>
-          @endif
+          
           <li class="nav-item">
             <a href="chart-chartjs.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Charts</a>
           </li>
@@ -127,8 +113,8 @@
 
         <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
         <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
-        <a href="{{ route('logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline" onclick="event.preventDefault();
-          document.getElementById('logout-form').submit();"></i>Logout</a>
+        <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();"><i class="typcn typcn-power-outline" ></i>Logout</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           @csrf
         </form>
