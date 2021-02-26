@@ -71,6 +71,11 @@
                                 placeholder="Pekerjaan" value="{{ $anggota->pekerjaan }}" readonly>
                         </div>
                         <div class="form-group">
+                            <label class="form-control-label" for="alamat">Alamat</label>
+                            <input type="text" id="alamat" name="alamat" class="form-control"
+                                placeholder="Alamat" value="{{ $anggota->alamat }}" readonly>
+                        </div>
+                        <div class="form-group">
                             <label class="form-control-label" for="keperluan">Keperluan</label>
                             <input type="text" id="keperluan" name="keperluan" class="form-control"
                                 placeholder="Keperluan">

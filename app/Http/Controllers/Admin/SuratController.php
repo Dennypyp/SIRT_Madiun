@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\anggota;
+use PDF;
+use DB;
 use App\Surat;
-use App\kk;
-use Illuminate\Support\Facades\Auth;
 
 class SuratController extends Controller
 {
@@ -18,9 +17,10 @@ class SuratController extends Controller
      */
     public function index()
     {
-        //
-        $surat = Surat::where("nik", Auth::user()->nik)->get();
-        return view('frontend.surat.index',['surat'=>$surat]);
+        $surat = DB::table('surat')
+        ->join('anggota_kk','anggota_kk.nik','=','surat.nik')
+        ->get();
+        return view('admin.surat.index',['surat'=>$surat]);
     }
 
     /**
@@ -31,8 +31,6 @@ class SuratController extends Controller
     public function create()
     {
         //
-        $anggota = anggota::where("nik","=", Auth::user()->nik)->first();
-        return view('frontend.surat.create',['anggota'=>$anggota]);
     }
 
     /**
@@ -44,12 +42,6 @@ class SuratController extends Controller
     public function store(Request $request)
     {
         //
-        $suratp = new surat();
-        $suratp->nik = $request->get('nik');
-        $suratp->keperluan = $request->get('keperluan');
-        $suratp->status = 'Menunggu';
-        $suratp->save();
-        return redirect('surat')->with('msg','Surat Pengantar Berhasil di simpan');
     }
 
     /**
@@ -95,5 +87,25 @@ class SuratController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function surat($id){
+        // dd($request->all());
+       // $pecahkan = explode('-', $request->get('bln_jimpit'));
+        // dd($pecahkan);
+        $surat = DB::table('surat')
+        ->join('anggota_kk','anggota_kk.nik','=','surat.nik')
+        ->where('surat.id',$id)
+        ->first();
+      // $tanggal= $request->get('bln_jimpit');
+        // dd($jimpitan);
+      //  $total = DB::table('uang_sosial')
+      //  ->whereMonth('uang_sosial.tanggal',$pecahkan[1])
+      //  ->whereYear('uang_sosial.tanggal',$pecahkan[0])
+     //   ->sum('uang_sosial.jumlah');
+        $pdf= PDF::loadview("admin/surat/isisurat", [
+            "surat"=>$surat 
+        ]);
+        return $pdf->download("surat_pengantar.pdf");
     }
 }

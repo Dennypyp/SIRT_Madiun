@@ -66,12 +66,13 @@
         </a>
         <div id="collapseSurat" class="collapse" aria-labelledby="headingSurat" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Surat Masuk</a>
+                <a class="collapse-item" href="/surat_admin">Surat Pengantar</a>
             </div>
         </div>
     </li>
 
-    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}}">
+
+    <li class="nav-item {{'kegiatan_fisik' == request()->segment(1) ? 'active' : ''}} {{'kegiatan_nonfisik' == request()->segment(1) ? 'active' : ''}} ">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKegiatan" aria-expanded="true"
             aria-controls="collapseKegiatan">
             <i class="fas fa-fw fa-list-alt"></i>
@@ -79,7 +80,8 @@
         </a>
         <div id="collapseKegiatan" class="collapse" aria-labelledby="headingKegiatan" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Data Kegiatan</a>
+                <a class="collapse-item" href="/kegiatan_fisik">Data Kegiatan Fisik</a>
+                <a class="collapse-item" href="/kegiatan_nonfisik">Data Kegiatan Non Fisik</a>
             </div>
         </div>
     </li>

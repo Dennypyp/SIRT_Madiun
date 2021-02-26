@@ -22,6 +22,7 @@ class CreateAnggotaKkTable extends Migration
             $table->string('pendidikan',20);
             $table->string('agama',10);
             $table->string('pekerjaan',50);
+            $table->string('alamat',500);
             $table->string('nama_ibu_bapak',100);
             $table->string('status',20);
             $table->string('status_kk',50);
