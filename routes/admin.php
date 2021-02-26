@@ -19,6 +19,8 @@ Route::group([
     Route::get('pengeluaran/destroy/{id}', 'PengeluaranController@destroy');
     
     Route::resource('jimpitan', 'JimpitanController');
+
+    Route::resource('surat_admin', 'SuratController');
     
     Route::prefix('/jimpitan')->group(function ()
     {
@@ -28,6 +30,8 @@ Route::group([
     Route::resource('lapkeu', 'LaporanController');
     
     Route::get('/laporan_jimpitan', 'LaporanController@jimpitan');
+
+    Route::get('/surat_pengantar/{id}', 'SuratController@surat');
 });
 
 ?>
