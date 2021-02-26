@@ -26,8 +26,9 @@ Route::group([
     });
     
     Route::resource('lapkeu', 'LaporanController');
-    
     Route::get('/laporan_jimpitan', 'LaporanController@jimpitan');
+
+    Route::resource('saldo', 'SaldoController');
 });
 
 ?>
