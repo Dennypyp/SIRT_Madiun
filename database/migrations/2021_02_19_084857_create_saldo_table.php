@@ -18,6 +18,7 @@ class CreateSaldoTable extends Migration
             $table->date('tanggal');
             $table->integer('kas');
             $table->integer('bank');
+            $table->integer('tot_saldo');
             $table->timestamps();
         });
     }
