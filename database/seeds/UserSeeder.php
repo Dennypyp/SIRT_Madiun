@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
             'pendidikan'=> "",
             'agama'=> "",
             'pekerjaan'=> "",
+            'alamat'=>"",
             'nama_ibu_bapak'=> "",
             'status'=> "",
             'status_kk'=> ""

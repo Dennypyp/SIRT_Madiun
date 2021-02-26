@@ -90,6 +90,11 @@
                                             placeholder="Pekerjaan" value="{{ $data->pekerjaan }}">
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-control-label" for="alamat">Alamat</label>
+                                        <input type="text" id="alamat" name="alamat" class="form-control"
+                                            placeholder="Alamat" value="{{ $data->alamat }}">
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-control-label" for="nama_ibu_bapak">Nama Ibu/Bapak</label>
                                         <input type="text" id="nama_ibu_bapak" name="nama_ibu_bapak" class="form-control"
                                             placeholder="Nama Ibu/Bapak" value="{{ $data->nama_ibu_bapak }}">

@@ -21,7 +21,6 @@
             <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
 
           </li>
-
           <li class="nav-item">
             <a href="chart-chartjs.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Charts</a>
           </li>

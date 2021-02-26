@@ -52,6 +52,7 @@ class AnggotaKKController extends Controller
         $akk->pendidikan = $request->get('pendidikan');
         $akk->agama = $request->get('agama');
         $akk->pekerjaan = $request->get('pekerjaan');
+        $akk->alamat = $request->get('alamat');
         $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
         $akk->status = $request->get('status');
         $akk->status_kk = $request->get('status_kk');
@@ -104,6 +105,7 @@ class AnggotaKKController extends Controller
         $akk->pendidikan = $request->get('pendidikan');
         $akk->agama = $request->get('agama');
         $akk->pekerjaan = $request->get('pekerjaan');
+        $akk->alamat = $request->get('alamat');
         $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
         $akk->status = $request->get('status');
         $akk->status_kk = $request->get('status_kk');
