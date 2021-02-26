@@ -66,7 +66,7 @@
         </a>
         <div id="collapseSurat" class="collapse" aria-labelledby="headingSurat" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Surat Masuk</a>
+                <a class="collapse-item" href="/surat_admin">Surat Pengantar</a>
             </div>
         </div>
     </li>
