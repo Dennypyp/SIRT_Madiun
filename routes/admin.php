@@ -28,13 +28,17 @@ Route::group([
     });
 
     Route::resource('lapkeu', 'LaporanController');
-
     Route::get('/laporan_jimpitan', 'LaporanController@jimpitan');
 
+    Route::resource('saldo', 'SaldoController');
+
+
     Route::get('/surat_pengantar/{id}', 'SuratController@surat');
+
+    Route::resource('kegiatan_nonfisik', 'Kegiatan_nonfisikController');
+    Route::resource('kegiatan_fisik', 'Kegiatan_fisikController');
+
 });
 
-Route::resource('lapkeu', 'admin\LaporanController');
 
-Route::get('/laporan_jimpitan', 'admin\LaporanController@jimpitan');
 ?>
