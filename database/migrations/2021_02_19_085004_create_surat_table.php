@@ -16,10 +16,9 @@ class CreateSuratTable extends Migration
         Schema::create('surat', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nik',20)->index()->nullable();
-
             $table->string('keperluan');
+            $table->string('status');
             $table->foreign('nik')->references('nik')->on('anggota_kk');
-
             $table->timestamps();
         });
     }

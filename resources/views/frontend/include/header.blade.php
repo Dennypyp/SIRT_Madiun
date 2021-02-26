@@ -15,13 +15,21 @@
             <a href="/" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
 
           </li>
+<<<<<<< HEAD
          
+=======
+          
+>>>>>>> main
           <li class="nav-item">
 
             <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
 
           </li>
+<<<<<<< HEAD
           
+=======
+
+>>>>>>> main
           <li class="nav-item">
             <a href="chart-chartjs.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Charts</a>
           </li>
@@ -114,7 +122,11 @@
         <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
         <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+<<<<<<< HEAD
           document.getElementById('logout-form').submit();"><i class="typcn typcn-power-outline" ></i>Logout</a>
+=======
+        document.getElementById('logout-form').submit();"><i class="typcn typcn-power-outline"></i>Logout</a>
+>>>>>>> main
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           @csrf
         </form>

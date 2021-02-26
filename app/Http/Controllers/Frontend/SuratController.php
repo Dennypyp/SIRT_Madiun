@@ -47,6 +47,7 @@ class SuratController extends Controller
         $suratp = new surat();
         $suratp->nik = $request->get('nik');
         $suratp->keperluan = $request->get('keperluan');
+        $suratp->status = 'Menunggu';
         $suratp->save();
         return redirect('surat')->with('msg','Surat Pengantar Berhasil di simpan');
     }
