@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\anggota;
 use App\kk;
@@ -18,8 +19,11 @@ class AnggotaKKController extends Controller
     public function index()
     {
         //
-        $anggota = anggota::all();
-        return view('admin.anggota.index',['anggota'=>$anggota]);
+        $anggota = DB::table('anggota_kk')
+            ->where('no_kk', '!=', 'admin')
+            ->orderBy('no_kk')
+            ->get();
+        return view('admin.anggota.index', ['anggota' => $anggota]);
     }
 
     /**
@@ -30,8 +34,10 @@ class AnggotaKKController extends Controller
     public function create()
     {
         //
-        $kk = kk::all();
-        return view('admin.anggota.create',['kk'=>$kk]);
+        $kk = DB::table('kk')
+            ->where('no_kk', '!=', 'admin')
+            ->get();
+        return view('admin.anggota.create', ['kk' => $kk]);
     }
 
     /**
@@ -43,22 +49,42 @@ class AnggotaKKController extends Controller
     public function store(Request $request)
     {
         //
-        $akk = new anggota();
-        $akk->nik = $request->get('nik');
-        $akk->nama = $request->get('nama');
-        $akk->tempat_lahir = $request->get('tempat_lahir');
-        $akk->tanggal_lahir = $request->get('tanggal_lahir');
-        $akk->jenis_kelamin = $request->get('jenis_kelemin');
-        $akk->pendidikan = $request->get('pendidikan');
-        $akk->agama = $request->get('agama');
-        $akk->pekerjaan = $request->get('pekerjaan');
-        $akk->alamat = $request->get('alamat');
-        $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
-        $akk->status = $request->get('status');
-        $akk->status_kk = $request->get('status_kk');
-        $akk->no_kk = $request->get('no_kk');
-        $akk->save();
-        return redirect('anggota')->with('msg','Anggota KK Berhasil di simpan');
+        $validator = Validator::make(request()->all(), [
+            'nik' => 'required',
+            'nama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelemin' => 'required',
+            'pendidikan' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'nama_ibu_bapak' => 'required',
+            'status' => 'required',
+            'status_kk' => 'required',
+            'no_kk' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $akk = new anggota();
+            $akk->nik = $request->get('nik');
+            $akk->nama = $request->get('nama');
+            $akk->tempat_lahir = $request->get('tempat_lahir');
+            $akk->tanggal_lahir = $request->get('tanggal_lahir');
+            $akk->jenis_kelamin = $request->get('jenis_kelemin');
+            $akk->pendidikan = $request->get('pendidikan');
+            $akk->agama = $request->get('agama');
+            $akk->pekerjaan = $request->get('pekerjaan');
+            $akk->alamat = $request->get('alamat');
+            $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
+            $akk->status = $request->get('status');
+            $akk->status_kk = $request->get('status_kk');
+            $akk->no_kk = $request->get('no_kk');
+            $akk->save();
+            return redirect('anggota')->with('msg', 'Anggota KK Berhasil di simpan');
+        }
     }
 
     /**
@@ -81,9 +107,9 @@ class AnggotaKKController extends Controller
     public function edit($id)
     {
         //
-        $data = DB::table('anggota_kk')->where('nik','=',$id)->first();
+        $data = DB::table('anggota_kk')->where('nik', '=', $id)->first();
         // dd($data);
-        return view('admin.anggota.edit', ['data'=>$data]);
+        return view('admin.anggota.edit', ['data' => $data]);
     }
 
     /**
@@ -96,21 +122,41 @@ class AnggotaKKController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $akk = anggota::where('nik','=',$id)->first();
-        $akk->nik = $request->get('nik');
-        $akk->nama = $request->get('nama');
-        $akk->tempat_lahir = $request->get('tempat_lahir');
-        $akk->tanggal_lahir = $request->get('tanggal_lahir');
-        $akk->jenis_kelamin = $request->get('jenis_kelemin');
-        $akk->pendidikan = $request->get('pendidikan');
-        $akk->agama = $request->get('agama');
-        $akk->pekerjaan = $request->get('pekerjaan');
-        $akk->alamat = $request->get('alamat');
-        $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
-        $akk->status = $request->get('status');
-        $akk->status_kk = $request->get('status_kk');
-        $akk->save();
-        return redirect('anggota')->with('msg','Anggota KK Berhasil di Edit');
+        $validator = Validator::make(request()->all(), [
+            'nik' => 'required',
+            'nama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelemin' => 'required',
+            'pendidikan' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'nama_ibu_bapak' => 'required',
+            'status' => 'required',
+            'status_kk' => 'required',
+            'no_kk' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $akk = anggota::where('nik', '=', $id)->first();
+            $akk->nik = $request->get('nik');
+            $akk->nama = $request->get('nama');
+            $akk->tempat_lahir = $request->get('tempat_lahir');
+            $akk->tanggal_lahir = $request->get('tanggal_lahir');
+            $akk->jenis_kelamin = $request->get('jenis_kelemin');
+            $akk->pendidikan = $request->get('pendidikan');
+            $akk->agama = $request->get('agama');
+            $akk->pekerjaan = $request->get('pekerjaan');
+            $akk->alamat = $request->get('alamat');
+            $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
+            $akk->status = $request->get('status');
+            $akk->status_kk = $request->get('status_kk');
+            $akk->save();
+            return redirect('anggota')->with('msg', 'Anggota KK Berhasil di Edit');
+        }
     }
 
     /**
@@ -122,8 +168,8 @@ class AnggotaKKController extends Controller
     public function destroy($id)
     {
         //
-        $anggota = anggota::where('nik','=',$id)->first();
+        $anggota = anggota::where('nik', '=', $id)->first();
         $anggota->delete();
-        return redirect('anggota')->with('msg','Anggota KK Berhasil di Hapus');
+        return redirect('anggota')->with('msg', 'Anggota KK Berhasil di Hapus');
     }
 }

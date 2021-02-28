@@ -66,7 +66,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih "Hapus" untuk Menghapus Data</div>
+                <div class="modal-body">Pilih "Hapus" untuk Menghapus Data <br> (usahakan tidak ada No.KK yang terkait dengan anggota)</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-danger" href="/kk/destroy/{{ $kk->no_kk }}">Hapus</a>
