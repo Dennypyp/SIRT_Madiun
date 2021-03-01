@@ -97,14 +97,14 @@ class LaporanController extends Controller
         ->join('kk','kk.no_kk','=','uang_sosial.nkk')
         ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
         ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
-        ->whereMonth('uang_sosial.tanggal',$pecahkan[1])
-        ->whereYear('uang_sosial.tanggal',$pecahkan[0])
+        ->whereMonth('uang_sosial.tanggal_jimpitan',$pecahkan[1])
+        ->whereYear('uang_sosial.tanggal_jimpitan',$pecahkan[0])
         ->get();
         $tanggal= $request->get('bln_jimpit');
         // dd($jimpitan);
         $total = DB::table('uang_sosial')
-        ->whereMonth('uang_sosial.tanggal',$pecahkan[1])
-        ->whereYear('uang_sosial.tanggal',$pecahkan[0])
+        ->whereMonth('uang_sosial.tanggal_jimpitan',$pecahkan[1])
+        ->whereYear('uang_sosial.tanggal_jimpitan',$pecahkan[0])
         ->sum('uang_sosial.jumlah');
         $pdf= PDF::loadview("admin/lapkeu/jimpitan", [
             "jimpitan"=>$jimpitan, 

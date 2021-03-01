@@ -32,18 +32,23 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="tanggal">Tanggal Masuk</label>
-                                        <input type="date" id="tanggal" name="tanggal" class="form-control">
+                                        <label class="form-control-label" for="tanggal_masuk">Tanggal Masuk</label>
+                                        <input type="date" id="tanggal_masuk" name="tanggal_masuk" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="keterangan">Keterangan Pemasukan</label>
-                                        <input type="text" id="keterangan" name="keterangan" class="form-control"
+                                        <label class="form-control-label" for="keterangan_masuk">Keterangan Pemasukan</label>
+                                        <input type="text" id="keterangan_masuk" name="keterangan_masuk" class="form-control"
                                             placeholder="Keterangan">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="jumlah">Jumlah Pemasukan (Rp)</label>
-                                        <input type="text" id="jumlah" name="jumlah" class="form-control"
-                                            placeholder="Jumlah Pengeluaran">
+                                        <label class="form-control-label" for="jumlah_masuk">Jumlah Pemasukan (Rp)</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Rp</span>
+                                            </div>
+                                            <input type="text" id="jumlah_masuk" name="jumlah_masuk" class="form-control"
+                                            placeholder="Jumlah Pemasuakn">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Jimpitan;
-use App\kk;
-use App\anggota;
+use App\Saldo_Uang_Sosial;
 
 class JimpitanController extends Controller
 {
@@ -53,11 +52,22 @@ class JimpitanController extends Controller
     public function store(Request $request)
     {
         //
+        $pecahkan = explode('-', $request->get('tanggal_masuk'));
+
         $jimpitan = new Jimpitan();
         $jimpitan->nkk = $request->get('no_kk');
         $jimpitan->tanggal = $request->get('tanggal');
         $jimpitan->jumlah = $request->get('jumlah');
         $jimpitan->save();
+
+        $saldo_uang_sosial = new saldo_uang_sosial();
+        $saldo_id = DB::table('saldo')
+        ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
+        ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
+        ->first();
+        $saldo_uang_sosial->saldo_id = $saldo_id->id;
+        $saldo_uang_sosial->uang_sosial_id = $jimpitan->id;
+        $saldo_uang_sosial->save();
         return redirect()->route('jimpitan.index')->with('message','Dana Sosial (Jimpitan) Telah Terdata!');
     }
 
@@ -70,14 +80,7 @@ class JimpitanController extends Controller
     public function show($id)
     {
         //
-        // $jimpitan = DB::table('anggota_kk')
-        // // ->join('kk','kk.no_kk','=','uang_sosial.nkk')
-        // // ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
-        // ->where('anggota_kk.no_kk','=',$id)
-        // ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
-        // ->get();
-        // // dd($jimpitan);
-        // return view('admin.jimpitan.edit', ['jimpitan' => $jimpitan]);
+
     }
 
     /**
@@ -89,27 +92,16 @@ class JimpitanController extends Controller
     public function edit($id)
     {
         //
-        // $jimpitan = DB::table('anggota_kk')
-        // // ->join('kk','kk.no_kk','=','uang_sosial.nkk')
-        // // ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
-        // ->where('anggota_kk.no_kk','=',$id)
-        // ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
-        // ->get();
-        // dd($jimpitan);
-        // return view('admin.jimpitan.edit', ['jimpitan' => $jimpitan]);
     }
 
     public function bayar($id)
     {
         //
         $jimpitan = DB::table('kk')
-        // ->join('kk','kk.no_kk','=','uang_sosial.nkk')
         ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
         ->where('anggota_kk.no_kk','=',$id)
         ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
         ->first();
-        // $jimpitan = anggota::where(['no_kk'=>$id, 'status_kk'=>'Bapak/Kepala Keluarga'])->get();
-        // dd($jimpitan);
         return view('admin.jimpitan.bayar', ['jimpitan' => $jimpitan]);
     }
     /**

@@ -41,9 +41,9 @@
                                     @foreach($pemasukan as $item)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center">{{ format_tgl($item->tanggal) }}</td>
-                                    <td>{{ $item->keterangan }}</td>
-                                    <td>{{ format_rp($item->jumlah) }}</td>
+                                    <td class="text-center">{{ format_tgl($item->tanggal_masuk) }}</td>
+                                    <td>{{ $item->keterangan_masuk }}</td>
+                                    <td>{{ format_rp($item->jumlah_masuk) }}</td>
                                     <td class="text-center">
                                         
                                             <a href="{{ route('pemasukan.edit',[$item->id]) }}" class="btn btn-sm btn-warning">Edit</a>

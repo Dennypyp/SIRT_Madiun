@@ -33,18 +33,24 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="tanggal">Tanggal Masuk</label>
-                                        <input type="date" id="tanggal" name="tanggal" class="form-control" value="{{ $pengeluaran->tanggal }}">
+                                        <label class="form-control-label" for="tanggal_keluar">Tanggal Masuk</label>
+                                        <input type="date" id="tanggal_keluar" name="tanggal_keluar" class="form-control" value="{{ $pengeluaran->tanggal_keluar }}">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="keterangan">Keterangan pengeluaran</label>
-                                        <input type="text" id="keterangan" name="keterangan" class="form-control"
-                                            placeholder="Keterangan" value="{{ $pengeluaran->keterangan }}">
+                                        <label class="form-control-label" for="keterangan_keluar">Keterangan pengeluaran</label>
+                                        <input type="text" id="keterangan_keluar" name="keterangan_keluar" class="form-control"
+                                            placeholder="Keterangan" value="{{ $pengeluaran->keterangan_keluar }}">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="jumlah">Jumlah Pengeluaran (Rp)</label>
-                                        <input type="text" id="jumlah" name="jumlah" class="form-control"
-                                            placeholder="Jumlah Pengeluaran" value="{{ $pengeluaran->jumlah }}">
+                                        <label class="form-control-label" for="jumlah_keluar">Jumlah Pengeluaran (Rp)</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Rp</span>
+                                            </div>
+                                            <input type="text" id="jumlah_keluar" name="jumlah_keluar" class="form-control"
+                                            placeholder="Jumlah Pengeluaran" value="{{ $pengeluaran->jumlah_keluar }}">
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pemasukan;
+use App\Saldo_Pemasukan;
+use DB;
 
 class PemasukanController extends Controller
 {
@@ -40,11 +42,22 @@ class PemasukanController extends Controller
     public function store(Request $request)
     {
         //
+        $pecahkan = explode('-', $request->get('tanggal_masuk'));
+
         $pemasukan = new pemasukan();
-        $pemasukan->tanggal = $request->get('tanggal');
-        $pemasukan->keterangan = $request->get('keterangan');
-        $pemasukan->jumlah = $request->get('jumlah');
+        $pemasukan->tanggal_masuk = $request->get('tanggal_masuk');
+        $pemasukan->keterangan_masuk = $request->get('keterangan_masuk');
+        $pemasukan->jumlah_masuk = $request->get('jumlah_masuk');
         $pemasukan->save();
+
+        $saldo_pemasukan = new saldo_pemasukan();
+        $saldo_id = DB::table('saldo')
+        ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
+        ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
+        ->first();
+        $saldo_pemasukan->saldo_id = $saldo_id->id;
+        $saldo_pemasukan->pemasukan_id = $pemasukan->id;
+        $saldo_pemasukan->save();
         return redirect()->route('pemasukan.index')->with('message','Pemasukan Berhasil Ditambah!');
     }
 
@@ -83,9 +96,9 @@ class PemasukanController extends Controller
     {
         //
         $pemasukan = Pemasukan::find($id);
-        $pemasukan->tanggal = $request->get('tanggal');
-        $pemasukan->keterangan = $request->get('keterangan');
-        $pemasukan->jumlah = $request->get('jumlah');
+        $pemasukan->tanggal_masuk = $request->get('tanggal_masuk');
+        $pemasukan->keterangan_masuk = $request->get('keterangan_masuk');
+        $pemasukan->jumlah_masuk = $request->get('jumlah_masuk');
         $pemasukan->save();
         return redirect()->route('pemasukan.index')->with('message','Pemasukan Berhasil Diedit!');
     }
@@ -101,6 +114,9 @@ class PemasukanController extends Controller
         //
         $pemasukan = Pemasukan::find($id);
         $pemasukan->delete();
+
+        $saldo_pemasukan = Saldo_Pemasukan::find($id);
+        $saldo_pemasukan->delete();
         return redirect(route('pemasukan.index'))->with('message','Pemasukan Berhasil Dihapus!');
     }
 }

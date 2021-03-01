@@ -59,7 +59,7 @@
         </div>
     </li>
 
-    <li class="nav-item {{'kk' == request()->segment(1) ? 'active' : ''}}">
+    <li class="nav-item {{'surat_admin' == request()->segment(1) ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSurat" aria-expanded="true"
             aria-controls="collapseSurat">
             <i class="fas fa-fw fa-file"></i>

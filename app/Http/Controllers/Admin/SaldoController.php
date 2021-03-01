@@ -28,6 +28,7 @@ class SaldoController extends Controller
     public function create()
     {
         //
+        return view('admin.saldo.create');
     }
 
     /**
@@ -39,6 +40,11 @@ class SaldoController extends Controller
     public function store(Request $request)
     {
         //
+        $saldo = new saldo();
+        $saldo->tanggal_saldo = $request->get('tanggal_saldo');
+        $saldo->kas = $request->get('kas');
+        $saldo->save();
+        return redirect()->route('saldo.index')->with('message','Pengeluaran Berhasil Ditambah!');
     }
 
     /**
@@ -61,6 +67,8 @@ class SaldoController extends Controller
     public function edit($id)
     {
         //
+        $saldo = Saldo::find($id);
+        return view('admin.saldo.edit',['saldo' => $saldo]);
     }
 
     /**
@@ -73,6 +81,11 @@ class SaldoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $saldo = Saldo::find($id);
+        $saldo->tanggal_saldo = $request->get('tanggal_saldo');
+        $saldo->kas = $request->get('kas');
+        $saldo->save();
+        return redirect()->route('saldo.index')->with('message','pengeluaran Berhasil Diedit!');
     }
 
     /**
@@ -84,5 +97,8 @@ class SaldoController extends Controller
     public function destroy($id)
     {
         //
+        $saldo = Saldo::find($id);
+        $saldo->delete();
+        return redirect(route('saldo.index'))->with('message','pengeluaran Berhasil Dihapus!');
     }
 }

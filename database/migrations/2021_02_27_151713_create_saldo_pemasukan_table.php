@@ -14,7 +14,6 @@ class CreateSaldoPemasukanTable extends Migration
     public function up()
     {
         Schema::create('saldo_pemasukan', function (Blueprint $table) {
-            $table->id();
             $table->increments('id');
             $table->unsignedInteger('saldo_id')->index()->nullable();
             $table->unsignedInteger('pemasukan_id')->index()->nullable();

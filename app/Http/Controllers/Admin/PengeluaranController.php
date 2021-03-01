@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pengeluaran;
+use App\Saldo_Pengeluaran;
 
 class PengeluaranController extends Controller
 {
@@ -40,11 +41,22 @@ class PengeluaranController extends Controller
     public function store(Request $request)
     {
         //
+        $pecahkan = explode('-', $request->get('tanggal_masuk'));
+
         $pengeluaran = new pengeluaran();
-        $pengeluaran->tanggal = $request->get('tanggal');
-        $pengeluaran->keterangan = $request->get('keterangan');
-        $pengeluaran->jumlah = $request->get('jumlah');
+        $pengeluaran->tanggal_keluar = $request->get('tanggal_keluar');
+        $pengeluaran->keterangan_keluar = $request->get('keterangan_keluar');
+        $pengeluaran->jumlah_keluar = $request->get('jumlah_keluar');
         $pengeluaran->save();
+
+        $saldo_pengeluaran = new saldo_pengeluaran();
+        $saldo_id = DB::table('saldo')
+        ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
+        ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
+        ->first();
+        $saldo_pengeluaran->saldo_id = $saldo_id->id;
+        $saldo_pengeluaran->pengeluaran_id = $pengeluaran->id;
+        $saldo_pengeluaran->save();
         return redirect()->route('pengeluaran.index')->with('message','Pengeluaran Berhasil Ditambah!');
     }
 
@@ -83,9 +95,9 @@ class PengeluaranController extends Controller
     {
         //
         $pengeluaran = Pengeluaran::find($id);
-        $pengeluaran->tanggal = $request->get('tanggal');
-        $pengeluaran->keterangan = $request->get('keterangan');
-        $pengeluaran->jumlah = $request->get('jumlah');
+        $pengeluaran->tanggal_keluar = $request->get('tanggal_keluar');
+        $pengeluaran->keterangan_keluar = $request->get('keterangan_keluar');
+        $pengeluaran->jumlah_keluar = $request->get('jumlah_keluar');
         $pengeluaran->save();
         return redirect()->route('pengeluaran.index')->with('message','pengeluaran Berhasil Diedit!');
     }
@@ -101,6 +113,9 @@ class PengeluaranController extends Controller
         //
         $pengeluaran = Pengeluaran::find($id);
         $pengeluaran->delete();
+
+        $saldo_pengeluaran = Saldo_Pengeluaran::find($id);
+        $saldo_pengeluaran->delete();
         return redirect(route('pengeluaran.index'))->with('message','pengeluaran Berhasil Dihapus!');
     }
 }

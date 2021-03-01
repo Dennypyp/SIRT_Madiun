@@ -43,8 +43,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label" for="jumlah">Jumlah Jimpitan (Rp)</label>
-                                        <input type="text" id="jumlah" name="jumlah" class="form-control"
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Rp</span>
+                                            </div>
+                                            <input type="text" id="jumlah" name="jumlah" class="form-control"
                                             placeholder="Jumlah Jimpitan">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -42,16 +42,14 @@
                                     @foreach($saldo as $item)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center">{{ format_tgl($item->tanggal) }}</td>
+                                    <td class="text-center">{{ format_tgl($item->tanggal_saldo) }}</td>
                                     <td>{{ format_rp($item->kas) }}</td>
-                                    <td>{{ format_rp($item->bank) }}</td>
-                                    <td>{{ format_rp($item->tot_saldo) }}</td>
                                     <td class="text-center">
                                         
                                             {{-- <a href="{{ route('pemasukan.edit',[$item->id]) }}" class="btn btn-sm btn-warning">Edit</a>
                                             <a href="/pemasukan/destroy/{{ $item->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
                                             <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                            <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                                            <a href="/saldo/destroy/{{ $item->id }}" class="btn btn-sm btn-danger">Hapus</a>
                                         
                                     </td>
                                 </tr>
