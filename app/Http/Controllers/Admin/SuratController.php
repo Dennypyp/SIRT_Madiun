@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use PDF;
-use DB;
+use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\DB;
 use App\Surat;
 
 class SuratController extends Controller
