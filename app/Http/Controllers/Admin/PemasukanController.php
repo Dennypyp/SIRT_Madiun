@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pemasukan;
 use App\Saldo_Pemasukan;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class PemasukanController extends Controller
 {
