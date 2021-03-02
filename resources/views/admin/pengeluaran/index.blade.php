@@ -30,6 +30,7 @@
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">Tanggal</th>
+                                    <th class="text-center">Jenis</th>
                                     <th class="text-center">Keterangan</th>
                                     <th class="text-center">Jumlah</th>
                                     <th class="text-center" style="width:30%">Aksi</th>
@@ -42,6 +43,7 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center">{{ format_tgl($item->tanggal_keluar) }}</td>
+                                    <td>{{ $item->jenis_keluar }}</td>
                                     <td>{{ $item->keterangan_keluar }}</td>
                                     <td>{{ format_rp($item->jumlah_keluar) }}</td>
                                     <td class="text-center">

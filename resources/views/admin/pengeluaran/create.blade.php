@@ -36,6 +36,17 @@
                                             <input type="date" id="tanggal_keluar" name="tanggal_keluar" class="form-control">
                                     </div>
                                     <div class="form-group">
+                                        <label for="jenis_keluar">Jenis Pengeluaran</label>
+                                        <select class="form-control" id="jenis_keluar" name="jenis_keluar">
+                                            <option value="">--Pilih Jenis Pengeluaran--</option>
+                                            <option value="Uang Pembangunan">Uang Pembangunan</option>
+                                            <option value="Uang Konsumsi">Uang Konsumsi</option>
+                                            <option value="Uang Infak">Uang Infak</option>
+                                            <option value="Uang Kas">Uang Kas</option>
+                                            <option value="Uang Sosial">Uang Sosial</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-control-label" for="keterangan_keluar">Keterangan Pengeluaran</label>
                                             <input type="text" id="keterangan_keluar" name="keterangan_keluar" class="form-control"
                                             placeholder="Keterangan">

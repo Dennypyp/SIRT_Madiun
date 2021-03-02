@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan Dana Sosial (Jimpitan)</title>
+    <title>Laporan Keungan Bulanan</title>
 </head>
 <style >
     body{
@@ -24,9 +24,14 @@
 </style>
 <body>
     <center>
-		<h3>RT 03/RW 01
+		<h3>
+			RT 03/RW 01
 			<br>
-			REKAP DANA SOSIAL (JIMPITAN)
+			KECAMATAN TAMAN
+			<br>
+			KELURAHAN JOSENAN
+			<br>
+			REKAP LAPORAN KEUANGAN
 			<br>
 			BULAN {{ format_bln_kap($tanggal) }}
 		</h3>

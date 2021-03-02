@@ -46,6 +46,7 @@ class PengeluaranController extends Controller
 
         $pengeluaran = new pengeluaran();
         $pengeluaran->tanggal_keluar = $request->get('tanggal_keluar');
+        $pengeluaran->jenis_keluar = $request->get('jenis_keluar');
         $pengeluaran->keterangan_keluar = $request->get('keterangan_keluar');
         $pengeluaran->jumlah_keluar = $request->get('jumlah_keluar');
         $pengeluaran->save();
@@ -97,6 +98,7 @@ class PengeluaranController extends Controller
         //
         $pengeluaran = Pengeluaran::find($id);
         $pengeluaran->tanggal_keluar = $request->get('tanggal_keluar');
+        $pengeluaran->jenis_keluar = $request->get('jenis_keluar');
         $pengeluaran->keterangan_keluar = $request->get('keterangan_keluar');
         $pengeluaran->jumlah_keluar = $request->get('jumlah_keluar');
         $pengeluaran->save();

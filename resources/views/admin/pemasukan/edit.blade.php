@@ -37,6 +37,17 @@
                                         <input type="date" id="tanggal_masuk" name="tanggal_masuk" class="form-control" value="{{ $pemasukan->tanggal_masuk }}">
                                     </div>
                                     <div class="form-group">
+                                        <label for="jenis_masuk">Jenis Pemasukan</label>
+                                        <select class="form-control" id="jenis_masuk" name="jenis_masuk">
+                                            <option value="{{ $pemasukan->jenis_masuk }}">{{ $pemasukan->jenis_masuk }}</option>
+                                            <option value="Uang Pembangunan">Uang Pembangunan</option>
+                                            <option value="Uang Konsumsi">Uang Konsumsi</option>
+                                            <option value="Uang Infak">Uang Infak</option>
+                                            <option value="Uang Kas">Uang Kas</option>
+                                            <option value="Uang Sosial">Uang Sosial</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-control-label" for="keterangan_masuk">Keterangan Pemasukan</label>
                                         <input type="text" id="keterangan_masuk" name="keterangan_masuk" class="form-control"
                                             placeholder="Keterangan" value="{{ $pemasukan->keterangan_masuk }}">

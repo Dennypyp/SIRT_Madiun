@@ -16,6 +16,9 @@ class SaldoController extends Controller
     public function index()
     {
         //
+        // $yesterday = date("Y-m-d", strtotime( '-1 days' ) ); 
+        // $countYesterday = Timer::whereDate('created_at', $yesterday )->get();
+
         $saldo = Saldo::all();
         return view('admin.saldo.index', ['saldo'=>$saldo]);
     }

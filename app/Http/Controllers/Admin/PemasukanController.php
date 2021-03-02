@@ -46,6 +46,7 @@ class PemasukanController extends Controller
 
         $pemasukan = new pemasukan();
         $pemasukan->tanggal_masuk = $request->get('tanggal_masuk');
+        $pemasukan->jenis_masuk = $request->get('jenis_masuk');
         $pemasukan->keterangan_masuk = $request->get('keterangan_masuk');
         $pemasukan->jumlah_masuk = $request->get('jumlah_masuk');
         $pemasukan->save();
@@ -97,6 +98,7 @@ class PemasukanController extends Controller
         //
         $pemasukan = Pemasukan::find($id);
         $pemasukan->tanggal_masuk = $request->get('tanggal_masuk');
+        $pemasukan->jenis_masuk = $request->get('jenis_masuk');
         $pemasukan->keterangan_masuk = $request->get('keterangan_masuk');
         $pemasukan->jumlah_masuk = $request->get('jumlah_masuk');
         $pemasukan->save();
