@@ -19,7 +19,7 @@
                 <div class="card-header py-3">
                     <h6 class="md-0 font-weight-bold text-primary">Data Saldo RT </h6>
                     <div class="col-1 text-right">
-                        <a href="{{ route('saldo.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                        <a href="{{ route('saldo.create') }}" class="btn btn-primary" style="width: 200px">Saldo Bulanan Baru</a>
                     </div>
                 </div>
                 
@@ -30,8 +30,6 @@
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">Tanggal</th>
-                                    <th class="text-center">Kas</th>
-                                    <th class="text-center">Bank</th>
                                     <th class="text-center">Saldo</th>
                                     <th class="text-center" style="width:20%">Aksi</th>
                                 </tr>
@@ -42,8 +40,8 @@
                                     @foreach($saldo as $item)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center">{{ format_tgl($item->tanggal_saldo) }}</td>
-                                    <td>{{ format_rp($item->kas) }}</td>
+                                    <td class="text-center">{{ format_bln($item->tanggal_saldo) }}</td>
+                                    <td>{{ format_rp($item->jumlah_saldo) }}</td>
                                     <td class="text-center">
                                         
                                             {{-- <a href="{{ route('pemasukan.edit',[$item->id]) }}" class="btn btn-sm btn-warning">Edit</a>

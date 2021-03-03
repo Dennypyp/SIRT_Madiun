@@ -37,13 +37,13 @@
                                         <input type="date" id="tanggal_saldo" name="tanggal_saldo" class="form-control" value="{{$saldo->tanggal_saldo}}">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="kas">Kas</label>
+                                        <label class="form-control-label" for="jumlah_saldo">Saldo</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">Rp</span>
                                             </div>
-                                            <input type="text" id="kas" name="kas" class="form-control"
-                                            placeholder="Kas" value="{{$saldo->kas}}">
+                                            <input type="text" id="jumlah_saldo" name="jumlah_saldo" class="form-control"
+                                            placeholder="jumlah_saldo" value="{{$saldo->jumlah_saldo}}">
                                         </div>
                                     </div>
                                     {{-- <div class="form-group">

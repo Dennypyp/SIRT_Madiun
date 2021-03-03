@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pemasukan;
 use App\Saldo_Pemasukan;
+use App\Saldo;
 use Illuminate\Support\Facades\DB;
 
 class PemasukanController extends Controller
@@ -59,6 +60,10 @@ class PemasukanController extends Controller
         $saldo_pemasukan->saldo_id = $saldo_id->id;
         $saldo_pemasukan->pemasukan_id = $pemasukan->id;
         $saldo_pemasukan->save();
+
+        $saldo = Saldo::find($saldo_id->id);
+        $saldo->jumlah_saldo = $saldo->jumlah_saldo + $request->get('jumlah_masuk');
+        $saldo->save();
         return redirect()->route('pemasukan.index')->with('message','Pemasukan Berhasil Ditambah!');
     }
 
@@ -96,7 +101,18 @@ class PemasukanController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $pecahkan = explode('-', $request->get('tanggal_masuk'));
+        $saldo_id = DB::table('saldo')
+        ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
+        ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
+        ->first();
+
         $pemasukan = Pemasukan::find($id);
+
+        $saldo = Saldo::find($saldo_id->id);
+        $saldo->jumlah_saldo = ($saldo->jumlah_saldo - $pemasukan->jumlah_masuk) + $request->get('jumlah_masuk');
+        $saldo->save();
+
         $pemasukan->tanggal_masuk = $request->get('tanggal_masuk');
         $pemasukan->jenis_masuk = $request->get('jenis_masuk');
         $pemasukan->keterangan_masuk = $request->get('keterangan_masuk');
@@ -115,10 +131,22 @@ class PemasukanController extends Controller
     {
         //
         $pemasukan = Pemasukan::find($id);
+        $pecahkan = explode('-', $pemasukan->tanggal_masuk);
+        $saldo_id = DB::table('saldo')
+        ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
+        ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
+        ->first();
+
+        $saldo = Saldo::find($saldo_id->id);
+        $saldo->jumlah_saldo = $saldo->jumlah_saldo - $pemasukan->jumlah_masuk;
+        $saldo->save();
+
+        $saldo_pemasukan = Saldo_Pemasukan::where('pemasukan_id',$id);
+        $saldo_pemasukan->delete();
+
+        
         $pemasukan->delete();
 
-        $saldo_pemasukan = Saldo_Pemasukan::find($id);
-        $saldo_pemasukan->delete();
         return redirect(route('pemasukan.index'))->with('message','Pemasukan Berhasil Dihapus!');
     }
 }

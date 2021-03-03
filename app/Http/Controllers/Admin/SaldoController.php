@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Saldo;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class SaldoController extends Controller
 {
@@ -31,6 +33,9 @@ class SaldoController extends Controller
     public function create()
     {
         //
+
+        // $saldo = Saldo::where('tanggal_saldo', '<=', Carbon::now()->subMonth())->get();
+
         return view('admin.saldo.create');
     }
 
@@ -45,7 +50,7 @@ class SaldoController extends Controller
         //
         $saldo = new saldo();
         $saldo->tanggal_saldo = $request->get('tanggal_saldo');
-        $saldo->kas = $request->get('kas');
+        $saldo->jumlah_saldo = $request->get('jumlah_saldo');
         $saldo->save();
         return redirect()->route('saldo.index')->with('message','Pengeluaran Berhasil Ditambah!');
     }
@@ -86,7 +91,7 @@ class SaldoController extends Controller
         //
         $saldo = Saldo::find($id);
         $saldo->tanggal_saldo = $request->get('tanggal_saldo');
-        $saldo->kas = $request->get('kas');
+        $saldo->jumlah_saldo = $request->get('jumlah_saldo');
         $saldo->save();
         return redirect()->route('saldo.index')->with('message','pengeluaran Berhasil Diedit!');
     }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pengeluaran;
 use App\Saldo_Pengeluaran;
+use App\Saldo;
 
 class PengeluaranController extends Controller
 {
@@ -42,7 +43,7 @@ class PengeluaranController extends Controller
     public function store(Request $request)
     {
         //
-        $pecahkan = explode('-', $request->get('tanggal_masuk'));
+        $pecahkan = explode('-', $request->get('tanggal_keluar'));
 
         $pengeluaran = new pengeluaran();
         $pengeluaran->tanggal_keluar = $request->get('tanggal_keluar');
@@ -59,6 +60,10 @@ class PengeluaranController extends Controller
         $saldo_pengeluaran->saldo_id = $saldo_id->id;
         $saldo_pengeluaran->pengeluaran_id = $pengeluaran->id;
         $saldo_pengeluaran->save();
+
+        $saldo = Saldo::find($saldo_id->id);
+        $saldo->jumlah_saldo = $saldo->jumlah_saldo - $request->get('jumlah_keluar');
+        $saldo->save();
         return redirect()->route('pengeluaran.index')->with('message','Pengeluaran Berhasil Ditambah!');
     }
 
@@ -96,7 +101,18 @@ class PengeluaranController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $pecahkan = explode('-', $request->get('tanggal_keluar'));
+        $saldo_id = DB::table('saldo')
+        ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
+        ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
+        ->first();
+
         $pengeluaran = Pengeluaran::find($id);
+
+        $saldo = Saldo::find($saldo_id->id);
+        $saldo->jumlah_saldo = ($saldo->jumlah_saldo + $pengeluaran->jumlah_keluar) - $request->get('jumlah_keluar');
+        $saldo->save();
+
         $pengeluaran->tanggal_keluar = $request->get('tanggal_keluar');
         $pengeluaran->jenis_keluar = $request->get('jenis_keluar');
         $pengeluaran->keterangan_keluar = $request->get('keterangan_keluar');
@@ -115,10 +131,22 @@ class PengeluaranController extends Controller
     {
         //
         $pengeluaran = Pengeluaran::find($id);
-        $pengeluaran->delete();
+        $pecahkan = explode('-', $pengeluaran->tanggal_keluar);
+        $saldo_id = DB::table('saldo')
+        ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
+        ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
+        ->first();
 
-        $saldo_pengeluaran = Saldo_Pengeluaran::find($id);
+        $saldo = Saldo::find($saldo_id->id);
+        $saldo->jumlah_saldo = $saldo->jumlah_saldo + $pengeluaran->jumlah_keluar;
+        $saldo->save();
+
+        $saldo_pengeluaran = Saldo_Pengeluaran::where('pengeluaran_id',$id);
         $saldo_pengeluaran->delete();
+        $pengeluaran->delete();
+        // $pengeluaran = Pengeluaran::find($id);
+        
+
         return redirect(route('pengeluaran.index'))->with('message','pengeluaran Berhasil Dihapus!');
     }
 }

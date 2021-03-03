@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         DB::table('anggota_kk')->insert([
             'nama'=> "Admin",
             'no_kk'=> "admin",
-            'nik'=> "supeAdmin",
+            'nik'=> "superAdmin",
             'tempat_lahir'=> "Madiun",
             'tanggal_lahir'=> date('Y-m-d'),
             'jenis_kelamin'=> "Laki-laki",
@@ -35,14 +35,14 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'nama'=> "Admin",
-            'nik'=> 'supeAdmin',
+            'nik'=> 'superAdmin',
             'password'=> Hash::make('superAdmin123'),
             'role'=> "admin"
         ]);
 
         DB::table('saldo')->insert([
             'tanggal_saldo'=> date('Y-m-d'),
-            'kas'=> 0
+            'jumlah_saldo'=> 0
         ]);
     }
 }
