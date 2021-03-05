@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Saldo;
+use App\Surat;
 
 class AdminController extends Controller
 {
@@ -15,7 +17,26 @@ class AdminController extends Controller
     public function index()
     {
         //
-        return view('admin.index');
+        $pecahkan = explode('-', date('Y-m-d'));
+
+        $tunggu = Surat::where("status_surat", "Menunggu")
+        ->whereMonth('created_at', $pecahkan[1])
+        ->whereYear('created_at', $pecahkan[0])
+        ->count();
+        $setuju = Surat::where("status_surat", "Disetujui")
+        ->whereMonth('created_at', $pecahkan[1])
+        ->whereYear('created_at', $pecahkan[0])
+        ->count();
+
+        $saldo = saldo::whereMonth('tanggal_saldo', $pecahkan[1])
+        ->whereYear('tanggal_saldo', $pecahkan[0])
+        ->first();
+        // dd($saldo);
+        return view('admin.index',[
+            'tunggu'=>$tunggu, 
+            'setuju'=>$setuju,
+            'saldo'=>$saldo
+            ]);
     }
 
     /**
