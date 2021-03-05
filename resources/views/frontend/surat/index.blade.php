@@ -12,7 +12,7 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Table Pengajuan Surat</h1>
+            <h1 class="h3 mb-3 mt-3 text-gray-800">Table Pengajuan Surat</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -43,7 +43,7 @@
                                         @if($data->status_surat == "Menunggu")
                                         <div class="alert alert-warning text-center" role="alert">{{ $data->status_surat }}</div>
                                         @else
-                                        <div class="alert alert-info text-center" role="alert">{{ $data->status_surat }}</div>
+                                        <div class="alert alert-success text-center" role="alert">{{ $data->status_surat }}</div>
                                         @endif
                                         </td>
                                     </tr>

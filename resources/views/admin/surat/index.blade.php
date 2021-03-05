@@ -43,7 +43,7 @@
                                         
                                             {{-- <a href="#" class="btn btn-sm btn-info">Setujui</a> --}}
                                             @if ($item->status_surat == "Menunggu")
-                                                <a href="/status_surat/{{$item->id}}" class="btn btn-sm btn-info" >Setujui</a>
+                                                <a href="/status_surat/{{$item->id}}" class="btn btn-sm btn-success" >Setujui</a>
                                                 
                                             @elseif($item->status_surat == "Disetujui")
                                             <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
