@@ -17,8 +17,8 @@ class CreateUangSosialTable extends Migration
             $table->increments('id');
             $table->string('nkk',20)->index()->nullable();
             $table->foreign('nkk')->references('no_kk')->on('kk');
-            $table->date('tanggal');
-            $table->integer('jumlah');
+            $table->date('tanggal_jimpitan');
+            $table->integer('jumlah_jimpitan');
             $table->timestamps();
         });
     }

@@ -35,22 +35,22 @@
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Dana</th>
                                     <th class="text-center">Keterangan</th>
-                                    <th class="text-center" style="width:30%">Aksi</th>
+                                    <th class="text-center" style="width:20%">Aksi</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @if(!empty($kegiatan_nonfisik))
-                                    @foreach($kegiatan_nonfisik as $data)
+                                @if(!empty($kegiatan_fisik))
+                                    @foreach($kegiatan_fisik as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center">{{ $data->kegiatan }}</td>
-                                    <td class="text-center">{{ $data->volume }}</td>
-                                    <td class="text-center">{{ $data->satuan }}</td>
-                                    <td class="text-center">{{ $data->status }}</td>
-                                    <td class="text-center">{{ $data->dana }}</td>
-                                    <td>{{ $data->keterangan }}</td>
-                                    <td class="text-center">
+                                            <td class="text-center">{{ $data->kegiatan }}</td>
+                                            <td class="text-center">{{ $data->volume }}</td>
+                                            <td class="text-center">{{ $data->satuan }}</td>
+                                            <td class="text-center">{{ $data->status }}</td>
+                                            <td class="text-center">{{ $data->dana }}</td>
+                                            <td>{{ $data->keterangan }}</td>
+                                            <td class="text-center">
 
                                             <a href="{{ route('kegiatan_fisik.edit',[$data->id]) }}" class="btn btn-sm btn-warning">Edit</a>
                                             <a href="/kegiatan_fisik/destroy/{{ $data->id }}" class="btn btn-sm btn-danger">Hapus</a>
@@ -78,3 +78,6 @@
     <!-- End of Main Content -->
 
 @endsection
+
+
+

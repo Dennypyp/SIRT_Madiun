@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Saldo;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class SaldoController extends Controller
 {
@@ -16,6 +18,9 @@ class SaldoController extends Controller
     public function index()
     {
         //
+        // $yesterday = date("Y-m-d", strtotime( '-1 days' ) ); 
+        // $countYesterday = Timer::whereDate('created_at', $yesterday )->get();
+
         $saldo = Saldo::all();
         return view('admin.saldo.index', ['saldo'=>$saldo]);
     }
@@ -28,6 +33,10 @@ class SaldoController extends Controller
     public function create()
     {
         //
+
+        // $saldo = Saldo::where('tanggal_saldo', '<=', Carbon::now()->subMonth())->get();
+
+        return view('admin.saldo.create');
     }
 
     /**
@@ -39,6 +48,11 @@ class SaldoController extends Controller
     public function store(Request $request)
     {
         //
+        $saldo = new saldo();
+        $saldo->tanggal_saldo = $request->get('tanggal_saldo');
+        $saldo->jumlah_saldo = $request->get('jumlah_saldo');
+        $saldo->save();
+        return redirect()->route('saldo.index')->with('message','Pengeluaran Berhasil Ditambah!');
     }
 
     /**
@@ -61,6 +75,8 @@ class SaldoController extends Controller
     public function edit($id)
     {
         //
+        $saldo = Saldo::find($id);
+        return view('admin.saldo.edit',['saldo' => $saldo]);
     }
 
     /**
@@ -73,6 +89,11 @@ class SaldoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $saldo = Saldo::find($id);
+        $saldo->tanggal_saldo = $request->get('tanggal_saldo');
+        $saldo->jumlah_saldo = $request->get('jumlah_saldo');
+        $saldo->save();
+        return redirect()->route('saldo.index')->with('message','pengeluaran Berhasil Diedit!');
     }
 
     /**
@@ -84,5 +105,8 @@ class SaldoController extends Controller
     public function destroy($id)
     {
         //
+        $saldo = Saldo::find($id);
+        $saldo->delete();
+        return redirect(route('saldo.index'))->with('message','pengeluaran Berhasil Dihapus!');
     }
 }

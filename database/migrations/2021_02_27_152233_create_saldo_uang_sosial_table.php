@@ -14,7 +14,6 @@ class CreateSaldoUangSosialTable extends Migration
     public function up()
     {
         Schema::create('saldo_uang_sosial', function (Blueprint $table) {
-            $table->id();
             $table->increments('id');
             $table->unsignedInteger('saldo_id')->index()->nullable();
             $table->unsignedInteger('uang_sosial_id')->index()->nullable();

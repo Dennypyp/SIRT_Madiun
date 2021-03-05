@@ -19,6 +19,7 @@ class AnggotaKKController extends Controller
     public function index()
     {
         //
+
         $anggota = DB::table('anggota_kk')
             ->where('no_kk', '!=', 'admin')
             ->orderBy('no_kk')
@@ -34,10 +35,12 @@ class AnggotaKKController extends Controller
     public function create()
     {
         //
+
         $kk = DB::table('kk')
             ->where('no_kk', '!=', 'admin')
             ->get();
         return view('admin.anggota.create', ['kk' => $kk]);
+
     }
 
     /**

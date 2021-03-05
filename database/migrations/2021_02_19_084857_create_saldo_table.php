@@ -15,10 +15,8 @@ class CreateSaldoTable extends Migration
     {
         Schema::create('saldo', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('tanggal');
-            $table->integer('kas');
-            $table->integer('bank');
-            $table->integer('tot_saldo');
+            $table->date('tanggal_saldo');
+            $table->integer('jumlah_saldo');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSaldoPengeluaranTable extends Migration
+class CreateSaldoTransaksiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateSaldoPengeluaranTable extends Migration
      */
     public function up()
     {
-        Schema::create('saldo_pengeluaran', function (Blueprint $table) {
-            $table->id();
+        Schema::create('saldo_transaksi', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('saldo_id')->index()->nullable();
-            $table->unsignedInteger('pengeluaran_id')->index()->nullable();
+            $table->unsignedInteger('transaksi_id')->index()->nullable();
             $table->foreign('saldo_id')
                 ->references('id')
                 ->on('saldo');
-            $table->foreign('pengeluaran_id')
+            $table->foreign('transaksi_id')
                 ->references('id')
-                ->on('pengeluaran');
+                ->on('transaksi');
             $table->timestamps();
         });
     }
@@ -35,6 +34,6 @@ class CreateSaldoPengeluaranTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('saldo_pengeluaran');
+        Schema::dropIfExists('saldo_pemasukan');
     }
 }

@@ -5,8 +5,10 @@
     <div class="az-content-body">
       <div class="az-dashboard-one-title">
         <div>
-          <h2 class="az-dashboard-title">Hi, welcome back!</h2>
-          <p class="az-dashboard-text">Your web analytics dashboard template.</p>
+          @if (Auth()->user())
+          <h2 class="az-dashboard-title">Hal, Selamat datang {{ Auth::user()->nama }}!</h2>
+          <p class="az-dashboard-text">Web ini merupakan Web Sistem Informasi RT.03</p>
+          @endif
         </div>
         <div class="az-content-header-right">
           <div class="media">

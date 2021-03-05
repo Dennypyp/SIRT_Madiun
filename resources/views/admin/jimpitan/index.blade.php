@@ -39,9 +39,9 @@
                                 @if(!empty($jimpitan))
                                 @foreach($jimpitan as $item)
                                 <tr>
-                                    <td class="text-center">{{ format_tgl($item->tanggal) }}</td>
+                                    <td class="text-center">{{ format_bln($item->tanggal_jimpitan) }}</td>
                                     <td class="text-center">{{ $item->nama }}</td>
-                                    <td class="text-center">{{ format_rp($item->jumlah) }}</td>
+                                    <td class="text-center">{{ format_rp($item->jumlah_jimpitan) }}</td>
                                     <td class="text-center">
                                             <a href="{{ route('jimpitan.edit',[$item->id]) }}" class="btn btn-sm btn-warning">Edit</a>
                                             {{-- <a href="/jimpitan/destroy/{{ $item->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}

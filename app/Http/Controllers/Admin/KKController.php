@@ -18,6 +18,7 @@ class KKController extends Controller
     public function index()
     {
         //
+
         $kk = DB::table('kk')
             ->where('no_kk', '!=', 'admin')
             ->get();

@@ -21,16 +21,16 @@ class UserSeeder extends Seeder
             'nama'=> "Admin",
             'no_kk'=> "admin",
             'nik'=> "superAdmin",
-            'tempat_lahir'=> "",
-            'tanggal_lahir'=> "2021-01-01",
-            'jenis_kelamin'=> "",
-            'pendidikan'=> "",
-            'agama'=> "",
-            'pekerjaan'=> "",
-            'alamat'=>"",
-            'nama_ibu_bapak'=> "",
-            'status'=> "",
-            'status_kk'=> ""
+            'tempat_lahir'=> "Madiun",
+            'tanggal_lahir'=> date('Y-m-d'),
+            'jenis_kelamin'=> "Laki-laki",
+            'pendidikan'=> "Sarjana",
+            'agama'=> "Islam",
+            'pekerjaan'=> "RT",
+            'alamat'=>"Madiun",
+            'nama_ibu_bapak'=> "Ibu/Bapak",
+            'status'=> "Kawin",
+            'status_kk'=> "Bapak/Kepala Keluarga"
         ]);
 
         DB::table('users')->insert([
@@ -38,6 +38,11 @@ class UserSeeder extends Seeder
             'nik'=> 'superAdmin',
             'password'=> Hash::make('superAdmin123'),
             'role'=> "admin"
+        ]);
+
+        DB::table('saldo')->insert([
+            'tanggal_saldo'=> date('Y-m-d'),
+            'jumlah_saldo'=> 0
         ]);
     }
 }

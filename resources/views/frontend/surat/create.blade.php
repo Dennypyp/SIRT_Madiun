@@ -10,7 +10,7 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<center><h1 class="h3 mb-2 text-gray-800">Pengajuan Surat Pengantar</h1></center>
+<center><h1 class="h3 mb-3 mt-3 text-gray-800">Pengajuan Surat Pengantar</h1></center>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">

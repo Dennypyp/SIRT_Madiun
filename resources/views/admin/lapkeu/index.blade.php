@@ -18,13 +18,47 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="md-0 font-weight-bold text-primary">Laporan Keuangan RT </h6>
-                    {{-- <div class="col-1 text-right">
-                        <a href="{{ route('jimpitan.create') }}" class="btn btn-sm btn-primary">Tambah</a>
-                    </div> --}}
                 </div>
-                
+
                 <div class="card-body">
-                    <form action="/laporan_jimpitan" method="GET" id="lap_jimpit">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form action="/laporan_jimpitan" method="GET" id="lap_jimpit">
+                                            @csrf
+                                            <h5 class="card-title text-center">Laporan Dana Sosial (Jimpitan)</h5>
+                                            <div class="form-group">
+                                                <label for="tgl_jimpit">Pilih Bulan Jimpitan</label>
+                                                <input id="bday-month" type="month" name="bln_jimpit" class="form-control">
+                                            </div>
+                                            <button type="submit" class="btn btn-sm btn-warning"
+                                                id="btn_jimpit">Cetak</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form action="/laporan_keuangan" method="GET" id="lap_keuangan">
+                                            @csrf
+                                            <h5 class="card-title text-center">Laporan Keungan Bulanan</h5>
+                                            <div class="form-group">
+                                                <label for="tgl_jimpit">Pilih Bulan Laporan</label>
+                                                <input id="bday-month" type="month" name="bln_uang" class="form-control">
+                                            </div>
+                                            <button type="submit" class="btn btn-sm btn-warning"
+                                                id="btn_keuangan">Cetak</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- <form action="/laporan_jimpitan" method="GET" id="lap_jimpit">
                     @csrf
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -38,8 +72,6 @@
                             </thead>
                             
                             <tbody>
-                                {{-- @if(!empty($jimpitan))
-                                @foreach($jimpitan as $item) --}}
                                 
                                     <tr>
                                         <td class="text-center">1</td>
@@ -47,21 +79,12 @@
                                         <td class="text-center">
                                             <div class="form-group">
                                                 <label for="tgl_jimpit">Pilih Bulan Jimpitan</label>
-                                                {{-- <select class="form-control" id="tgl_jimpit" name="tgl_jimpit">
-                                                    <option value="">-- Pilih Bulan  --</option>
-                                                    @foreach ($tgl_jimpit as $data)
-                                                        <option value="{{ $data->tanggal }}">{{ format_bln($data->tanggal) }}</option>
-                                                    @endforeach
-                                                </select> --}}
                                                 <input id="bday-month" type="month" name="bln_jimpit" class="form-control">
                                             </div>
                                         </td>
                                         <td class="text-center">
                                             
                                             <button type="submit" class="btn btn-sm btn-warning" id="btn_jimpit">Cetak</button>
-                                            {{-- <input type="submit" name="submit" class="btn btn-sm btn-warning" value="submit"> --}}
-                                            {{-- <a href="/laporan_jimpitan" class="btn btn-sm btn-warning">Cetak</a> --}}
-                                                {{-- <a href="/jimpitan/destroy/{{ $item->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
                                         </td>
                                     </tr>
                                 
@@ -69,25 +92,20 @@
                                 <tr>
                                     <td class="text-center">2</td>
                                     <td class="text-center">Laporan Keungan Bulanan</td>
-                                    <td class="text-center"></td>
                                     <td class="text-center">
-                                            <a href="#" class="btn btn-sm btn-warning">Cetak</a>
-                                            {{-- <a href="/jimpitan/destroy/{{ $item->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
+                                        <div class="form-group">
+                                            <label for="tgl_keuangan">Pilih Bulan Lap. Keuangan</label>
+                                            <input id="bday-month" type="month" name="bln_keuangan" class="form-control">
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="submit" class="btn btn-sm btn-warning" id="btn_keuangan">Cetak</button>
                                     </td>
                                 </tr>
-                                {{-- @endforeach
-                                @else
-                                    <tr>
-                                        <td colspan="5" class="text-center">Data tidak ditemukan</td>
-                                    </tr>
-                                @endif --}}
-                                
                             </tbody>
-                            
                         </table>
-                    
                     </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
 
@@ -98,5 +116,3 @@
     <!-- End of Main Content -->
 
 @endsection
-
-

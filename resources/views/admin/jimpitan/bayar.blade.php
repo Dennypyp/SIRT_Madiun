@@ -33,8 +33,8 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="tanggal">Tanggal</label>
-                                        <input type="date" id="tanggal" name="tanggal" class="form-control" value="YYYY-MM-DD">
+                                        <label class="form-control-label" for="tanggal_jimpitan">Tanggal</label>
+                                        <input type="date" id="tanggal_jimpitan" name="tanggal_jimpitan" class="form-control" value="{{date('Y-m-d')}}">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label" for="nama">Nama Warga</label>
@@ -42,9 +42,14 @@
                                         <input type="hidden" id="no_kk" name="no_kk" class="form-control" placeholder="" value="{{ $jimpitan->no_kk }}" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="jumlah">Jumlah Jimpitan (Rp)</label>
-                                        <input type="text" id="jumlah" name="jumlah" class="form-control"
-                                            placeholder="Jumlah Jimpitan">
+                                        <label class="form-control-label" for="jumlah_jimpitan">Jumlah Jimpitan (Rp)</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Rp</span>
+                                            </div>
+                                            <input type="text" id="jumlah_jimpitan" name="jumlah_jimpitan" class="form-control"
+                                            placeholder="Jumlah Jimpitan" value="10000">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
