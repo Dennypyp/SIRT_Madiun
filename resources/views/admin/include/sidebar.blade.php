@@ -42,7 +42,7 @@
         </div>
     </li>
 
-    <li class="nav-item {{'jimpitan' == request()->segment(1) ? 'active' : ''}} {{'pengeluaran' == request()->segment(1) ? 'active' : ''}} {{'pemasukan' == request()->segment(1) ? 'active' : ''}} {{'saldo' == request()->segment(1) ? 'active' : ''}} {{'lapkeu' == request()->segment(1) ? 'active' : ''}}">
+    <li class="nav-item {{'jimpitan' == request()->segment(1) ? 'active' : ''}} {{'pengeluaran' == request()->segment(1) ? 'active' : ''}} {{'transaksi' == request()->segment(1) ? 'active' : ''}} {{'saldo' == request()->segment(1) ? 'active' : ''}} {{'lapkeu' == request()->segment(1) ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKeuangan" aria-expanded="true"
             aria-controls="collapseKeuangan">
             <i class="fas fa-fw fa-university"></i>
@@ -51,8 +51,7 @@
         <div id="collapseKeuangan" class="collapse" aria-labelledby="headingKeuangan" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/jimpitan">Dana Sosial (Jimpitan)</a>
-                <a class="collapse-item" href="/pemasukan">Pemasukan</a>
-                <a class="collapse-item" href="/pengeluaran">Pengeluaran</a>
+                <a class="collapse-item" href="/transaksi">Transaksi</a>
                 <a class="collapse-item" href="/saldo">Saldo</a>
                 <a class="collapse-item" href="/lapkeu">Laporan</a>
             </div>

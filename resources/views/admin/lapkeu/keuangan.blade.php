@@ -38,11 +38,37 @@
 	<br/>
 	</center>
 	<hr/>
-	{{-- Tanggal  --}}
-	{{-- {{ format_tgl(date($tanggal)) }} --}}
+{{-- =============================================================== --}}
 	<br/>
 	<br>
-	<table border="1" cellspacing="" cellpadding="4" width="100%">
+	@foreach ($pemasukan as $jenis_masuk=>$uang)
+		<h4>{{ $loop->iteration }}. {{$jenis_masuk}}</h4>
+		<table border="1" cellspacing="" cellpadding="4" width="100%">
+			<tr>
+				<th align="center">No</th>
+				<th align="center">Keterangan</th>
+				<th align="center">Jumlah</th>
+			</tr>
+				@foreach($uang as $item)
+				<tr>
+				<td align="center">{{ $loop->iteration }}</td>
+				<td align="center">{{ $item->keterangan_masuk }}</td>
+				<td align="center">{{ format_rp($item->jumlah_masuk) }}</td>
+				</tr>
+				
+				@endforeach
+				<tr>
+					<td colspan="2" align="center">TOTAL</td>
+					<td align="center"><b>{{ format_rp($jenis_masuk->tot_masuk) }}</b></td>
+				</tr>
+			{{-- <tr>
+				<td colspan="2" align="center">TOTAL</td>
+				<td align="center"><b>{{ format_rp($total) }}</b></td>
+			</tr> --}}
+			</table>
+	@endforeach
+	
+	{{-- <table border="1" cellspacing="" cellpadding="4" width="100%">
 	<tr>
 		<th align="center">No</th>
 		<th align="center">Nama Warga</th>
@@ -61,7 +87,7 @@
 		<td colspan="2" align="center">TOTAL</td>
 		<td align="center"><b>{{ format_rp($total) }}</b></td>
 	</tr>
-	</table>
+	</table> --}}
 <table width="100%">
 	<tr>
 		<td></td>

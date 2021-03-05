@@ -34,7 +34,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="tanggal_jimpitan">Tanggal</label>
-                                        <input type="date" id="tanggal_jimpitan" name="tanggal_jimpitan" class="form-control" value="YYYY-MM-DD">
+                                        <input type="date" id="tanggal_jimpitan" name="tanggal_jimpitan" class="form-control" value="{{date('Y-m-d')}}">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label" for="nama">Nama Warga</label>
@@ -48,7 +48,7 @@
                                                 <span class="input-group-text" id="basic-addon1">Rp</span>
                                             </div>
                                             <input type="text" id="jumlah_jimpitan" name="jumlah_jimpitan" class="form-control"
-                                            placeholder="Jumlah Jimpitan">
+                                            placeholder="Jumlah Jimpitan" value="10000">
                                         </div>
                                     </div>
                                 </div>

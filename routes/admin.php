@@ -14,13 +14,10 @@ Route::group([
     Route::resource('anggota', 'AnggotaKKController');
     Route::get('anggota/destroy/{id}', 'AnggotaKKController@destroy');
 
-    // Route Pemasukan
-    Route::resource('pemasukan', 'PemasukanController');
-    Route::get('pemasukan/destroy/{id}', 'PemasukanController@destroy');
+    // Route Transaksi
+    Route::resource('transaksi', 'TransaksiController');
+    Route::get('transaksi/destroy/{id}', 'TransaksiController@destroy');
 
-    // Route Pengeluaran
-    Route::resource('pengeluaran', 'PengeluaranController');
-    Route::get('pengeluaran/destroy/{id}', 'PengeluaranController@destroy');
 
     // Route Jimpitan
     Route::resource('jimpitan', 'JimpitanController');
@@ -41,6 +38,7 @@ Route::group([
     // Route Laporan Keungan
     Route::resource('lapkeu', 'LaporanController');
     Route::get('/laporan_jimpitan', 'LaporanController@jimpitan');
+    Route::get('/laporan_keuangan', 'LaporanController@keuangan');
 
     // Route Kegiatan
     Route::resource('kegiatan_nonfisik', 'Kegiatan_nonfisikController');
