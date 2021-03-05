@@ -17,7 +17,11 @@ class AdminController extends Controller
     public function index()
     {
         //
+        $date = \Carbon\Carbon::now();
+        $bulanLalu =  $date->subMonth()->format('Y-m'); // 11
+
         $pecahkan = explode('-', date('Y-m-d'));
+        $pecahkanDulu = explode('-', $bulanLalu);
 
         $tunggu = Surat::where("status_surat", "Menunggu")
         ->whereMonth('created_at', $pecahkan[1])
@@ -31,11 +35,17 @@ class AdminController extends Controller
         $saldo = saldo::whereMonth('tanggal_saldo', $pecahkan[1])
         ->whereYear('tanggal_saldo', $pecahkan[0])
         ->first();
-        // dd($saldo);
+        $dulu = saldo::whereMonth('tanggal_saldo', $pecahkanDulu[1])
+        ->whereYear('tanggal_saldo', $pecahkanDulu[0])
+        ->first();
+        // dd($dulu);
+        // dd($lastMonth);
         return view('admin.index',[
             'tunggu'=>$tunggu, 
             'setuju'=>$setuju,
-            'saldo'=>$saldo
+            'saldo'=>$saldo,
+            'dulu'=>$dulu,
+            'bulanLalu'=>$bulanLalu
             ]);
     }
 

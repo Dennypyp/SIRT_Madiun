@@ -45,8 +45,8 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Earnings (Monthly)</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        Saldo Bulanan Lalu ({{format_bln($bulanLalu)}})</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{format_rp($dulu->jumlah_saldo)}}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -190,7 +190,7 @@
                                 <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                                     src="{{asset('admin/assets/img/undraw_posting_photo2.svg')}}" alt="">
                             </div>
-                            <p>Web ini merupakan Sistem Informasi dari RT.03/RW.01, Kelurahan Josenan, Kecamatan Taman, Kota Madiun. Pada Web ini memungkinkan Admin mampu mengelola pencatatan warga RT.03, mengelola keuangan, pengelolaan surat pengantar, dan pencatatan kegiatan fisik & non-fisik</p>
+                            <p>Web ini merupakan Sistem Informasi dari RT.03/RW.01, Kelurahan Josenan, Kecamatan Taman, Kota Madiun. Pada Web ini memungkinkan Admin mampu mengelola pencatatan warga RT.03, mengelola keuangan, pengelolaan surat pengantar, dan pencatatan kegiatan fisik & non-fisik. Web ini dibuat guna membantu Pengurus dan Warga RT.03 dalam mengelola kegiatan administratif RT.03.</p>
                             {{-- <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
                                 unDraw &rarr;</a> --}}
                             {{-- <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
