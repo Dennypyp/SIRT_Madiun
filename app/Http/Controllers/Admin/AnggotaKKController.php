@@ -18,7 +18,7 @@ class AnggotaKKController extends Controller
     public function index()
     {
         //
-        $anggota = anggota::all();
+        $anggota = anggota::where('no_kk','!=','0');
         return view('admin.anggota.index',['anggota'=>$anggota]);
     }
 
@@ -30,7 +30,7 @@ class AnggotaKKController extends Controller
     public function create()
     {
         //
-        $kk = kk::all();
+        $kk = kk::where('no_kk','!=','0');
         return view('admin.anggota.create',['kk'=>$kk]);
     }
 

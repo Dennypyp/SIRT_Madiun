@@ -38,6 +38,7 @@ class JimpitanController extends Controller
         $jimpitan = DB::table('kk')
         ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
         ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
+        ->where('kk.no_kk','!=',0)
         ->get();
         return view('admin.jimpitan.create', ['jimpitan' => $jimpitan]);
     }

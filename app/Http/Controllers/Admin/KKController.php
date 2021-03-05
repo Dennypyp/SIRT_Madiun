@@ -17,7 +17,7 @@ class KKController extends Controller
     public function index()
     {
         //
-        $kk = kk::all();
+        $kk = kk::where('no_kk','!=','0');
         return view('admin.kk.index', ['kk'=>$kk]);
     }
 
