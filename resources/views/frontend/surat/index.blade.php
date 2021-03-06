@@ -19,7 +19,7 @@
                 <div class="card-header py-3">
                     <h6 class="md-0 font-weight-bold text-primary">Data Pengajuan Surat</h6>
                     <div class="col-1 text-right">
-                        <a href="{{ route('surat.create') }}" class="btn btn-sm btn-primary">Buat Pengajuan</a>
+                        <a href="{{ route('frontend.surat.create') }}" class="btn btn-sm btn-primary">Buat Pengajuan</a>
                     </div>
                 </div>
 

@@ -93,7 +93,7 @@ class LaporanController extends Controller
     public function jimpitan(Request $request)
     {
         $pecahkan = explode('-', $request->get('bln_jimpit'));
-        dd($pecahkan);
+        
         $jimpitan = DB::table('uang_sosial')
             ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
             ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
@@ -153,6 +153,7 @@ class LaporanController extends Controller
 
         $transaksi = transaksi::all()
         ->groupBy('jenis_transaksi');
+        // dd($transaksi);
 
 
         
