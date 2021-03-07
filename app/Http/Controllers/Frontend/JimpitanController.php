@@ -14,20 +14,24 @@ class JimpitanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $pecahkan = explode('-', date('Y-m-d'));
+        if ($request->get('bln_jimpit')!=null) {
+            $pecahkan = explode('-', $request->get('bln_jimpit'));
+        } else {
+            $pecahkan = explode('-', date('Y-m-d'));
+        }
+        
+        // $pecahkan = explode('-', date('Y-m-d'));
         $jimpitan = DB::table('uang_sosial')
         ->join('kk','kk.no_kk','=','uang_sosial.nkk')
         ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
         ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
+        ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
+        ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
         ->get();
-        // $jimpitan = DB::table('uang_sosial')
-        // ->join('kk','kk.no_kk','=','uang_sosial.nkk')
-        // ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
-        // ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
-        // ->groupBy('uang_sosial.tanggal_jimpitan');
+        
         $total = DB::table('uang_sosial')
             ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
             ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])

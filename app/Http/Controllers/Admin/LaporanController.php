@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use PDF;
 use App\Http\Controllers\Controller;
 use App\Transaksi;
+use App\Saldo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -92,6 +93,7 @@ class LaporanController extends Controller
     }
     public function jimpitan(Request $request)
     {
+        
         $pecahkan = explode('-', $request->get('bln_jimpit'));
         
         $jimpitan = DB::table('uang_sosial')
@@ -117,7 +119,11 @@ class LaporanController extends Controller
 
     public function keuangan(Request $request)
     {
+        $date = $request->get('bln_uang');
+        $bulanLalu =  date('Y-m', strtotime("-1 Months")); // 11
+        // dd($bulanLalu);
         $pecahkan = explode('-', $request->get('bln_uang'));
+        $pecahkanDulu = explode('-', $bulanLalu);
         // dd($pecahkan);
         $jimpitan = DB::table('uang_sosial')
             ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
@@ -134,26 +140,26 @@ class LaporanController extends Controller
             ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
             ->sum('uang_sosial.jumlah_jimpitan');
         // dd($total);
-        $saldo = DB::table('saldo')
-            ->join('saldo_pemasukan', 'saldo_pemasukan.saldo_id', '=', 'saldo.id')
-            ->join('pemasukan', 'pemasukan.id', '=', 'saldo_pemasukan.pemasukan_id')
-            ->join('saldo_pengeluaran', 'saldo_pengeluaran.saldo_id', '=', 'saldo.id')
-            ->join('pengeluaran', 'pengeluaran.id', '=', 'saldo_pengeluaran.pengeluaran_id')
-            // ->join('saldo_uang_sosial','saldo_uang_sosial.saldo_id','=','saldo.id')
-            // ->join('uang_sosial','uang_sosial.id','=','saldo_uang_sosial.uang_sosial_id')
-            // ->select('sum(jumlah_masuk) as jumlah_masuk')
-            // ->groupBy('jenis_masuk');
-            // ->sum('jumlah_masuk');
-            ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
-            ->whereYear('saldo.tanggal_saldo', $pecahkan[0])
-            ->groupBy('pemasukan.jenis_masuk')
-            ->groupBy('pengeluaran.jenis_keluar');
-        // ->get();
-        // dd($saldo);
+
+        $saldo = Saldo::whereMonth('tanggal_saldo', $pecahkan[1])
+        ->whereYear('tanggal_saldo', $pecahkan[0])
+        ->first();
+        $dulu = Saldo::whereMonth('tanggal_saldo', $pecahkanDulu[1])
+        ->whereYear('tanggal_saldo', $pecahkanDulu[0])
+        ->first();
 
         $transaksi = transaksi::all()
         ->groupBy('jenis_transaksi');
-        // dd($transaksi);
+
+        $keluar = transaksi::where('status_transaksi','Pengeluaran')
+        ->sum('jumlah_transaksi');
+
+        $masuk = transaksi::where('status_transaksi','Pemasukan')
+        ->sum('jumlah_transaksi');
+
+        $jumlah_masuk = intval($masuk)+ $dulu->jumlah_saldo +intval($total);
+        $jumlah_keluar = $saldo->jumlah_saldo+intval($keluar);
+        // dd($jumlah_keluar);
 
 
         
@@ -161,9 +167,13 @@ class LaporanController extends Controller
         $pdf = PDF::loadview("admin/lapkeu/keuangan", [
             "jimpitan" => $jimpitan,
             'total' => $total,
-            // 'tottrans' => $tottrans,
             'tanggal' => $tanggal,
-            'transaksi' => $transaksi
+            'transaksi' => $transaksi,
+            'saldo' => $saldo,
+            'dulu' => $dulu,
+            'keluar' => $keluar,
+            'jumlah_masuk' => $jumlah_masuk,
+            'jumlah_keluar' => $jumlah_keluar,
         ]);
         return $pdf->download("laporan_keuangan.pdf");
     }

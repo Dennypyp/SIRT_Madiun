@@ -28,12 +28,16 @@
 
                         </div><!-- col-4 -->
                         <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
+                            <form action="{{route('frontend.jimpitan_warga.index')}}" method="GET">
+                                {{-- @csrf --}}
+                                <div class="input-group">
+                                <input id="bday-month" type="month" name="bln_jimpit" class="form-control" placeholder="Pilih Bulan">
+                                {{-- <input type="text" class="form-control" placeholder="Search for..."> --}}
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"> Cari Bulan</i></button>
                                 </span>
                             </div><!-- input-group -->
+                            </form>
                         </div>
                     </div><!-- row -->
                 </div>
