@@ -47,7 +47,7 @@
                                                 
                                             @elseif($item->status_surat == "Disetujui")
                                             <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
-                                            <a href="/surat_pengantar/{{$item->id}}" class="btn btn-sm btn-primary">Cetak</a>
+                                            <a href="/surat_pengantar/{{$item->id}}" class="btn btn-sm btn-primary"><i class="far fa-file-pdf"></i> Cetak</a>
                                             @endif
                                         
                                         
