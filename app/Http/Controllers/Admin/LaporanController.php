@@ -8,6 +8,9 @@ use App\Transaksi;
 use App\Saldo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use DateTime;
+Use DateTimeZone;
+
 
 class LaporanController extends Controller
 {
@@ -119,12 +122,19 @@ class LaporanController extends Controller
 
     public function keuangan(Request $request)
     {
-        $date = $request->get('bln_uang');
-        $bulanLalu =  date('Y-m', strtotime("-1 Months")); // 11
-        // dd($bulanLalu);
+        // Ambil Bulan Sebelumnya
+        $date = strtotime($request->get('bln_uang'));
+        $tgl = date('Y-m', $date);
+        $bulanLalu =  new DateTime($tgl, new DateTimeZone('UTC')); 
+        $bulanLalu->modify('first day of previous month'); 
+        $month = $bulanLalu->format('m');
+        $year = $bulanLalu->format('Y'); 
+        // ======================
+        
+        // dd($month);
         $pecahkan = explode('-', $request->get('bln_uang'));
-        $pecahkanDulu = explode('-', $bulanLalu);
-        // dd($pecahkan);
+        // $pecahkanDulu = explode('-', $bulanLalu);
+        // dd($pecahkanDulu);
         $jimpitan = DB::table('uang_sosial')
             ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
             ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
@@ -144,8 +154,8 @@ class LaporanController extends Controller
         $saldo = Saldo::whereMonth('tanggal_saldo', $pecahkan[1])
         ->whereYear('tanggal_saldo', $pecahkan[0])
         ->first();
-        $dulu = Saldo::whereMonth('tanggal_saldo', $pecahkanDulu[1])
-        ->whereYear('tanggal_saldo', $pecahkanDulu[0])
+        $dulu = Saldo::whereMonth('tanggal_saldo', $month)
+        ->whereYear('tanggal_saldo', $year)
         ->first();
 
         $transaksi = transaksi::all()
