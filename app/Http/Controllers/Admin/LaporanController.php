@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Admin;
 use PDF;
 use App\Http\Controllers\Controller;
 use App\Transaksi;
+use App\Saldo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use DateTime;
+Use DateTimeZone;
+
 
 class LaporanController extends Controller
 {
@@ -18,10 +22,6 @@ class LaporanController extends Controller
     public function index()
     {
         //
-        // $tgl_jimpit = DB::table('uang_sosial')
-        // ->select('uang_sosial.tanggal')
-        // ->distinct()
-        // ->get();
         return view('admin.lapkeu.index');
     }
 
@@ -92,8 +92,9 @@ class LaporanController extends Controller
     }
     public function jimpitan(Request $request)
     {
+        
         $pecahkan = explode('-', $request->get('bln_jimpit'));
-        dd($pecahkan);
+        
         $jimpitan = DB::table('uang_sosial')
             ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
             ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
@@ -117,8 +118,21 @@ class LaporanController extends Controller
 
     public function keuangan(Request $request)
     {
+        // Ambil Bulan Sebelumnya
+        $date = strtotime($request->get('bln_uang'));
+        $tgl = date('Y-m', $date);
+        $bulanLalu =  new DateTime($tgl, new DateTimeZone('UTC')); 
+        $bulanLalu->modify('first day of previous month'); 
+        $month = $bulanLalu->format('m');
+        $year = $bulanLalu->format('Y'); 
+        // ======================
+
+        // Ambil Tanggal
         $pecahkan = explode('-', $request->get('bln_uang'));
-        // dd($pecahkan);
+        $tanggal = $request->get('bln_uang');
+        // ===================
+
+        // Ambil Data Jimpitan
         $jimpitan = DB::table('uang_sosial')
             ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
             ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
@@ -126,43 +140,59 @@ class LaporanController extends Controller
             ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
             ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
             ->get();
-        // dd($jimpitan);
-        $tanggal = $request->get('bln_uang');
+        // ===================
+        
 
+        // Ambil Total Jimpitan
         $total = DB::table('uang_sosial')
             ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
             ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
             ->sum('uang_sosial.jumlah_jimpitan');
-        // dd($total);
-        $saldo = DB::table('saldo')
-            ->join('saldo_pemasukan', 'saldo_pemasukan.saldo_id', '=', 'saldo.id')
-            ->join('pemasukan', 'pemasukan.id', '=', 'saldo_pemasukan.pemasukan_id')
-            ->join('saldo_pengeluaran', 'saldo_pengeluaran.saldo_id', '=', 'saldo.id')
-            ->join('pengeluaran', 'pengeluaran.id', '=', 'saldo_pengeluaran.pengeluaran_id')
-            // ->join('saldo_uang_sosial','saldo_uang_sosial.saldo_id','=','saldo.id')
-            // ->join('uang_sosial','uang_sosial.id','=','saldo_uang_sosial.uang_sosial_id')
-            // ->select('sum(jumlah_masuk) as jumlah_masuk')
-            // ->groupBy('jenis_masuk');
-            // ->sum('jumlah_masuk');
-            ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
-            ->whereYear('saldo.tanggal_saldo', $pecahkan[0])
-            ->groupBy('pemasukan.jenis_masuk')
-            ->groupBy('pengeluaran.jenis_keluar');
-        // ->get();
-        // dd($saldo);
+        // ====================
 
+        // Ambil Saldo Sekarang
+        $saldo = Saldo::whereMonth('tanggal_saldo', $pecahkan[1])
+        ->whereYear('tanggal_saldo', $pecahkan[0])
+        ->first();
+        // =====================
+        // Ambil Saldo Bulan Sebelumnya
+        $dulu = Saldo::whereMonth('tanggal_saldo', $month)
+        ->whereYear('tanggal_saldo', $year)
+        ->first();
+        // ============================
+
+        // Ambil record berdasarkan jenis transaksi
         $transaksi = transaksi::all()
         ->groupBy('jenis_transaksi');
+        // =====================
 
+        // Ambil total pengeluaran
+        $keluar = transaksi::where('status_transaksi','Pengeluaran')
+        ->sum('jumlah_transaksi');
+        // ========================
 
-        
-        // dd($transaksi);
+        // Ambil Total Pemasukan
+        $masuk = transaksi::where('status_transaksi','Pemasukan')
+        ->sum('jumlah_transaksi');
+        // =======================
+
+        // Neraca Jumlah Pemasukan
+        $jumlah_masuk = intval($masuk)+ $dulu->jumlah_saldo +intval($total);
+        // =======================
+        // Neraca Jumlah Pengeluaran
+        $jumlah_keluar = $saldo->jumlah_saldo+intval($keluar);
+        // =========================
+
         $pdf = PDF::loadview("admin/lapkeu/keuangan", [
             "jimpitan" => $jimpitan,
             'total' => $total,
-            // 'tottrans' => $tottrans,
             'tanggal' => $tanggal,
-            'transaksi' => $transaksi
+            'transaksi' => $transaksi,
+            'saldo' => $saldo,
+            'dulu' => $dulu,
+            'keluar' => $keluar,
+            'jumlah_masuk' => $jumlah_masuk,
+            'jumlah_keluar' => $jumlah_keluar,
         ]);
         return $pdf->download("laporan_keuangan.pdf");
     }

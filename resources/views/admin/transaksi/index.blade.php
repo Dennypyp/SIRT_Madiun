@@ -20,6 +20,15 @@
                     <div class="col-1 text-right">
                         <a href="{{ route('transaksi.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                     </div>
+                    <br>
+                    @if (session('msg'))
+                    <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                        {{ session('msg') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                 </div>
 
                 <div class="card-body">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\PDF;
+use PDF;
 use Illuminate\Support\Facades\DB;
 use App\Surat;
 

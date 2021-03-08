@@ -34,7 +34,7 @@
                                                 <input id="bday-month" type="month" name="bln_jimpit" class="form-control">
                                             </div>
                                             <button type="submit" class="btn btn-sm btn-warning"
-                                                id="btn_jimpit">Cetak</button>
+                                                id="btn_jimpit"><i class="far fa-file-pdf"></i> Cetak</button>
                                         </form>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                                 <input id="bday-month" type="month" name="bln_uang" class="form-control">
                                             </div>
                                             <button type="submit" class="btn btn-sm btn-warning"
-                                                id="btn_keuangan">Cetak</button>
+                                                id="btn_keuangan"><i class="far fa-file-pdf"></i> Cetak</button>
                                         </form>
                                     </div>
                                 </div>
