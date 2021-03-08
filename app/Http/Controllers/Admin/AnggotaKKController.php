@@ -138,7 +138,6 @@ class AnggotaKKController extends Controller
             'nama_ibu_bapak' => 'required',
             'status' => 'required',
             'status_kk' => 'required',
-            'no_kk' => 'required',
         ]);
 
         if ($validator->fails()) {
