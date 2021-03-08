@@ -22,8 +22,7 @@ class JimpitanController extends Controller
         } else {
             $pecahkan = explode('-', date('Y-m-d'));
         }
-        
-        // $pecahkan = explode('-', date('Y-m-d'));
+
         $jimpitan = DB::table('uang_sosial')
         ->join('kk','kk.no_kk','=','uang_sosial.nkk')
         ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
@@ -36,7 +35,7 @@ class JimpitanController extends Controller
             ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
             ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
             ->sum('uang_sosial.jumlah_jimpitan');
-        // dd($jimpitan);
+
         return view('frontend.jimpitan.index', [
             'jimpitan' => $jimpitan,
             'total' => $total
