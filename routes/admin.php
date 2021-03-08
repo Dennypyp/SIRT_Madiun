@@ -46,7 +46,14 @@ Route::group([
     Route::resource('kegiatan_fisik', 'Kegiatan_fisikController');
     Route::get('kegiatan_fisik/destroy/{id}', 'Kegiatan_fisikController@destroy');
 
-
+    //Route Akun
+    Route::resource('/akun', 'AkunController');
+    Route::prefix('/akun')->group(function ()
+    {
+        Route::get('/destroy/{id}', 'AkunController@destroy');
+        Route::get('/editnama/{id}', 'AkunController@editnama');
+        Route::post('/updatenama/{id}', 'AkunController@updatenama');
+    });
 
 });
 
