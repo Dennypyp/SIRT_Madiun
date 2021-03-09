@@ -15,27 +15,11 @@
                     <li class="nav-item {{ 'surat' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="/" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i>
+                    <li class="nav-item {{ 'jimpitan_warga' == request()->segment(1) ? 'active' : '' }}">
+                        <a href="/jimpitan_warga" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i>
                             Jimpitan</a>
                     </li>
                 @endif
-
-                <li class="nav-item">
-                    <a href="" class="nav-link with-sub"><i class="typcn typcn-book"></i> Components</a>
-                    <div class="az-menu-sub">
-                        <div class="container">
-                            <div>
-                                <nav class="nav">
-                                    <a href="elem-buttons.html" class="nav-link">Buttons</a>
-                                    <a href="elem-dropdown.html" class="nav-link">Dropdown</a>
-                                    <a href="elem-icons.html" class="nav-link">Icons</a>
-                                    <a href="table-basic.html" class="nav-link">Table</a>
-                                </nav>
-                            </div>
-                        </div><!-- container -->
-                    </div>
-                </li>
             </ul>
         </div><!-- az-header-menu -->
         <div class="az-header-right">

@@ -48,7 +48,7 @@ class Kegiatan_nonfisikController extends Controller
         $kegiatan_nonfisik->dana = $request->get('dana');
         $kegiatan_nonfisik->keterangan = $request->get('keterangan');
         $kegiatan_nonfisik->save();
-        return redirect()->route('kegiatan_nonfisik.index')->with('message','Kegiatan Non Fisik Berhasil Ditambah!');
+        return redirect()->route('kegiatan_nonfisik.index')->with('msg','Kegiatan Non Fisik Berhasil Ditambah!');
     }
 
     /**
@@ -93,7 +93,7 @@ class Kegiatan_nonfisikController extends Controller
         $kegiatan_nonfisik->dana = $request->get('dana');
         $kegiatan_nonfisik->keterangan = $request->get('keterangan');
         $kegiatan_nonfisik->save();
-        return redirect()->route('kegiatan_nonfisk.index')->with('message','Kegiatan Non Fisik Berhasil Diedit!');
+        return redirect()->route('kegiatan_nonfisk.index')->with('msg','Kegiatan Non Fisik Berhasil Diedit!');
     }
 
     /**
@@ -107,7 +107,7 @@ class Kegiatan_nonfisikController extends Controller
         //
         $kegiatan_nonfisik = Kegiatan_nonfisik::find($id);
         $kegiatan_nonfisik->delete();
-        return redirect(route('kegiatan_nonfisik.index'))->with('message','Kegiatan Non Fisik Berhasil Dihapus!');
+        return redirect(route('kegiatan_nonfisik.index'))->with('msg','Kegiatan Non Fisik Berhasil Dihapus!');
     }
 }
 

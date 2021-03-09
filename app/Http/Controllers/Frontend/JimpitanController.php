@@ -1,28 +1,45 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Saldo;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Jimpitan;
 
-class SaldoController extends Controller
+class JimpitanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        // $yesterday = date("Y-m-d", strtotime( '-1 days' ) ); 
-        // $countYesterday = Timer::whereDate('created_at', $yesterday )->get();
+        if ($request->get('bln_jimpit')!=null) {
+            $pecahkan = explode('-', $request->get('bln_jimpit'));
+        } else {
+            $pecahkan = explode('-', date('Y-m-d'));
+        }
 
-        $saldo = Saldo::all();
-        return view('admin.saldo.index', ['saldo'=>$saldo]);
+        $jimpitan = DB::table('uang_sosial')
+        ->join('kk','kk.no_kk','=','uang_sosial.nkk')
+        ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
+        ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
+        ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
+        ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
+        ->get();
+        
+        $total = DB::table('uang_sosial')
+            ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
+            ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
+            ->sum('uang_sosial.jumlah_jimpitan');
+
+        return view('frontend.jimpitan.index', [
+            'jimpitan' => $jimpitan,
+            'total' => $total
+        ]);
     }
 
     /**
@@ -33,10 +50,6 @@ class SaldoController extends Controller
     public function create()
     {
         //
-
-        // $saldo = Saldo::where('tanggal_saldo', '<=', Carbon::now()->subMonth())->get();
-
-        return view('admin.saldo.create');
     }
 
     /**
@@ -48,11 +61,6 @@ class SaldoController extends Controller
     public function store(Request $request)
     {
         //
-        $saldo = new saldo();
-        $saldo->tanggal_saldo = $request->get('tanggal_saldo');
-        $saldo->jumlah_saldo = $request->get('jumlah_saldo');
-        $saldo->save();
-        return redirect()->route('saldo.index')->with('msg','Saldo Berhasil Ditambah!');
     }
 
     /**
@@ -75,8 +83,6 @@ class SaldoController extends Controller
     public function edit($id)
     {
         //
-        $saldo = Saldo::find($id);
-        return view('admin.saldo.edit',['saldo' => $saldo]);
     }
 
     /**
@@ -89,11 +95,6 @@ class SaldoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $saldo = Saldo::find($id);
-        $saldo->tanggal_saldo = $request->get('tanggal_saldo');
-        $saldo->jumlah_saldo = $request->get('jumlah_saldo');
-        $saldo->save();
-        return redirect()->route('saldo.index')->with('mag','Saldo Berhasil Diedit!');
     }
 
     /**
@@ -105,8 +106,5 @@ class SaldoController extends Controller
     public function destroy($id)
     {
         //
-        $saldo = Saldo::find($id);
-        $saldo->delete();
-        return redirect(route('saldo.index'))->with('mag','Saldo Berhasil Dihapus!');
     }
 }

@@ -38,8 +38,7 @@ class AdminController extends Controller
         $dulu = saldo::whereMonth('tanggal_saldo', $pecahkanDulu[1])
         ->whereYear('tanggal_saldo', $pecahkanDulu[0])
         ->first();
-        // dd($dulu);
-        // dd($lastMonth);
+
         return view('admin.index',[
             'tunggu'=>$tunggu, 
             'setuju'=>$setuju,

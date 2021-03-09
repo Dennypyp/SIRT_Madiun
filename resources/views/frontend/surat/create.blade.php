@@ -19,7 +19,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route('surat.store') }}">
+        <form method="POST" action="{{ route('frontend.surat.store') }}">
             @csrf
             @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
@@ -86,7 +86,7 @@
                     <div class="col text-left">
                         <div class="col text-left">
                             <button type="submit" name="save" class="btn btn-primary">Simpan</button>
-                            <a class="btn btn-danger" href="{{ route('surat.index') }}" role="button">Kembali</a>
+                            <a class="btn btn-danger" href="{{ route('frontend.surat.index') }}" role="button">Kembali</a>
                         </div>
                     </div>
                 </div>

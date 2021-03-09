@@ -127,6 +127,87 @@
     {{-- End Jimpitan --}}
     {{-- Neraca --}}
     <h4>• Neraca</h4>
+
+    {{-- <h4>• {{ $jenis_transaksi }}</h4> --}}
+    <table border="1" cellspacing="" cellpadding="4" width="100%">
+        <thead>
+            <tr>
+            <th align="center" colspan="2">Pemasukan</th>
+            <th align="center" colspan="2">Pengeluaran</th>
+
+            </tr>
+            <tr>
+                <th align="center">Keterangan</th>
+                <th align="center">Jumlah</th>
+                <th align="center">Keterangan</th>
+                <th align="center">Jumlah</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td align="center"><b>Saldo Awal</b></td>
+                <td align="center"><b>{{format_rp($dulu->jumlah_saldo)}}</b></td>
+                <td align="center"></td>
+                <td align="center"></td>
+            </tr>
+            <tr>
+                <td align="center">Jimpitan</td>
+                <td align="center">{{ format_rp($total) }}</td>
+                <td align="center"></td>
+                <td align="center"></td>
+            </tr>
+            @foreach ($transaksi as $jenis_transaksi => $uang)
+                @php
+                    $tottrans['Pemasukan'] = 0;
+                    $tottrans['Pengeluaran'] = 0;
+                @endphp
+                <tr>
+                    <td align="center">{{ $jenis_transaksi }}</td>
+                    @foreach ($uang as $item)
+                        @php
+                            if ($item->status_transaksi == 'Pemasukan') {
+                                $tottrans['Pemasukan'] = $tottrans['Pemasukan'] + $item->jumlah_transaksi;
+                            }
+                            
+                            
+                        @endphp
+                    @endforeach
+                    <td align="center">{{ format_rp($tottrans['Pemasukan']) }}</td>
+                    <td align="center">{{ $jenis_transaksi }}</td>
+                    @foreach ($uang as $item)
+                        @php
+                            
+                            if ($item->status_transaksi == 'Pengeluaran') {
+                                $tottrans['Pengeluaran'] = $tottrans['Pengeluaran'] + $item->jumlah_transaksi;
+                            }
+                        @endphp
+                    @endforeach
+                    <td align="center">{{ format_rp($tottrans['Pengeluaran']) }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+
+        <tr>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center">Total Pengeluaran</td>
+            <td align="center"><b>{{format_rp($keluar)}}</b></td>
+        </tr>
+        <tr>
+            <td align="center"></td>
+            <td align="center"></td>
+            <td align="center">Saldo Akhir</td>
+            <td align="center"><b>{{format_rp($saldo->jumlah_saldo)}}</b></td>
+        </tr>
+        <tr>
+            <td align="center">Jumlah</td>
+            <td align="center"><b>{{format_rp($jumlah_masuk)}}</b></td>
+            <td align="center">Jumlah</td>
+            <td align="center"><b>{{format_rp($jumlah_keluar)}}</b></td>
+        </tr>
+
+    </table>
     {{-- End Neraca --}}
     <table width="100%">
         <tr>

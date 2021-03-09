@@ -72,7 +72,7 @@ class JimpitanController extends Controller
         $saldo = Saldo::find($saldo_id->id);
         $saldo->jumlah_saldo = $saldo->jumlah_saldo + $request->get('jumlah_jimpitan');
         $saldo->save();
-        return redirect()->route('jimpitan.index')->with('message','Dana Sosial (Jimpitan) Telah Terdata!');
+        return redirect()->route('jimpitan.index')->with('mag','Dana Sosial (Jimpitan) Telah Terbayar!');
     }
 
     /**

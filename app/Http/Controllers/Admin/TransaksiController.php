@@ -70,7 +70,7 @@ class TransaksiController extends Controller
         }
         // $saldo->jumlah_saldo = $saldo->jumlah_saldo + $request->get('jumlah_transaksi');
         $saldo->save();
-        return redirect()->route('transaksi.index')->with('message','transaksi Berhasil Ditambah!');
+        return redirect()->route('transaksi.index')->with('msg', $request->get('status_transaksi').' Berhasil Ditambah!');
     }
 
     /**
@@ -130,7 +130,7 @@ class TransaksiController extends Controller
         $transaksi->keterangan_transaksi = $request->get('keterangan_transaksi');
         $transaksi->jumlah_transaksi = $request->get('jumlah_transaksi');
         $transaksi->save();
-        return redirect()->route('transaksi.index')->with('message','transaksi Berhasil Diedit!');
+        return redirect()->route('transaksi.index')->with('msg', $request->get('status_transaksi').' Berhasil Diedit!');
     }
 
     /**
@@ -163,6 +163,6 @@ class TransaksiController extends Controller
         
         $transaksi->delete();
 
-        return redirect(route('transaksi.index'))->with('message','Transaksi Berhasil Dihapus!');
+        return redirect(route('transaksi.index'))->with('msg','Transaksi Berhasil Dihapus!');
     }
 }

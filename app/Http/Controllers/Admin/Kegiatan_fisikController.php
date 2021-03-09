@@ -48,7 +48,7 @@ class Kegiatan_fisikController extends Controller
         $kegiatan_fisik->dana = $request->get('dana');
         $kegiatan_fisik->keterangan = $request->get('keterangan');
         $kegiatan_fisik->save();
-        return redirect()->route('kegiatan_fisik.index')->with('message','Kegiatan  Fisik Berhasil Ditambah!');
+        return redirect()->route('kegiatan_fisik.index')->with('msg','Kegiatan  Fisik Berhasil Ditambah!');
     }
 
     /**
@@ -93,7 +93,7 @@ class Kegiatan_fisikController extends Controller
         $kegiatan_fisik->dana = $request->get('dana');
         $kegiatan_fisik->keterangan = $request->get('keterangan');
         $kegiatan_fisik->save();
-        return redirect()->route('kegiatan_fisk.index')->with('message','Kegiatan Fisik Berhasil Diedit!');
+        return redirect()->route('kegiatan_fisk.index')->with('msg','Kegiatan Fisik Berhasil Diedit!');
     }
 
     /**
@@ -107,7 +107,7 @@ class Kegiatan_fisikController extends Controller
         //
         $kegiatan_fisik = Kegiatan_fisik::find($id);
         $kegiatan_fisik->delete();
-        return redirect(route('kegiatan_fisik.index'))->with('message','Kegiatan Fisik Berhasil Dihapus!');
+        return redirect(route('kegiatan_fisik.index'))->with('msg','Kegiatan Fisik Berhasil Dihapus!');
     }
 }
 
