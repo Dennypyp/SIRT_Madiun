@@ -61,7 +61,7 @@
                             <div class="row">
                                 <div class="col text-left">
                                     <div class="col text-left">
-                                        <button type="submit" name="save" class="btn btn-primary">Edit</button>
+                                        <button type="submit" name="save" class="btn btn-primary">Reset</button>
                                         <a class="btn btn-danger" href="{{ route('akun.index') }}"
                                             role="button">Kembali</a>
                                     </div>
