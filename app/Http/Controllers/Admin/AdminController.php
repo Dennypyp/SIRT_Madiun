@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Saldo;
 use App\Surat;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -89,6 +90,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**
@@ -112,5 +114,30 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function chartku()
+    {
+        $pemasukan = DB::table('transaksi')
+        ->select(DB::raw('sum(jumlah_transaksi) as `data`')
+        ,DB::raw("MONTH(tanggal_transaksi) as month"))
+        ->where("status_transaksi", "Pemasukan")
+        ->groupby('month')
+        ->get();
+        $data["pemasukan"] = $pemasukan;
+
+        return response()->json($data);
+    }
+
+    public function chartku2()
+    {
+        $pengeluaran = DB::table('transaksi')
+        ->select(DB::raw('sum(jumlah_transaksi) as `data`')
+        ,DB::raw("MONTH(tanggal_transaksi) as month"))
+        ->where("status_transaksi", "Pengeluaran")
+        ->groupby('month')
+        ->get();
+        $data["pengeluaran"] = $pengeluaran;
+
+        return response()->json($data);
     }
 }

@@ -5,6 +5,8 @@ Route::group([
     'middleware' => ['auth'=>'CheckRole:admin']
 ], function () {
     Route::resource('rt_admin', 'AdminController');
+    Route::get("dashboardchart","AdminController@chartku");
+    Route::get("dashboardchart2","AdminController@chartku2");
 
     // Route KK
     Route::resource('kk', 'KKController');
