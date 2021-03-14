@@ -17,7 +17,7 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="md-0 font-weight-bold text-primary">Data Pemasukan RT </h6>
+                    <h6 class="md-0 font-weight-bold text-primary">Data Jimpitan RT </h6>
                     <div class="col-1 text-right">
                         <a href="{{ route('jimpitan.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                     </div>
