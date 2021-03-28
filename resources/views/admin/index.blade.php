@@ -13,7 +13,7 @@
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                
+
             </div>
 
             <!-- Content Row -->
@@ -46,7 +46,7 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Saldo Bulanan Lalu ({{format_bln($bulanLalu)}})</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{format_rp($dulu->jumlah_saldo)}}</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{format_rp($saldo->jumlah_saldo)}}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -68,7 +68,7 @@
                                         <div class="col-auto">
                                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$setuju}}</div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-auto">
@@ -326,7 +326,7 @@
                         </div>
                     </div> --}}
 
-                {{-- </div> --}} 
+                {{-- </div> --}}
             </div>
 
         </div>

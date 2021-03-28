@@ -15,12 +15,16 @@ class CreateKegiatanFisikTable extends Migration
     {
         Schema::create('kegiatan_fisik', function (Blueprint $table) {
             $table->id();
+            $table->string('nik',20)->index()->nullable();
             $table->string('kegiatan');
             $table->integer('volume');
             $table->string('satuan');
-            $table->string('status');
+            $table->string('lokasi');
+            $table->string('statusk');
             $table->integer('dana');
             $table->string('keterangan');
+            $table->string('status_kegiatan');
+            $table->foreign('nik')->references('nik')->on('anggota_kk');
             $table->timestamps();
         });
     }

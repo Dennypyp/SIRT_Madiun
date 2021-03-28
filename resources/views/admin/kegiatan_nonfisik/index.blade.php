@@ -38,10 +38,10 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">No</th>
+                                    <th class="text-center">Nama</th>
+                                    <th class="text-center">Alamat</th>
                                     <th class="text-center">Kegiatan</th>
-                                    <th class="text-center">Nama Pengusul</th>
-                                    <th class="text-center">Alamat Pengusul</th>
-                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Status Kegiatan</th>
                                     <th class="text-center">Dana</th>
                                     <th class="text-center">Keterangan</th>
                                     <th class="text-center" style="width:30%">Aksi</th>
@@ -50,19 +50,26 @@
 
                             <tbody>
                                 @if(!empty($kegiatan_nonfisik))
-                                    @foreach($kegiatan_nonfisik as $data)
+                                    @foreach($kegiatan_nonfisik as $key)
                                 <tr>
-                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center">{{ $data->kegiatan }}</td>
-                                    <td class="text-center">{{ $data->nama_pengusul }}</td>
-                                    <td class="text-center">{{ $data->alamat_pengusul }}</td>
-                                    <td class="text-center">{{ $data->status }}</td>
-                                    <td class="text-center">{{ $data->dana }}</td>
-                                    <td>{{ $data->keterangan }}</td>
-                                    <td class="text-center">
+                                    <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $key->nama }}</td>
+                                        <td>{{ $key->alamat }}</td>
+                                        <td>{{ $key->kegiatan }}</td>
+                                        <td>{{ $key->statusk }}</td>
+                                        <td>{{ $key->dana }}</td>
+                                        <td>{{ $key->keterangan }}</td>
+                                        <td>
 
-                                            <a href="{{ route('kegiatan_nonfisik.edit',[$data->id]) }}" class="btn btn-sm btn-warning">Edit</a>
-                                            <a href="/kegiatan_nonfisik/destroy/{{ $data->id }}" class="btn btn-sm btn-danger">Hapus</a>
+                                            {{-- <a href="{{ route('kegiatan_nonfisik.edit',[$data->id]) }}" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="/kegiatan_nonfisik/destroy/{{ $data->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
+                                            @if ($key->status_kegiatan == "Menunggu")
+                                                <a href="/nonfisik_status_kegiatan/{{$key->id}}" class="btn btn-sm btn-success" >Setujui</a>
+
+                                            @elseif($key->status_kegiatan == "Disetujui")
+                                            <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
+                                            <a href="/nonfisik_detail_kegiatan/{{$key->id}}" class="btn btn-sm btn-primary"><i class="far fa-file-pdf"></i> Cetak</a>
+                                            @endif
 
                                     </td>
                                 </tr>
