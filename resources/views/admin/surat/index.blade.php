@@ -19,7 +19,7 @@
                 <div class="card-header py-3">
                     <h6 class="md-0 font-weight-bold text-primary">Data Surat Pengantar </h6>
                 </div>
-                
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -31,7 +31,7 @@
                                     <th class="text-center" style="width:20%">Aksi</th>
                                 </tr>
                             </thead>
-                            
+
                             <tbody>
                                 @if(!empty($surat))
                                     @foreach($surat as $item)
@@ -40,18 +40,18 @@
                                     <td>{{ $item->nama}}</td>
                                     <td>{{ $item->keperluan }}</td>
                                     <td class="text-center">
-                                        
+
                                             {{-- <a href="#" class="btn btn-sm btn-info">Setujui</a> --}}
                                             @if ($item->status_surat == "Menunggu")
                                                 <a href="/status_surat/{{$item->id}}" class="btn btn-sm btn-success" >Setujui</a>
-                                                
+
                                             @elseif($item->status_surat == "Disetujui")
                                             <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
                                             <a href="/surat_pengantar/{{$item->id}}" class="btn btn-sm btn-primary"><i class="far fa-file-pdf"></i> Cetak</a>
                                             @endif
-                                        
-                                        
-                                        
+
+
+
                                     </td>
                                 </tr>
                                 @endforeach
@@ -60,9 +60,9 @@
                                         <td colspan="5" class="text-center">Data tidak ditemukan</td>
                                     </tr>
                                 @endif
-                                
+
                             </tbody>
-                            
+
                         </table>
                     </div>
                 </div>
