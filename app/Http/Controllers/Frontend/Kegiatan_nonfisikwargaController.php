@@ -1,19 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use PDF;
 use App\anggota;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use App\Kegiatan_nonfisik;
+use Illuminate\Support\Facades\Auth;
 
-
-
-class Kegiatan_nonfisikController extends Controller
+class Kegiatan_nonfisikwargaController extends Controller
 {
+    //
     //
     /**
      * Display a listing of the resource.
@@ -22,12 +19,9 @@ class Kegiatan_nonfisikController extends Controller
      */
     public function index()
     {
-        $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
-        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan','kegiatan_nonfisik.status_kegiatan','kegiatan_nonfisik.id')
-        ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
-        ->get();
-        // dd($kegiatan_nonfisik);
-        return view('admin.kegiatan_nonfisik.index',['kegiatan_nonfisik'=>$kegiatan_nonfisik]);
+        //
+        $kegiatan_nonfisik = Kegiatan_nonfisik::where("nik", Auth::user()->nik)->get();
+        return view('frontend.kegiatan_nonfisik.index',['kegiatan_nonfisik'=>$kegiatan_nonfisik]);
     }
 
     /**
@@ -38,6 +32,7 @@ class Kegiatan_nonfisikController extends Controller
     public function create()
     {
         //
+        // return view('frontend.kegiatan_nonfisik.create');
         $anggota = anggota::where("nik","=", Auth::user()->nik)->first();
         return view('frontend.kegiatan_nonfisik.create',['anggota'=>$anggota]);
     }
@@ -50,8 +45,18 @@ class Kegiatan_nonfisikController extends Controller
      */
     public function store(Request $request)
     {
-
         //
+        // $kegiatan_nonfisik = new Kegiatan_nonfisik();
+        // $kegiatan_nonfisik->kegiatan = $request->get('kegiatan');
+        // $kegiatan_nonfisik->nama_pengusul = $request->get('nama_pengusul');
+        // $kegiatan_nonfisik->alamat_pengusul = $request->get('alamat_pengusul');
+        // $kegiatan_nonfisik->status = $request->get('status');
+        // $kegiatan_nonfisik->dana = $request->get('dana');
+        // $kegiatan_nonfisik->keterangan = $request->get('keterangan');
+        // $kegiatan_nonfisik->status_kegiatan = 'Menunggu';
+        // $kegiatan_nonfisik->save();
+        // return redirect('kegiatan_nonfisik')->with('msg','Kegiatan Non Fisik Berhasil Ditambah!');
+
         $kegiatan_nonfisikk= new Kegiatan_nonfisik();
         $kegiatan_nonfisikk->nik = $request->get('nik');
         $kegiatan_nonfisikk->kegiatan = $request->get('kegiatan');
@@ -62,6 +67,8 @@ class Kegiatan_nonfisikController extends Controller
         $kegiatan_nonfisikk->save();
         return redirect('kegiatan_nonfisik_warga')->with('msg','Kegiatan Non Fisik Berhasil Ditambah!');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -97,7 +104,6 @@ class Kegiatan_nonfisikController extends Controller
         //
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -107,33 +113,5 @@ class Kegiatan_nonfisikController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function status_kegiatan($id)
-    {
-        $kegiatan_nonfisikk = Kegiatan_nonfisik::where('id','=',$id)->first();
-        $kegiatan_nonfisikk->status_kegiatan = 'Disetujui';
-        $kegiatan_nonfisikk->save();
-        return redirect('kegiatan_nonfisik');
-    }
-
-    public function kegiatan_nonfisik($id){
-
-        $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
-        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan')
-        ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
-        ->where('kegiatan_nonfisik.id',$id)
-        ->first();
-        // dd($kegiatan_nonfisik);
-
-        $pecahkan = explode('-', date('Y-m-d'));
-        $no = DB::table('kegiatan_nonfisik')
-        ->whereMonth('kegiatan_nonfisik.created_at',$pecahkan[1])
-        ->count();
-        $pdf= PDF::loadview("admin/kegiatan_nonfisik/detail", [
-            "kegiatan_nonfisik"=>$kegiatan_nonfisik,
-            "no"=>$no
-        ]);
-        return $pdf->download("nonfisik_detail_kegiatan.pdf");
     }
 }

@@ -32,27 +32,54 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
+                                        <label class="form-control-label" for="nik">NIK</label>
+                                        <input type="text" id="nik" name="nik" class="form-control" placeholder="NIK" value="{{ Auth::user()->nik}}" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="nama">Nama Pengusul</label>
+                                        <input type="text" id="nama" name="nama" class="form-control"
+                                            placeholder="Nama Lengkap" value="{{ Auth::user()->nama}}" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="alamat">Alamat Pengusul</label>
+                                        <input type="text" id="alamat" name="alamat" class="form-control"
+                                            placeholder="Alamat" value="{{ $anggota->alamat }}" readonly>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label class="form-control-label" for="kegiatan">Nama Kegiatan</label>
-                                        <input type="text" id="kegiatan" name="kegiatan" class="form-control "  placeholder="Nama Kegiatan">
+                                        <input type="text" id="kegiatan" name="kegiatan" class="form-control"
+                                            placeholder="kegiatan">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label" for="volume">Volume Kegiatan</label>
-                                        <input type="text" id="volume" name="volume" class="form-control" placeholder="Volume Kegiatan">
+                                        <input type="text" id="volume" name="volume" class="form-control"
+                                            placeholder="Volume Kegiatan">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="satuan">Satuan</label>
-                                        <input type="text" id="satuan" name="satuan" class="form-control" placeholder="Satuan">
+                                        <label class="form-control-label" for="stauan">Satuan Kegiatan</label>
+                                        <input type="text" id="satuan" name="satuan" class="form-control"
+                                            placeholder="Satuan Kegiatan">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="status">Status</label>
-                                        <input type="text" id="status" name="status" class="form-control" placeholder="Status">
+                                        <label class="form-control-label" for="lokasi">Lokasi Kegiatan</label>
+                                        <input type="text" id="lokasi" name="lokasi" class="form-control"
+                                            placeholder="Lokasi Kegiatan">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="statusk">Status Kegiatan</label>
+                                        <input type="text" id="statusk" name="statusk" class="form-control"
+                                            placeholder="Status Kegiatan">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label" for="dana">Dana</label>
-                                        <input type="text" id="dana" name="dana" class="form-control" placeholder="Dana">
+                                        <input type="text" id="dana" name="dana" class="form-control"
+                                            placeholder="Dana">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="keterangan">Keterangan Kegiatan</label>
+                                        <label class="form-control-label" for="keterangan">Keterangan</label>
                                         <input type="text" id="keterangan" name="keterangan" class="form-control"
                                             placeholder="Keterangan">
                                     </div>

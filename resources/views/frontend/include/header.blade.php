@@ -15,6 +15,13 @@
                     <li class="nav-item {{ 'surat' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
                     </li>
+                    <li class="nav-item {{'kegiatan_fisik' == request()->segment(1) ? 'active' : ''}} {{'kegiatan_nonfisik' == request()->segment(1) ? 'active' : ''}}">
+                        <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Kegiatan</a>
+                        <nav class="az-menu-sub">
+                          <a href="/kegiatan_fisik_warga" class="nav-link">Kegiatan Fisik</a>
+                          <a href="/kegiatan_nonfisik_warga" class="nav-link">Kegiatan Non Fisik</a>
+                        </nav>
+                    </li>
                     <li class="nav-item {{ 'jimpitan_warga' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/jimpitan_warga" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i>
                             Jimpitan</a>
