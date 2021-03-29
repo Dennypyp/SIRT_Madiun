@@ -35,8 +35,13 @@ class SaldoController extends Controller
         //
 
         // $saldo = Saldo::where('tanggal_saldo', '<=', Carbon::now()->subMonth())->get();
-
-        return view('admin.saldo.create');
+        $date = \Carbon\Carbon::now();
+        $bulanLalu =  $date->subMonth()->format('Y-m'); // 11
+        $pecahkanDulu = explode('-', $bulanLalu);
+        $dulu = saldo::whereMonth('tanggal_saldo', $pecahkanDulu[1])
+        ->whereYear('tanggal_saldo', $pecahkanDulu[0])
+        ->first();
+        return view('admin.saldo.create',['dulu'=>$dulu]);
     }
 
     /**
