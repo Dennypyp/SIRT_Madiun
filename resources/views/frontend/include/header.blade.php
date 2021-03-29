@@ -75,7 +75,7 @@
 
             @if (Auth()->user())
                 <div class="dropdown az-profile-menu">
-                    <a href="" class="az-img-user"><img src="{{ asset('frontend/assets/img/faces/face1.jpg') }}"
+                    <a href="" class="az-img-user"><img src="{{ asset('frontend/assets/img/faces/undraw_profile_2.svg') }}"
                             alt=""></a>
                     <div class="dropdown-menu">
                         <div class="az-dropdown-header d-sm-none">
@@ -83,7 +83,7 @@
                         </div>
                         <div class="az-header-profile">
                             <div class="az-img-user">
-                                <img src="{{ asset('frontend/assets/img/faces/face1.jpg') }}" alt="">
+                                <img src="{{ asset('frontend/assets/img/faces/undraw_profile_2.svg') }}" alt="">
                             </div><!-- az-img-user -->
                             <h6>{{ Auth::user()->nama }}</h6>
                             <span>{{ Auth::user()->role }}</span>
@@ -101,7 +101,7 @@
                 </div>
             @else
                 <div class="dropdown az-profile-menu">
-                    <a href="" class="az-img-user"><img src="{{ asset('frontend/assets/img/faces/face1.jpg') }}"
+                    <a href="" class="az-img-user"><img src="{{ asset('frontend/assets/img/faces/undraw_profile_2.svg') }}"
                             alt=""></a>
                     <div class="dropdown-menu">
                         <div class="az-dropdown-header d-sm-none">
@@ -109,7 +109,7 @@
                         </div>
                         <div class="az-header-profile">
                             <div class="az-img-user">
-                                <img src="{{ asset('frontend/assets/img/faces/face1.jpg') }}" alt="">
+                                <img src="{{ asset('frontend/assets/img/faces/undraw_profile_2.svg') }}" alt="">
                             </div><!-- az-img-user -->
                         </div><!-- az-header-profile -->
                         <a href="/login" class="dropdown-item"><i class="typcn typcn-time"></i>Login</a>

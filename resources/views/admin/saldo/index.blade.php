@@ -56,9 +56,9 @@
 
                                                 {{-- <a href="{{ route('pemasukan.edit',[$item->id]) }}" class="btn btn-sm btn-warning">Edit</a>
                                             <a href="/pemasukan/destroy/{{ $item->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
-                                                <a href="{{ route('saldo.edit', [$item->id]) }}" class="btn btn-sm btn-warning" 
+                                                {{-- <a href="{{ route('saldo.edit', [$item->id]) }}" class="btn btn-sm btn-warning"  --}}
                                                 {{-- data-toggle="modal" data-target="#editSaldoModal" --}}
-                                                >Edit</a>
+                                                {{-- >Edit</a> --}}
 
                                                 <a href="/saldo/destroy/{{ $item->id }}"
                                                     class="btn btn-sm btn-danger">Hapus</a>

@@ -60,7 +60,7 @@
                 </div>
 
                 <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
+                {{-- <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-info shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Pending Requests Card Example -->
                 <div class="col-xl-3 col-md-6 mb-4">
@@ -105,7 +105,7 @@
 
             <!-- Content Row -->
 
-            {{-- <div class="row">
+            <div class="row">
 
                 <!-- Area Chart -->
                 <div class="col-xl-8 col-lg-7">
@@ -177,33 +177,10 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
 
             <!-- Content Row -->
-            <div class="row">
-                <!-- Content Column -->
-                <div class="col-lg-12 mb-4">
-                    <!-- Project Card Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Selamat Datang, {{ Auth::user()->nama }}</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                    src="{{ asset('admin/assets/img/undraw_posting_photo2.svg') }}" alt="">
-                            </div>
-                            <p>Web ini merupakan Sistem Informasi dari RT.03/RW.01, Kelurahan Josenan, Kecamatan Taman, Kota
-                                Madiun. Pada Web ini memungkinkan Admin mampu mengelola pencatatan warga RT.03, mengelola
-                                keuangan, pengelolaan surat pengantar, dan pencatatan kegiatan fisik & non-fisik. Web ini
-                                dibuat guna membantu Pengurus dan Warga RT.03 dalam mengelola kegiatan administratif RT.03.
-                            </p>
-                            {{-- <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                unDraw &rarr;</a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="row">
                 <!-- Content Column -->
                 <div class="col-lg-6 mb-4">
@@ -233,6 +210,30 @@
                                 <canvas id="myChart2" width="400" height="400"></canvas>
                                 {{-- <canvas id="chart-sales-dark" class="chart-canvas"></canvas> --}}
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Content Column -->
+                <div class="col-lg-12 mb-4">
+                    <!-- Project Card Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Selamat Datang, {{ Auth::user()->nama }}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                    src="{{ asset('admin/assets/img/undraw_posting_photo2.svg') }}" alt="">
+                            </div>
+                            <p>Web ini merupakan Sistem Informasi dari RT.03/RW.01, Kelurahan Josenan, Kecamatan Taman, Kota
+                                Madiun. Pada Web ini memungkinkan Admin mampu mengelola pencatatan warga RT.03, mengelola
+                                keuangan, pengelolaan surat pengantar, dan pencatatan kegiatan fisik & non-fisik. Web ini
+                                dibuat guna membantu Pengurus dan Warga RT.03 dalam mengelola kegiatan administratif RT.03.
+                            </p>
+                            {{-- <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
+                                unDraw &rarr;</a> --}}
                         </div>
                     </div>
                 </div>
