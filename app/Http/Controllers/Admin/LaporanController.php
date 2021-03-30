@@ -92,9 +92,9 @@ class LaporanController extends Controller
     }
     public function jimpitan(Request $request)
     {
-        
+
         $pecahkan = explode('-', $request->get('bln_jimpit'));
-        
+
         $jimpitan = DB::table('uang_sosial')
             ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
             ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
@@ -121,10 +121,10 @@ class LaporanController extends Controller
         // Ambil Bulan Sebelumnya
         $date = strtotime($request->get('bln_uang'));
         $tgl = date('Y-m', $date);
-        $bulanLalu =  new DateTime($tgl, new DateTimeZone('UTC')); 
-        $bulanLalu->modify('first day of previous month'); 
+        $bulanLalu =  new DateTime($tgl, new DateTimeZone('UTC'));
+        $bulanLalu->modify('first day of previous month');
         $month = $bulanLalu->format('m');
-        $year = $bulanLalu->format('Y'); 
+        $year = $bulanLalu->format('Y');
         // ======================
 
         // Ambil Tanggal
@@ -141,7 +141,7 @@ class LaporanController extends Controller
             ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
             ->get();
         // ===================
-        
+
 
         // Ambil Total Jimpitan
         $total = DB::table('uang_sosial')

@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('saldo.edit') }}">
+                    <form method="POST" action="{{route('saldo.update',[$saldo->id])}}">
                         @csrf
                         @if ($errors->any())
                             <div class="alert alert-danger" role="alert">

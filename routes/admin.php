@@ -5,6 +5,8 @@ Route::group([
     'middleware' => ['auth'=>'CheckRole:admin']
 ], function () {
     Route::resource('rt_admin', 'AdminController');
+    Route::get("dashboardchart","AdminController@chartku");
+    Route::get("dashboardchart2","AdminController@chartku2");
 
     // Route KK
     Route::resource('kk', 'KKController');
@@ -41,10 +43,18 @@ Route::group([
     Route::get('/laporan_keuangan', 'LaporanController@keuangan');
 
     // Route Kegiatan
+    //non Fisik
     Route::resource('kegiatan_nonfisik', 'Kegiatan_nonfisikController');
+    Route::get('/nonfisik_detail_kegiatan/{id}', 'Kegiatan_nonfisikController@kegiatan_nonfisik');
+    Route::get('/nonfisik_status_kegiatan/{id}', 'Kegiatan_nonfisikController@status_kegiatan');
     Route::get('kegiatan_nonfisik/destroy/{id}', 'Kegiatan_nonfisikController@destroy');
+
+    //Fisik
     Route::resource('kegiatan_fisik', 'Kegiatan_fisikController');
+    Route::get('/detail_kegiatan/{id}', 'Kegiatan_fisikController@kegiatan_fisik');
+    Route::get('/status_kegiatan/{id}', 'Kegiatan_fisikController@status_kegiatan');
     Route::get('kegiatan_fisik/destroy/{id}', 'Kegiatan_fisikController@destroy');
+
 
     //Route Akun
     Route::resource('/akun', 'AkunController');

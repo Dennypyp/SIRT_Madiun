@@ -15,6 +15,13 @@
                     <li class="nav-item {{ 'surat' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
                     </li>
+                    <li class="nav-item {{'kegiatan_fisik' == request()->segment(1) ? 'active' : ''}} {{'kegiatan_nonfisik' == request()->segment(1) ? 'active' : ''}}">
+                        <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Kegiatan</a>
+                        <nav class="az-menu-sub">
+                          <a href="/kegiatan_fisik_warga" class="nav-link">Kegiatan Fisik</a>
+                          <a href="/kegiatan_nonfisik_warga" class="nav-link">Kegiatan Non Fisik</a>
+                        </nav>
+                    </li>
                     <li class="nav-item {{ 'jimpitan_warga' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/jimpitan_warga" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i>
                             Jimpitan</a>
@@ -75,7 +82,7 @@
 
             @if (Auth()->user())
                 <div class="dropdown az-profile-menu">
-                    <a href="" class="az-img-user"><img src="{{ asset('frontend/assets/img/faces/face1.jpg') }}"
+                    <a href="" class="az-img-user"><img src="{{ asset('frontend/assets/img/faces/undraw_profile_2.svg') }}"
                             alt=""></a>
                     <div class="dropdown-menu">
                         <div class="az-dropdown-header d-sm-none">
@@ -83,7 +90,7 @@
                         </div>
                         <div class="az-header-profile">
                             <div class="az-img-user">
-                                <img src="{{ asset('frontend/assets/img/faces/face1.jpg') }}" alt="">
+                                <img src="{{ asset('frontend/assets/img/faces/undraw_profile_2.svg') }}" alt="">
                             </div><!-- az-img-user -->
                             <h6>{{ Auth::user()->nama }}</h6>
                             <span>{{ Auth::user()->role }}</span>
@@ -101,7 +108,7 @@
                 </div>
             @else
                 <div class="dropdown az-profile-menu">
-                    <a href="" class="az-img-user"><img src="{{ asset('frontend/assets/img/faces/face1.jpg') }}"
+                    <a href="" class="az-img-user"><img src="{{ asset('frontend/assets/img/faces/undraw_profile_2.svg') }}"
                             alt=""></a>
                     <div class="dropdown-menu">
                         <div class="az-dropdown-header d-sm-none">
@@ -109,7 +116,7 @@
                         </div>
                         <div class="az-header-profile">
                             <div class="az-img-user">
-                                <img src="{{ asset('frontend/assets/img/faces/face1.jpg') }}" alt="">
+                                <img src="{{ asset('frontend/assets/img/faces/undraw_profile_2.svg') }}" alt="">
                             </div><!-- az-img-user -->
                         </div><!-- az-header-profile -->
                         <a href="/login" class="dropdown-item"><i class="typcn typcn-time"></i>Login</a>

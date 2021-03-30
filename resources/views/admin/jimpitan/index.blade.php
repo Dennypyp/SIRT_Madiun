@@ -40,7 +40,7 @@
                                     <th class="text-center">Tanggal</th>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Jumlah</th>
-                                    <th class="text-center" style="width:30%">Aksi</th>
+                                    {{-- <th class="text-center" style="width:30%">Aksi</th> --}}
                                 </tr>
                             </thead>
                             
@@ -51,10 +51,10 @@
                                     <td class="text-center">{{ format_bln($item->tanggal_jimpitan) }}</td>
                                     <td class="text-center">{{ $item->nama }}</td>
                                     <td class="text-center">{{ format_rp($item->jumlah_jimpitan) }}</td>
-                                    <td class="text-center">
-                                            <a href="{{ route('jimpitan.edit',[$item->id]) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    {{-- <td class="text-center"> --}}
+                                            {{-- <a href="{{ route('jimpitan.edit',[$item->id]) }}" class="btn btn-sm btn-warning">Edit</a> --}}
                                             {{-- <a href="/jimpitan/destroy/{{ $item->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
-                                    </td>
+                                    {{-- </td> --}}
                                 </tr>
                                 @endforeach
                                 @else
