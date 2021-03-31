@@ -8,6 +8,8 @@ use App\Transaksi;
 use App\Saldo_Transaksi;
 use App\Saldo;
 use Illuminate\Support\Facades\DB;
+use DateTime;
+Use DateTimeZone;
 
 class TransaksiController extends Controller
 {
@@ -44,6 +46,34 @@ class TransaksiController extends Controller
     {
         //
         $pecahkan = explode('-', $request->get('tanggal_transaksi'));
+
+        $checkSaldo = DB::table('saldo')
+        ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
+        ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
+        ->first();
+        // dd($checkSaldo);
+        if($checkSaldo==null){
+            // Ambil Bulan Sebelumnya
+            $date = strtotime($request->get('tanggal_transaksi'));
+            $tgl = date('Y-m-d', $date);
+            $bulanLalu =  new DateTime($tgl, new DateTimeZone('UTC'));
+            $bulanLalu->modify('first day of previous month');
+            $month = $bulanLalu->format('m');
+            $year = $bulanLalu->format('Y');
+            // ======================
+
+            // Data Saldo Sebelumnya
+            $dulu = Saldo::whereMonth('tanggal_saldo', $month)
+            ->whereYear('tanggal_saldo', $year)
+            ->first();
+            // ======================
+
+            $saldo_baru = new Saldo();
+            $saldo_baru->tanggal_saldo = $request->get('tanggal_transaksi');
+            $saldo_baru->jumlah_saldo = $dulu->jumlah_saldo;
+            // dd($saldo_baru->tanggal_saldo);
+            $saldo_baru->save();
+        }
 
         $transaksi = new transaksi();
         $transaksi->tanggal_transaksi = $request->get('tanggal_transaksi');
