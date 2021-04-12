@@ -54,17 +54,23 @@
             <th align="center">Jumlah Dana</th>
             <th align="center">Keterangan</th>
         </tr>
-
+        
+        @foreach($kegiatan_nonfisik as $key)
             <tr>
-            <td align="center">1</td>
-            <td align="center">{{ $kegiatan_nonfisik->nik }}</td>
-            <td align="center">{{ $kegiatan_nonfisik->kegiatan }}</td>
-            <td align="center">{{ $kegiatan_nonfisik->nama }}</td>
-            <td align="center">{{ $kegiatan_nonfisik->alamat }}</td>
-            <td align="center">{{ $kegiatan_nonfisik->statusk }}</td>
-            <td align="center">{{ $kegiatan_nonfisik->dana }}</td>
-            <td align="center">{{ $kegiatan_nonfisik->keterangan }}</td>
+                @php
+                (!empty($kegiatan_nonfisik))
+                @endphp
+
+            <td align="center">{{ $loop->iteration }}</td>
+            <td align="center">{{ $key->nik }}</td>
+            <td align="center">{{ $key->kegiatan }}</td>
+            <td align="center">{{ $key->nama }}</td>
+            <td align="center">{{ $key->alamat }}</td>
+            <td align="center">{{ $key->statusk }}</td>
+            <td align="center">{{ $key->dana }}</td>
+            <td align="center">{{ $key->keterangan }}</td>
             </tr>
+            @endforeach
 
 
 
