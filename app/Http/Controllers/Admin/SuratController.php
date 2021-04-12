@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Surat;
 
 class SuratController extends Controller
@@ -78,6 +78,7 @@ class SuratController extends Controller
         //
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -89,22 +90,28 @@ class SuratController extends Controller
         //
     }
 
+    public function status_surat($id)
+    {
+        $suratp = Surat::where('id','=',$id)->first();
+        $suratp->status_surat = 'Disetujui';
+        $suratp->save();
+        return redirect('surat_admin');
+    }
+
     public function surat($id){
-        // dd($request->all());
-       // $pecahkan = explode('-', $request->get('bln_jimpit'));
-        // dd($pecahkan);
+       
         $surat = DB::table('surat')
         ->join('anggota_kk','anggota_kk.nik','=','surat.nik')
         ->where('surat.id',$id)
         ->first();
-      // $tanggal= $request->get('bln_jimpit');
-        // dd($jimpitan);
-      //  $total = DB::table('uang_sosial')
-      //  ->whereMonth('uang_sosial.tanggal',$pecahkan[1])
-      //  ->whereYear('uang_sosial.tanggal',$pecahkan[0])
-     //   ->sum('uang_sosial.jumlah');
+
+        $pecahkan = explode('-', date('Y-m-d'));
+        $no = DB::table('surat')
+        ->whereMonth('surat.created_at',$pecahkan[1])
+        ->count();
         $pdf= PDF::loadview("admin/surat/isisurat", [
-            "surat"=>$surat 
+            "surat"=>$surat,
+            "no"=>$no 
         ]);
         return $pdf->download("surat_pengantar.pdf");
     }

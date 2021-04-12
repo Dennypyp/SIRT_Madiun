@@ -10,7 +10,7 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<center><h1 class="h3 mb-2 text-gray-800">Pengajuan Surat Pengantar</h1></center>
+<center><h1 class="h3 mb-3 mt-3 text-gray-800">Pengajuan Surat Pengantar</h1></center>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route('surat.store') }}">
+        <form method="POST" action="{{ route('frontend.surat.store') }}">
             @csrf
             @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
@@ -86,7 +86,7 @@
                     <div class="col text-left">
                         <div class="col text-left">
                             <button type="submit" name="save" class="btn btn-primary">Simpan</button>
-                            <a class="btn btn-danger" href="{{ route('surat.index') }}" role="button">Kembali</a>
+                            <a class="btn btn-danger" href="{{ route('frontend.surat.index') }}" role="button">Kembali</a>
                         </div>
                     </div>
                 </div>

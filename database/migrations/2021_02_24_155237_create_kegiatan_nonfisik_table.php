@@ -15,12 +15,13 @@ class CreateKegiatanNonfisikTable extends Migration
     {
         Schema::create('kegiatan_nonfisik', function (Blueprint $table) {
             $table->id();
+            $table->string('nik',20)->index()->nullable();
             $table->string('kegiatan');
-            $table->string('nama_pengusul');
-            $table->string('alamat_pengusul');
-            $table->string('status');
+            $table->string('statusk');
             $table->integer('dana');
             $table->string('keterangan');
+            $table->string('status_kegiatan');
+            $table->foreign('nik')->references('nik')->on('anggota_kk');
             $table->timestamps();
         });
     }

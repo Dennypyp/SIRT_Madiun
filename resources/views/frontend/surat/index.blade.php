@@ -12,14 +12,14 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Table Pengajuan Surat</h1>
+            <h1 class="h3 mb-3 mt-3 text-gray-800">Table Pengajuan Surat</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="md-0 font-weight-bold text-primary">Data Pengajuan Surat</h6>
                     <div class="col-1 text-right">
-                        <a href="{{ route('surat.create') }}" class="btn btn-sm btn-primary">Buat Pengajuan</a>
+                        <a href="{{ route('frontend.surat.create') }}" class="btn btn-sm btn-primary">Buat Pengajuan</a>
                     </div>
                 </div>
 
@@ -40,10 +40,10 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->keperluan }}</td>
                                         <td>
-                                        @if($data->status == "Menunggu")
-                                        <div class="alert alert-warning" role="alert">{{ $data->status }}</div>
+                                        @if($data->status_surat == "Menunggu")
+                                        <div class="alert alert-warning text-center" role="alert">{{ $data->status_surat }}</div>
                                         @else
-                                        <div class="alert alert-info" role="alert">{{ $data->status }}</div>
+                                        <div class="alert alert-success text-center" role="alert">{{ $data->status_surat }}</div>
                                         @endif
                                         </td>
                                     </tr>

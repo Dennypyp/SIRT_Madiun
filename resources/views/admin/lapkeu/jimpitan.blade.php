@@ -47,7 +47,7 @@
         <tr>
 		<td align="center">{{ $loop->iteration }}</td>
 		<td align="center">{{ $item->nama }}</td>
-		<td align="center">{{ format_rp($item->jumlah) }}</td>
+		<td align="center">{{ format_rp($item->jumlah_jimpitan) }}</td>
         </tr>
 		@endforeach
 
@@ -64,7 +64,7 @@
 			<br/>
 				<center>
 				<p>Madiun, {{ format_tgl(date('Y-m-d')) }} <br/>
-					Ketua RT,
+					Ketua RT. 03,
 				</center>
 			
 			<br/>

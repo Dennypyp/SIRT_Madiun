@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\kk;
 
@@ -17,8 +18,11 @@ class KKController extends Controller
     public function index()
     {
         //
-        $kk = kk::all();
-        return view('admin.kk.index', ['kk'=>$kk]);
+
+        $kk = DB::table('kk')
+            ->where('no_kk', '!=', 'admin')
+            ->get();
+        return view('admin.kk.index', ['kk' => $kk]);
     }
 
     /**
@@ -41,10 +45,18 @@ class KKController extends Controller
     public function store(Request $request)
     {
         //
-        $kk = new kk();
-        $kk->no_kk = $request->get('no_kk');
-        $kk->save();
-        return redirect('kk')->with('msg','Nomor KK Berhasil di simpan');
+        $validator = Validator::make(request()->all(), [
+            'no_kk' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $kk = new kk();
+            $kk->no_kk = $request->get('no_kk');
+            $kk->save();
+            return redirect('kk')->with('msg', 'Nomor KK Berhasil di simpan');
+        }
     }
 
     /**
@@ -68,8 +80,8 @@ class KKController extends Controller
     {
         //
         // $kk = kk::where('no_kk',$id);
-        $kk = DB::table('kk')->where('no_kk','=',$id)->first();
-        return view('admin.kk.edit', ['kk'=>$kk]);
+        $kk = DB::table('kk')->where('no_kk', '=', $id)->first();
+        return view('admin.kk.edit', ['kk' => $kk]);
     }
 
     /**
@@ -82,10 +94,18 @@ class KKController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $data = kk::where('no_kk','=',$id)->first();
-        $data->no_kk = $request->get('no_kk');
-        $data->save();
-        return redirect('kk')->with('msg','Nomor KK Berhasil di Edit');
+        $validator = Validator::make(request()->all(), [
+            'no_kk' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        } else {
+            $data = kk::where('no_kk', '=', $id)->first();
+            $data->no_kk = $request->get('no_kk');
+            $data->save();
+            return redirect('kk')->with('msg', 'Nomor KK Berhasil di Edit');
+        }
     }
 
     /**
@@ -97,8 +117,8 @@ class KKController extends Controller
     public function destroy($id)
     {
         //
-        $kk = kk::where('no_kk','=',$id)->first();
+        $kk = kk::where('no_kk', '=', $id)->first();
         $kk->delete();
-        return redirect('kk')->with('msg','Nomor KK Berhasil di Hapus');
+        return redirect('kk')->with('msg', 'Nomor KK Berhasil di Hapus');
     }
 }
