@@ -59,19 +59,24 @@
 
         </tr>
 
+        @foreach($kegiatan_fisik as $key)
             <tr>
-            <td align="center">1</td>
-            <td align="center">{{ $kegiatan_fisik->nik }}</td>
-            <td align="center">{{ $kegiatan_fisik->kegiatan }}</td>
-            <td align="center">{{ $kegiatan_fisik->nama }}</td>
-            <td align="center">{{ $kegiatan_fisik->alamat }}</td>
-            <td align="center">{{ $kegiatan_fisik->volume}}</td>
-            <td align="center">{{ $kegiatan_fisik->satuan }}</td>
-            <td align="center">{{ $kegiatan_fisik->lokasi }}</td>
-            <td align="center">{{ $kegiatan_fisik->statusk }}</td>
-            <td align="center">{{ $kegiatan_fisik->dana }}</td>
-            <td align="center">{{ $kegiatan_fisik->keterangan }}</td>
+                @php
+                (!empty($kegiatan_fisik))
+                @endphp
+            <td class="text-center">{{ $loop->iteration }}</td>
+            <td align="center">{{ $key->nik }}</td>
+            <td align="center">{{ $key->kegiatan }}</td>
+            <td align="center">{{ $key->nama }}</td>
+            <td align="center">{{ $key->alamat }}</td>
+            <td align="center">{{ $key->volume}}</td>
+            <td align="center">{{ $key->satuan }}</td>
+            <td align="center">{{ $key->lokasi }}</td>
+            <td align="center">{{ $key->statusk }}</td>
+            <td align="center">{{ $key->dana }}</td>
+            <td align="center">{{ $key->keterangan }}</td>
             </tr>
+            @endforeach
 
 
 
