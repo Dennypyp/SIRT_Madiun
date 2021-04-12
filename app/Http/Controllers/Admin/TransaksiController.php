@@ -75,6 +75,7 @@ class TransaksiController extends Controller
             $saldo_baru->save();
         }
 
+        // Simpan transaksi
         $transaksi = new transaksi();
         $transaksi->tanggal_transaksi = $request->get('tanggal_transaksi');
         $transaksi->status_transaksi = $request->get('status_transaksi');
@@ -82,7 +83,9 @@ class TransaksiController extends Controller
         $transaksi->keterangan_transaksi = $request->get('keterangan_transaksi');
         $transaksi->jumlah_transaksi = $request->get('jumlah_transaksi');
         $transaksi->save();
+        //========================
 
+        //simpan relasi
         $saldo_transaksi = new saldo_transaksi();
         $saldo_id = DB::table('saldo')
         ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
@@ -91,7 +94,9 @@ class TransaksiController extends Controller
         $saldo_transaksi->saldo_id = $saldo_id->id;
         $saldo_transaksi->transaksi_id = $transaksi->id;
         $saldo_transaksi->save();
+        // =====================
 
+        // Update saldo
         $saldo = Saldo::find($saldo_id->id);
         if ($request->get('status_transaksi')=='Pemasukan') {
             $saldo->jumlah_saldo = $saldo->jumlah_saldo + $request->get('jumlah_transaksi');
@@ -100,6 +105,7 @@ class TransaksiController extends Controller
         }
         // $saldo->jumlah_saldo = $saldo->jumlah_saldo + $request->get('jumlah_transaksi');
         $saldo->save();
+        // =========================
         return redirect()->route('transaksi.index')->with('msg', $request->get('status_transaksi').' Berhasil Ditambah!');
     }
 
@@ -138,13 +144,18 @@ class TransaksiController extends Controller
     {
         //
         $pecahkan = explode('-', $request->get('tanggal_transaksi'));
+        // Ambil saldo saat ini
         $saldo_id = DB::table('saldo')
         ->whereMonth('saldo.tanggal_saldo', $pecahkan[1])
         ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
         ->first();
+        // ==================
 
+        // Ambil transaksi
         $transaksi = Transaksi::find($id);
+        // ==================
 
+        // Update saldo
         $saldo = Saldo::find($saldo_id->id);
         if ($request->get('status_transaksi')=='Pemasukan') {
             $saldo->jumlah_saldo = ($saldo->jumlah_saldo - $transaksi->jumlah_transaksi) + $request->get('jumlah_transaksi');
@@ -153,13 +164,16 @@ class TransaksiController extends Controller
         }
         
         $saldo->save();
+        // =======================
 
+        // Simpan transaksi
         $transaksi->tanggal_transaksi = $request->get('tanggal_transaksi');
         $transaksi->status_transaksi = $request->get('status_transaksi');
         $transaksi->jenis_transaksi = $request->get('jenis_transaksi');
         $transaksi->keterangan_transaksi = $request->get('keterangan_transaksi');
         $transaksi->jumlah_transaksi = $request->get('jumlah_transaksi');
         $transaksi->save();
+        // =======================
         return redirect()->route('transaksi.index')->with('msg', $request->get('status_transaksi').' Berhasil Diedit!');
     }
 
