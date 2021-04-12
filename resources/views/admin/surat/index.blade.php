@@ -1,69 +1,19 @@
 @extends('admin.main')
 @section('content')
 
-<!-- Main Content -->
-<div id="content">
+    <!-- Main Content -->
+    <div id="content">
 
-    <!-- Topbar -->
-    @include('admin.include.topbar')
-    <!-- End of Topbar -->
+        <!-- Topbar -->
+        @include('admin.include.topbar')
+        <!-- End of Topbar -->
 
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Tabel Pengajuan Surat Pengantar</h1>
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Tabel Pengajuan Surat Pengantar</h1>
 
-<<<<<<< HEAD
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="md-0 font-weight-bold text-primary">Data Surat Pengantar </h6>
-            </div>
-
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th class="text-center">No</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Keperluan</th>
-                                <th class="text-center" style="width:20%">Aksi</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @if(!empty($surat))
-                            @foreach($surat as $item)
-                            <tr>
-                                <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>{{ $item->nama}}</td>
-                                <td>{{ $item->keperluan }}</td>
-                                <td class="text-center">
-
-                                    <a href="#" class="btn btn-sm btn-info">Setujui</a>
-                                    <!-- <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
-        document.getElementById('setuju').submit();">Logout</a>
-        <form id="setuju" action="{{ route('logout') }}" method="POST" style="display: none;">
-          @csrf
-          <input type="hidden" name="status" value="Disetujui">
-        </form> -->
-                                    <a href="/surat_pengantar/{{$item->id}}" class="btn btn-sm btn-primary">Cetak</a>
-
-                                </td>
-                            </tr>
-                            @endforeach
-                            @else
-                            <tr>
-                                <td colspan="5" class="text-center">Data tidak ditemukan</td>
-                            </tr>
-                            @endif
-
-                        </tbody>
-
-                    </table>
-=======
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -115,15 +65,13 @@
 
                         </table>
                     </div>
->>>>>>> 5dc609efd307924cba1752f22b74c5af0ce028f2
                 </div>
             </div>
+
         </div>
+        <!-- /.container-fluid -->
 
     </div>
-    <!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
+    <!-- End of Main Content -->
 
 @endsection

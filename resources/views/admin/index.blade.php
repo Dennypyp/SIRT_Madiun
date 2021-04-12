@@ -48,7 +48,12 @@
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Saldo Bulanan Lalu ({{ format_bln($bulanLalu) }})</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <!-- {{ format_rp($dulu->jumlah_saldo) }} -->
+                                        @if ($dulu==null)
+                                            0
+                                        @else
+                                        {{ format_rp($dulu->jumlah_saldo) }}
+                                        @endif
+                                        
                                     </div>
                                 </div>
                                 <div class="col-auto">

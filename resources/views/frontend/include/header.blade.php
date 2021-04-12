@@ -13,7 +13,7 @@
 
                 @if (Auth()->user())
                     <li class="nav-item {{ 'surat' == request()->segment(1) ? 'active' : '' }}">
-                        <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat</a>
+                        <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat Pengantar</a>
                     </li>
                     <li class="nav-item {{'kegiatan_fisik' == request()->segment(1) ? 'active' : ''}} {{'kegiatan_nonfisik' == request()->segment(1) ? 'active' : ''}}">
                         <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Kegiatan</a>

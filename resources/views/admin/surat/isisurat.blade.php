@@ -7,11 +7,15 @@
     <title>Surat Pengantar</title>
 </head>
 <style >
+
+    @page { size: 14.8cm 21cm ; }
+  
     body{
         font-family: arial;
+        font-size: 13px;
     }
     .print{
-        margin-top: 10px;
+        margin-top: 0px;
     }
     @media print{
         .print{
@@ -21,30 +25,29 @@
     table{
         border-collapse: collapse;
     }
+
+
 </style>
 <body>
     <center>
-		<h2>KECAMATAN TAMAN
+		<h3>KECAMATAN TAMAN
 			<br>
 			KELURAHAN JOSENAN
 			<br>
 			RUKUN TETANGGA 03
-		</h2>
-	<br/>
+		</h3>
 	</center>
 	<hr/>
-    <br>
     <center>
-    <h3>
-        SURAT PENGANTAR
+    <h4>
+       <u>SURAT PENGANTAR</u> 
+        <br>
         <br>
         NO: 0{{$no}}/03/{{ format_bln_roma(date('Y-m-d')) }}/{{date('Y')}}
-    </h3>
-    {{-- <h3></h3> --}}
+    </h4>
+ 
     </center>
-	<br>
-	<p>Yang bertanda tangan dibawah ini Ketua RT.03 RW.01 Kelurahan Josenan, Kecamatan Taman, Kota Madiun, dengan ini menerangkan bahwa:</p>
-	<br>
+	<p style="text-indent: 50px;">Yang bertanda tangan dibawah ini Ketua RT.03 RW.01 Kelurahan Josenan, Kecamatan Taman, Kota Madiun, dengan ini menerangkan bahwa:</p>
 	<table border="0" cellspacing="" cellpadding="4" width="100%">
 	<tr>
 		<td>Nama</td>
@@ -97,7 +100,7 @@
         <td>Pada waktu pengurusan surat ke Kelurahan, diharap membawa KTP dan KK yang asli</td>
     </tr>
 	</table>
-    <p>Demikian Surat Pengantar ini dibuat untuk dipergunakan sebagaimana mestinya</p>
+    <p style="text-indent: 50px;">Demikian Surat Pengantar ini dibuat untuk dipergunakan sebagaimana mestinya</p>
 <table width="100%">
 	<tr>
 		<td></td>
@@ -112,9 +115,8 @@
 			<br/>
 			<br/>
 			<center>
-				<p>Muhammad Bisri</p>
+				<p> <u>Muhamad Bisri</u> </p>
 			</center>
-		<p style="margin-top: -30px">__________________________</p>
 		</td>
 	</tr>
 </table>
