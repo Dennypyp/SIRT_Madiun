@@ -132,8 +132,8 @@
     <table border="1" cellspacing="" cellpadding="4" width="100%">
         <thead>
             <tr>
-            <th align="center" colspan="2">Pemasukan</th>
-            <th align="center" colspan="2">Pengeluaran</th>
+                <th align="center" colspan="2">Pemasukan</th>
+                <th align="center" colspan="2">Pengeluaran</th>
 
             </tr>
             <tr>
@@ -147,7 +147,15 @@
         <tbody>
             <tr>
                 <td align="center"><b>Saldo Awal</b></td>
-                <td align="center"><b>{{format_rp($dulu->jumlah_saldo)}}</b></td>
+                <td align="center">
+                    <b>
+                        @if ($dulu == null)
+                            0
+                        @else
+                            {{ format_rp($dulu->jumlah_saldo) }}
+                        @endif
+                    </b>
+                </td>
                 <td align="center"></td>
                 <td align="center"></td>
             </tr>
@@ -170,7 +178,6 @@
                                 $tottrans['Pemasukan'] = $tottrans['Pemasukan'] + $item->jumlah_transaksi;
                             }
                             
-                            
                         @endphp
                     @endforeach
                     <td align="center">{{ format_rp($tottrans['Pemasukan']) }}</td>
@@ -192,19 +199,19 @@
             <td align="center"></td>
             <td align="center"></td>
             <td align="center">Total Pengeluaran</td>
-            <td align="center"><b>{{format_rp($keluar)}}</b></td>
+            <td align="center"><b>{{ format_rp($keluar) }}</b></td>
         </tr>
         <tr>
             <td align="center"></td>
             <td align="center"></td>
             <td align="center">Saldo Akhir</td>
-            <td align="center"><b>{{format_rp($saldo->jumlah_saldo)}}</b></td>
+            <td align="center"><b>{{ format_rp($saldo->jumlah_saldo) }}</b></td>
         </tr>
         <tr>
             <td align="center">Jumlah</td>
-            <td align="center"><b>{{format_rp($jumlah_masuk)}}</b></td>
+            <td align="center"><b>{{ format_rp($jumlah_masuk) }}</b></td>
             <td align="center">Jumlah</td>
-            <td align="center"><b>{{format_rp($jumlah_keluar)}}</b></td>
+            <td align="center"><b>{{ format_rp($jumlah_keluar) }}</b></td>
         </tr>
 
     </table>
@@ -223,9 +230,13 @@
                 <br />
                 <br />
                 <center>
-                    <p>Muhammad Bisri</p>
+                    <p>
+                        <u>
+                            Muhamad Bisri
+                        </u>
+                    </p>
                 </center>
-                <p style="margin-top: -30px">__________________________</p>
+                
             </td>
         </tr>
     </table>

@@ -12,12 +12,12 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-3 mt-3 text-gray-800">Table Pengajuan Surat</h1>
+            <h1 class="h3 mb-3 mt-3 text-gray-800">Tabel Pengajuan Surat Pengantar</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="md-0 font-weight-bold text-primary">Data Pengajuan Surat</h6>
+                    <h6 class="md-0 font-weight-bold text-primary">Data Pengajuan Surat Pengantar</h6>
                     <div class="col-1 text-right">
                         <a href="{{ route('frontend.surat.create') }}" class="btn btn-sm btn-primary">Buat Pengajuan</a>
                     </div>
@@ -28,9 +28,9 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <th style="width: 5%;">No</th>
                                     <th>Keperluan</th>
-                                    <th>Status</th>
+                                    <th style="width: 35%;">Status</th>
                     
                                 </tr>
                             </thead>
@@ -41,9 +41,9 @@
                                         <td>{{ $data->keperluan }}</td>
                                         <td>
                                         @if($data->status_surat == "Menunggu")
-                                        <div class="alert alert-warning text-center" role="alert">{{ $data->status_surat }}</div>
+                                        <div class="alert alert-warning text-center" role="alert" >{{ $data->status_surat }}</div>
                                         @else
-                                        <div class="alert alert-success text-center" role="alert">{{ $data->status_surat }}</div>
+                                        <div class="alert alert-success text-center" role="alert">{{ $data->status_surat }} <br> (Silahkan Mengambil Surat Pengantar di Rumah Ketua RT)</div>
                                         @endif
                                         </td>
                                     </tr>

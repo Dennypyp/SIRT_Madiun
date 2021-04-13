@@ -12,14 +12,14 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Table Non Kegiatan Fisik Warga RT</h1>
+            <h1 class="h3 mb-2 text-gray-800">Table Kegiatan Fisik Warga RT</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="md-0 font-weight-bold text-primary">Data Kegiatan Non Fisik Warga RT </h6>
+                    <h6 class="md-0 font-weight-bold text-primary">Data Kegiatan Fisik Warga RT </h6>
                     <div class="col-1 text-right">
-                        <a href="{{ route('kegiatan_nonfisik.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                        <a href="{{ route('kegiatan_fisik.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                     </div>
                     <br>
                     @if (session('msg'))

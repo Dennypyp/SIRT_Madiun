@@ -21,24 +21,38 @@ class AdminController extends Controller
         $date = \Carbon\Carbon::now();
         $bulanLalu =  $date->subMonth()->format('Y-m'); // 11
 
+        // Ambil bulan sekarang
         $pecahkan = explode('-', date('Y-m-d'));
+        // =======================
+        // Ambil bulan sebelumnya
         $pecahkanDulu = explode('-', $bulanLalu);
+        // ==================
 
+        // Ambil jumlah surat menunggu
         $tunggu = Surat::where("status_surat", "Menunggu")
         ->whereMonth('created_at', $pecahkan[1])
         ->whereYear('created_at', $pecahkan[0])
         ->count();
+        // ==============================
+
+        // Ambil jumlah surat disetujui
         $setuju = Surat::where("status_surat", "Disetujui")
         ->whereMonth('created_at', $pecahkan[1])
         ->whereYear('created_at', $pecahkan[0])
         ->count();
+        // ======================
 
+        // Ambil saldo bulan sekarang
         $saldo = saldo::whereMonth('tanggal_saldo', $pecahkan[1])
         ->whereYear('tanggal_saldo', $pecahkan[0])
         ->first();
+        // ===================
+
+        // Ambil saldo bulan sebelumnya
         $dulu = saldo::whereMonth('tanggal_saldo', $pecahkanDulu[1])
         ->whereYear('tanggal_saldo', $pecahkanDulu[0])
         ->first();
+        // =======================
 
         return view('admin.index',[
             'tunggu'=>$tunggu, 

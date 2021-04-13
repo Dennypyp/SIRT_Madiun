@@ -38,7 +38,7 @@ class Kegiatan_fisikController extends Controller
     {
         //
         $anggota = anggota::where("nik","=", Auth::user()->nik)->first();
-        return view('frontend.kegiatan_fisik.create',['anggota'=>$anggota]);
+        return view('admin.kegiatan_fisik.create',['anggota'=>$anggota]);
     }
 
     /**
@@ -144,12 +144,14 @@ class Kegiatan_fisikController extends Controller
         ->first();
 
         $pecahkan = explode('-', date('Y-m-d'));
-        $no = DB::table('kegiatan_fisik')
-        ->whereMonth('kegiatan_fisik.created_at',$pecahkan[1])
-        ->count();
+        $kegiatan_fisik = DB::table('kegiatan_fisik')
+        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_fisik.kegiatan','kegiatan_fisik.volume','kegiatan_fisik.satuan','kegiatan_fisik.lokasi','kegiatan_fisik.statusk','kegiatan_fisik.dana','kegiatan_fisik.keterangan','kegiatan_fisik.status_kegiatan','kegiatan_fisik.id')
+        ->join('anggota_kk','anggota_kk.nik','=','kegiatan_fisik.nik')
+        ->get();
+
         $pdf= PDF::loadview("admin/kegiatan_fisik/detail", [
             "kegiatan_fisik"=>$kegiatan_fisik,
-            "no"=>$no
+
         ]);
         return $pdf->download("detail_kegiatan.pdf");
     }

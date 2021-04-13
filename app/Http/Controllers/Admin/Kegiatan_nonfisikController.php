@@ -39,7 +39,7 @@ class Kegiatan_nonfisikController extends Controller
     {
         //
         $anggota = anggota::where("nik","=", Auth::user()->nik)->first();
-        return view('frontend.kegiatan_nonfisik.create',['anggota'=>$anggota]);
+        return view('admin.kegiatan_nonfisik.create',['anggota'=>$anggota]);
     }
 
     /**
@@ -127,12 +127,13 @@ class Kegiatan_nonfisikController extends Controller
         // dd($kegiatan_nonfisik);
 
         $pecahkan = explode('-', date('Y-m-d'));
-        $no = DB::table('kegiatan_nonfisik')
-        ->whereMonth('kegiatan_nonfisik.created_at',$pecahkan[1])
-        ->count();
+        $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
+        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan','kegiatan_nonfisik.status_kegiatan','kegiatan_nonfisik.id')
+        ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
+        ->get();
+
         $pdf= PDF::loadview("admin/kegiatan_nonfisik/detail", [
-            "kegiatan_nonfisik"=>$kegiatan_nonfisik,
-            "no"=>$no
+            "kegiatan_nonfisik"=>$kegiatan_nonfisik
         ]);
         return $pdf->download("nonfisik_detail_kegiatan.pdf");
     }
