@@ -98,9 +98,12 @@
                 <br/>
                 <br/>
                 <center>
-                    <p>Muhammad Bisri</p>
+                    <p>
+                        <u>
+                            Muhamad Bisri
+                        </u>
+                    </p>
                 </center>
-            <p style="margin-top: -30px">__________________________</p>
             </td>
         </tr>
     </table>
