@@ -46,7 +46,7 @@
     <table border="1" cellspacing="" cellpadding="4" width="100%">
         <tr>
             <th align="center">No</th>
-            <th align="center">Nik</th>
+            <th align="center">NIK</th>
             <th align="center">Nama Kegiatan</th>
             <th align="center">Nama Pengusul</th>
             <th align="center">Alamat Pengusul</th>
