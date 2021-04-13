@@ -18,10 +18,10 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="md-0 font-weight-bold text-primary">Data Saldo RT </h6>
-                    <div class="col-1 text-right">
+                    {{-- <div class="col-1 text-right">
                         <a href="{{ route('saldo.create') }}" class="btn btn-primary" style="width: 200px">Saldo Bulanan
                             Baru</a>
-                    </div>
+                    </div> --}}
                     <br>
                     @if (session('msg'))
                         <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
@@ -41,7 +41,7 @@
                                     <th class="text-center">No</th>
                                     <th class="text-center">Tanggal</th>
                                     <th class="text-center">Saldo</th>
-                                    <th class="text-center" style="width:20%">Aksi</th>
+                                    {{-- <th class="text-center" style="width:20%">Aksi</th> --}}
                                 </tr>
                             </thead>
 
@@ -51,8 +51,8 @@
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ format_bln($item->tanggal_saldo) }}</td>
-                                            <td>{{ format_rp($item->jumlah_saldo) }}</td>
-                                            <td class="text-center">
+                                            <td class="text-center">{{ format_rp($item->jumlah_saldo) }}</td>
+                                            {{-- <td class="text-center"> --}}
 
                                                 {{-- <a href="{{ route('pemasukan.edit',[$item->id]) }}" class="btn btn-sm btn-warning">Edit</a>
                                             <a href="/pemasukan/destroy/{{ $item->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
@@ -60,10 +60,10 @@
                                                 {{-- data-toggle="modal" data-target="#editSaldoModal" --}}
                                                 {{-- >Edit</a> --}}
 
-                                                <a href="/saldo/destroy/{{ $item->id }}"
-                                                    class="btn btn-sm btn-danger">Hapus</a>
+                                                {{-- <a href="/saldo/destroy/{{ $item->id }}"
+                                                    class="btn btn-sm btn-danger">Hapus</a> --}}
 
-                                            </td>
+                                            {{-- </td> --}}
                                         </tr>
 
                                     @endforeach
