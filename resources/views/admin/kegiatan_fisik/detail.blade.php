@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <style >
+    @page { size: 21cm 29.7cm  landscape; }
+
     body{
         font-family: arial;
     }

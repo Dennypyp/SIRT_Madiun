@@ -21,7 +21,7 @@ class SaldoController extends Controller
         // $yesterday = date("Y-m-d", strtotime( '-1 days' ) ); 
         // $countYesterday = Timer::whereDate('created_at', $yesterday )->get();
 
-        $saldo = Saldo::all();
+        $saldo = Saldo::orderBy('id', 'DESC')->get();
         return view('admin.saldo.index', ['saldo'=>$saldo]);
     }
 

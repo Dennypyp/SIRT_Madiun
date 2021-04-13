@@ -55,7 +55,7 @@ class KKController extends Controller
             $kk = new kk();
             $kk->no_kk = $request->get('no_kk');
             $kk->save();
-            return redirect('kk')->with('msg', 'Nomor KK Berhasil di simpan');
+            return redirect('kk')->with('msg', 'Nomor KK Berhasil Disimpan');
         }
     }
 
@@ -104,7 +104,7 @@ class KKController extends Controller
             $data = kk::where('no_kk', '=', $id)->first();
             $data->no_kk = $request->get('no_kk');
             $data->save();
-            return redirect('kk')->with('msg', 'Nomor KK Berhasil di Edit');
+            return redirect('kk')->with('msg', 'Nomor KK Berhasil Diedit');
         }
     }
 
@@ -119,6 +119,6 @@ class KKController extends Controller
         //
         $kk = kk::where('no_kk', '=', $id)->first();
         $kk->delete();
-        return redirect('kk')->with('msg', 'Nomor KK Berhasil di Hapus');
+        return redirect('kk')->with('msg', 'Nomor KK Berhasil Dihapus');
     }
 }
