@@ -177,7 +177,11 @@ class LaporanController extends Controller
         // =======================
 
         // Neraca Jumlah Pemasukan
-        $jumlah_masuk = intval($masuk)+ $dulu->jumlah_saldo +intval($total);
+        if ($dulu==null){
+            $jumlah_masuk = intval($masuk)+ 0 +intval($total);
+        }else{
+            $jumlah_masuk = intval($masuk)+ $dulu->jumlah_saldo +intval($total);
+        }
         // =======================
         // Neraca Jumlah Pengeluaran
         $jumlah_keluar = $saldo->jumlah_saldo+intval($keluar);
