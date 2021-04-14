@@ -70,7 +70,11 @@ class TransaksiController extends Controller
 
             $saldo_baru = new Saldo();
             $saldo_baru->tanggal_saldo = $request->get('tanggal_transaksi');
-            $saldo_baru->jumlah_saldo = $dulu->jumlah_saldo;
+            if ($dulu==null) {
+                $saldo_baru->jumlah_saldo = 0;
+            } else {
+                $saldo_baru->jumlah_saldo = $dulu->jumlah_saldo;
+            }
             // dd($saldo_baru->tanggal_saldo);
             $saldo_baru->save();
         }

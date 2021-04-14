@@ -162,26 +162,52 @@ class LaporanController extends Controller
         // ============================
 
         // Ambil record berdasarkan jenis transaksi
-        $transaksi = transaksi::all()
-        ->groupBy('jenis_transaksi');
+        $transaksi = transaksi::select('jenis_transaksi')
+        // ->whereMonth('tanggal_transaksi', $pecahkan[1])
+        // ->whereYear('tanggal_transaksi', $pecahkan[0])
+        ->groupBy('jenis_transaksi')
+        ->get();
+        // foreach ($transaksi as $trans) {
+        //     dd($trans);
+        // }
+        // dd($transaksi);
+
+        $transaksi2 = transaksi::whereMonth('tanggal_transaksi', $pecahkan[1])
+        ->whereYear('tanggal_transaksi', $pecahkan[0])
+        ->get();
+        
+        // foreach ($transaksi as $trans) {
+        //     foreach ($transaksi2 as $trans2) {
+        //         if($trans->jenis_transaksi == $trans2->jenis_transaksi){
+        //             dd($trans2);
+        //         }
+        //     }
+        // }
         // =====================
 
         // Ambil total pengeluaran
         $keluar = transaksi::where('status_transaksi','Pengeluaran')
-        ->sum('jumlah_transaksi');
+        
+        ->sum('jumlah_transaksi')
+
+        ;
         // ========================
 
         // Ambil Total Pemasukan
         $masuk = transaksi::where('status_transaksi','Pemasukan')
-        ->sum('jumlah_transaksi');
+        ->whereMonth('tanggal_transaksi', $pecahkan[1])
+        ->whereYear('tanggal_transaksi', $pecahkan[0])
+        ->sum('jumlah_transaksi')
+        ;
         // =======================
 
         // Neraca Jumlah Pemasukan
         if ($dulu==null){
             $jumlah_masuk = intval($masuk)+ 0 +intval($total);
         }else{
-            $jumlah_masuk = intval($masuk)+ $dulu->jumlah_saldo +intval($total);
+            $jumlah_masuk = intval($masuk) + $dulu->jumlah_saldo +intval($total);
         }
+        // dd($jumlah_masuk);
         // =======================
         // Neraca Jumlah Pengeluaran
         $jumlah_keluar = $saldo->jumlah_saldo+intval($keluar);
@@ -192,6 +218,7 @@ class LaporanController extends Controller
             'total' => $total,
             'tanggal' => $tanggal,
             'transaksi' => $transaksi,
+            'transaksi2' => $transaksi2,
             'saldo' => $saldo,
             'dulu' => $dulu,
             'keluar' => $keluar,

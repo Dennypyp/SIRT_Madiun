@@ -44,7 +44,7 @@
                                     <div class="card-body">
                                         <form action="/laporan_keuangan" method="GET" id="lap_keuangan">
                                             @csrf
-                                            <h5 class="card-title text-center">Laporan Keungan Bulanan</h5>
+                                            <h5 class="card-title text-center">Laporan Keuangan Bulanan</h5>
                                             <div class="form-group">
                                                 <label for="tgl_jimpit">Pilih Bulan Laporan</label>
                                                 <input id="bday-month" type="month" name="bln_uang" class="form-control">

@@ -40,9 +40,5 @@ class UserSeeder extends Seeder
             'role'=> "admin"
         ]);
 
-        DB::table('saldo')->insert([
-            'tanggal_saldo'=> date('Y-m-d'),
-            'jumlah_saldo'=> 0
-        ]);
     }
 }

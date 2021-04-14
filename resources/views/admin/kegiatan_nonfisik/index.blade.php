@@ -12,12 +12,12 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Table Kegiatan Non Fisik Warga RT</h1>
+            <h1 class="h3 mb-2 text-gray-800">Table Kegiatan Non Fisik RT</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="md-0 font-weight-bold text-primary">Data Kegiatan Non Fisik Warga RT </h6>
+                    <h6 class="md-0 font-weight-bold text-primary">Data Kegiatan Non Fisik RT </h6>
                     <div class="col-1 text-right">
                         <a href="{{ route('kegiatan_nonfisik.create') }}" class="btn btn-sm btn-primary">Tambah</a>
                     </div>
@@ -44,7 +44,7 @@
                                     <th class="text-center">Status Kegiatan</th>
                                     <th class="text-center">Dana</th>
                                     <th class="text-center">Keterangan</th>
-                                    <th class="text-center" style="width:30%">Aksi</th>
+                                    <th class="text-center" style="width:20%">Aksi</th>
                                 </tr>
                             </thead>
 
@@ -57,7 +57,7 @@
                                         <td>{{ $key->alamat }}</td>
                                         <td>{{ $key->kegiatan }}</td>
                                         <td>{{ $key->statusk }}</td>
-                                        <td>{{ $key->dana }}</td>
+                                        <td>{{ format_rp($key->dana) }}</td>
                                         <td>{{ $key->keterangan }}</td>
                                         <td>
 
