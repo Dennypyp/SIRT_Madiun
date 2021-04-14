@@ -12,12 +12,12 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-3 mt-3 text-gray-800">Table Pengajuan Kegiatan Fisik</h1>
+            <h1 class="h3 mb-3 mt-3 text-gray-800">Table Pengajuan Kegiatan Fisik RT</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="md-0 font-weight-bold text-primary">Data Pengajuan Kegiatan Fisik</h6>
+                    <h6 class="md-0 font-weight-bold text-primary">Data Pengajuan Kegiatan Fisik RT</h6>
                     <div class="col-1 text-right">
                         <a href="{{ route('frontend.kegiatan_fisik_warga.create') }}" class="btn btn-sm btn-primary">Buat Pengajuan</a>
                     </div>
@@ -50,7 +50,7 @@
                                         <td>{{ $data->satuan }}</td>
                                         <td>{{ $data->lokasi }}</td>
                                         <td>{{ $data->statusk }}</td>
-                                        <td>{{ $data->dana }}</td>
+                                        <td>{{ format_rp($data->dana) }}</td>
                                         <td>{{ $data->keterangan }}</td>
                                         <td>
                                         @if($data->status_kegiatan == "Menunggu")

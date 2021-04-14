@@ -117,12 +117,12 @@ class Kegiatan_nonfisikController extends Controller
         return redirect('kegiatan_nonfisik');
     }
 
-    public function kegiatan_nonfisik($id){
+    public function kegiatan_nonfisik(){
 
         $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
         ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan')
         ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
-        ->where('kegiatan_nonfisik.id',$id)
+        // ->where('kegiatan_nonfisik.id',$id)
         ->first();
         // dd($kegiatan_nonfisik);
 

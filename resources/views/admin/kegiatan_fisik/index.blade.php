@@ -20,7 +20,9 @@
                     <h6 class="md-0 font-weight-bold text-primary">Data Kegiatan Fisik RT </h6>
                     <div class="col-1 text-right">
                         <a href="{{ route('kegiatan_fisik.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                        
                     </div>
+                    
                     <br>
                     @if (session('msg'))
                     <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
@@ -29,10 +31,15 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    
                     @endif
+                    <div class="float-right">
+                        <a href="/detail_kegiatan" class="btn btn-sm btn-info"><i class="far fa-file-pdf"></i> Cetak</a>
+                    </div>
                 </div>
-
+                
                 <div class="card-body">
+                    
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -76,7 +83,6 @@
 
                                             @elseif($data->status_kegiatan == "Disetujui")
                                             <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
-                                            <a href="/detail_kegiatan/{{$data->id}}" class="btn btn-sm btn-primary"><i class="far fa-file-pdf"></i> Cetak</a>
                                             @endif
 
                                     </td>

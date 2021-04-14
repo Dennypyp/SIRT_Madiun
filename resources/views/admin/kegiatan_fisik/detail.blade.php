@@ -84,7 +84,7 @@
 
 
     </table>
-
+</center>
     <p>Demikian Detail Kegiatan Fisik Pada RT 03 RW 1 KELURAHAN JOSENAN KECAMATAN TAMAN</p>
     <table width="100%">
         <tr>

@@ -30,8 +30,10 @@
                         </button>
                     </div>
                     @endif
+                    <div class="float-right">
+                        <a href="/nonfisik_detail_kegiatan" class="btn btn-sm btn-info"><i class="far fa-file-pdf"></i> Cetak</a>
+                    </div>
                 </div>
-
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -68,7 +70,7 @@
 
                                             @elseif($key->status_kegiatan == "Disetujui")
                                             <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
-                                            <a href="/nonfisik_detail_kegiatan/{{$key->id}}" class="btn btn-sm btn-primary"><i class="far fa-file-pdf"></i> Cetak</a>
+                                            
                                             @endif
 
                                     </td>
