@@ -55,8 +55,10 @@
                                         <td>
                                         @if($data->status_kegiatan == "Menunggu")
                                         <div class="alert alert-warning text-center" role="alert">{{ $data->status_kegiatan }}</div>
-                                        @else
+                                        @elseif($data->status_kegiatan == "Disetujui")
                                         <div class="alert alert-success text-center" role="alert">{{ $data->status_kegiatan }}</div>
+                                        @else
+                                        <div class="alert alert-danger text-center" role="alert">{{ $data->status_kegiatan }}</div>
                                         @endif
                                         </td>
                                     </tr>

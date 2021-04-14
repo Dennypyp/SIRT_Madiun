@@ -135,18 +135,22 @@ class Kegiatan_fisikController extends Controller
         return redirect('kegiatan_fisik');
     }
 
+    public function tolak_status_kegiatan($id)
+    {
+        $kegiatan_fisik = Kegiatan_fisik::where('id','=',$id)->first();
+        $kegiatan_fisik->status_kegiatan = 'Ditolak';
+        $kegiatan_fisik->save();
+        return redirect('kegiatan_fisik');
+    }
+
     public function kegiatan_fisik()
     {
-        $kegiatan_fisik = DB::table('kegiatan_fisik')
-        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_fisik.kegiatan','kegiatan_fisik.volume','kegiatan_fisik.satuan','kegiatan_fisik.lokasi','kegiatan_fisik.statusk','kegiatan_fisik.dana','kegiatan_fisik.keterangan','kegiatan_fisik.status_kegiatan','kegiatan_fisik.id')
-        ->join('anggota_kk','anggota_kk.nik','=','kegiatan_fisik.nik')
-        // ->where('kegiatan_fisik.id',$id)
-        ->first();
+        
 
-        $pecahkan = explode('-', date('Y-m-d'));
         $kegiatan_fisik = DB::table('kegiatan_fisik')
         ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_fisik.kegiatan','kegiatan_fisik.volume','kegiatan_fisik.satuan','kegiatan_fisik.lokasi','kegiatan_fisik.statusk','kegiatan_fisik.dana','kegiatan_fisik.keterangan','kegiatan_fisik.status_kegiatan','kegiatan_fisik.id')
         ->join('anggota_kk','anggota_kk.nik','=','kegiatan_fisik.nik')
+        ->where('kegiatan_fisik.status_kegiatan','Disetujui')
         ->get();
 
         $pdf= PDF::loadview("admin/kegiatan_fisik/detail", [

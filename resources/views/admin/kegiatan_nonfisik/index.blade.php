@@ -61,16 +61,17 @@
                                         <td>{{ $key->statusk }}</td>
                                         <td>{{ format_rp($key->dana) }}</td>
                                         <td>{{ $key->keterangan }}</td>
-                                        <td>
+                                        <td class="text-center">
 
                                             {{-- <a href="{{ route('kegiatan_nonfisik.edit',[$data->id]) }}" class="btn btn-sm btn-warning">Edit</a>
                                             <a href="/kegiatan_nonfisik/destroy/{{ $data->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
                                             @if ($key->status_kegiatan == "Menunggu")
                                                 <a href="/nonfisik_status_kegiatan/{{$key->id}}" class="btn btn-sm btn-success" >Setujui</a>
-
+                                                <a href="/nonfisik_tolak_status_kegiatan/{{$key->id}}" class="btn btn-sm btn-warning" >Tolak</a>
                                             @elseif($key->status_kegiatan == "Disetujui")
                                             <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
-                                            
+                                            @elseif($key->status_kegiatan == "Ditolak")
+                                            <a href="#" class="btn btn-sm btn-danger" disabled>Ditolak</a>
                                             @endif
 
                                     </td>

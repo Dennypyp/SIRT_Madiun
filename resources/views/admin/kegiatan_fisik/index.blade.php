@@ -80,9 +80,11 @@
                                             <a href="/kegiatan_fisik/destroy/{{ $data->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
                                             @if ($data->status_kegiatan == "Menunggu")
                                                 <a href="/status_kegiatan/{{$data->id}}" class="btn btn-sm btn-success" >Setujui</a>
-
+                                                <a href="/tolak_status_kegiatan/{{$data->id}}" class="btn btn-sm btn-warning" >Tolak</a>
                                             @elseif($data->status_kegiatan == "Disetujui")
                                             <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
+                                            @elseif($data->status_kegiatan == "Ditolak")
+                                            <a href="#" class="btn btn-sm btn-danger" disabled>Ditolak</a>
                                             @endif
 
                                     </td>

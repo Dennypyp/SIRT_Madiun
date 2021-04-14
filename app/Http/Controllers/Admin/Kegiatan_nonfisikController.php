@@ -117,19 +117,21 @@ class Kegiatan_nonfisikController extends Controller
         return redirect('kegiatan_nonfisik');
     }
 
+    public function tolak_status_kegiatan($id)
+    {
+        $kegiatan_nonfisikk = Kegiatan_nonfisik::where('id','=',$id)->first();
+        $kegiatan_nonfisikk->status_kegiatan = 'Ditolak';
+        $kegiatan_nonfisikk->save();
+        return redirect('kegiatan_nonfisik');
+    }
+
     public function kegiatan_nonfisik(){
 
-        $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
-        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan')
-        ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
-        // ->where('kegiatan_nonfisik.id',$id)
-        ->first();
-        // dd($kegiatan_nonfisik);
-
-        $pecahkan = explode('-', date('Y-m-d'));
+        
         $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
         ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan','kegiatan_nonfisik.status_kegiatan','kegiatan_nonfisik.id')
         ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
+        ->where('kegiatan_nonfisik.status_kegiatan','Disetujui')
         ->get();
 
         $pdf= PDF::loadview("admin/kegiatan_nonfisik/detail", [

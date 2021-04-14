@@ -67,7 +67,7 @@
             <td align="center">{{ $key->nama }}</td>
             <td align="center">{{ $key->alamat }}</td>
             <td align="center">{{ $key->statusk }}</td>
-            <td align="center">{{ $key->dana }}</td>
+            <td align="center">{{ format_rp($key->dana) }}</td>
             <td align="center">{{ $key->keterangan }}</td>
             </tr>
             @endforeach
