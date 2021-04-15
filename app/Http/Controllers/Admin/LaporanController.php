@@ -175,30 +175,21 @@ class LaporanController extends Controller
         $transaksi2 = transaksi::whereMonth('tanggal_transaksi', $pecahkan[1])
         ->whereYear('tanggal_transaksi', $pecahkan[0])
         ->get();
-        
-        // foreach ($transaksi as $trans) {
-        //     foreach ($transaksi2 as $trans2) {
-        //         if($trans->jenis_transaksi == $trans2->jenis_transaksi){
-        //             dd($trans2);
-        //         }
-        //     }
-        // }
+
         // =====================
 
         // Ambil total pengeluaran
         $keluar = transaksi::where('status_transaksi','Pengeluaran')
-        
-        ->sum('jumlah_transaksi')
-
-        ;
+        ->whereMonth('tanggal_transaksi', $pecahkan[1])
+        ->whereYear('tanggal_transaksi', $pecahkan[0])
+        ->sum('jumlah_transaksi');
         // ========================
 
         // Ambil Total Pemasukan
         $masuk = transaksi::where('status_transaksi','Pemasukan')
         ->whereMonth('tanggal_transaksi', $pecahkan[1])
         ->whereYear('tanggal_transaksi', $pecahkan[0])
-        ->sum('jumlah_transaksi')
-        ;
+        ->sum('jumlah_transaksi');
         // =======================
 
         // Neraca Jumlah Pemasukan
@@ -225,6 +216,7 @@ class LaporanController extends Controller
             'jumlah_masuk' => $jumlah_masuk,
             'jumlah_keluar' => $jumlah_keluar,
         ]);
+
         return $pdf->download("laporan_keuangan.pdf");
     }
 }
