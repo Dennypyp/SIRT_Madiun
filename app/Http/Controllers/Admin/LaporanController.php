@@ -162,17 +162,33 @@ class LaporanController extends Controller
         // ============================
 
         // Ambil record berdasarkan jenis transaksi
-        $transaksi = transaksi::all()
-        ->groupBy('jenis_transaksi');
+        $transaksi = transaksi::select('jenis_transaksi')
+        // ->whereMonth('tanggal_transaksi', $pecahkan[1])
+        // ->whereYear('tanggal_transaksi', $pecahkan[0])
+        ->groupBy('jenis_transaksi')
+        ->get();
+        // foreach ($transaksi as $trans) {
+        //     dd($trans);
+        // }
+        // dd($transaksi);
+
+        $transaksi2 = transaksi::whereMonth('tanggal_transaksi', $pecahkan[1])
+        ->whereYear('tanggal_transaksi', $pecahkan[0])
+        ->get();
+
         // =====================
 
         // Ambil total pengeluaran
         $keluar = transaksi::where('status_transaksi','Pengeluaran')
+        ->whereMonth('tanggal_transaksi', $pecahkan[1])
+        ->whereYear('tanggal_transaksi', $pecahkan[0])
         ->sum('jumlah_transaksi');
         // ========================
 
         // Ambil Total Pemasukan
         $masuk = transaksi::where('status_transaksi','Pemasukan')
+        ->whereMonth('tanggal_transaksi', $pecahkan[1])
+        ->whereYear('tanggal_transaksi', $pecahkan[0])
         ->sum('jumlah_transaksi');
         // =======================
 
@@ -180,8 +196,9 @@ class LaporanController extends Controller
         if ($dulu==null){
             $jumlah_masuk = intval($masuk)+ 0 +intval($total);
         }else{
-            $jumlah_masuk = intval($masuk)+ $dulu->jumlah_saldo +intval($total);
+            $jumlah_masuk = intval($masuk) + $dulu->jumlah_saldo +intval($total);
         }
+        // dd($jumlah_masuk);
         // =======================
         // Neraca Jumlah Pengeluaran
         $jumlah_keluar = $saldo->jumlah_saldo+intval($keluar);
@@ -192,12 +209,14 @@ class LaporanController extends Controller
             'total' => $total,
             'tanggal' => $tanggal,
             'transaksi' => $transaksi,
+            'transaksi2' => $transaksi2,
             'saldo' => $saldo,
             'dulu' => $dulu,
             'keluar' => $keluar,
             'jumlah_masuk' => $jumlah_masuk,
             'jumlah_keluar' => $jumlah_keluar,
         ]);
+
         return $pdf->download("laporan_keuangan.pdf");
     }
 }

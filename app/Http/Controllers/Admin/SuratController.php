@@ -19,6 +19,7 @@ class SuratController extends Controller
     {
         $surat = DB::table('surat')
         ->join('anggota_kk','anggota_kk.nik','=','surat.nik')
+        ->orderBy('surat.created_at', 'DESC')
         ->get();
         return view('admin.surat.index',['surat'=>$surat]);
     }

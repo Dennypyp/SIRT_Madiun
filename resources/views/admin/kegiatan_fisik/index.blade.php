@@ -12,15 +12,17 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Table Kegiatan Fisik Warga RT</h1>
+            <h1 class="h3 mb-2 text-gray-800">Table Kegiatan Fisik RT</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="md-0 font-weight-bold text-primary">Data Kegiatan Fisik Warga RT </h6>
+                    <h6 class="md-0 font-weight-bold text-primary">Data Kegiatan Fisik RT </h6>
                     <div class="col-1 text-right">
                         <a href="{{ route('kegiatan_fisik.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                        
                     </div>
+                    
                     <br>
                     @if (session('msg'))
                     <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
@@ -29,10 +31,15 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    
                     @endif
+                    <div class="float-right">
+                        <a href="/detail_kegiatan" class="btn btn-sm btn-info"><i class="far fa-file-pdf"></i> Cetak</a>
+                    </div>
                 </div>
-
+                
                 <div class="card-body">
+                    
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -65,7 +72,7 @@
                                             <td>{{ $data->satuan }}</td>
                                             <td>{{ $data->lokasi }}</td>
                                             <td>{{ $data->statusk }}</td>
-                                            <td>{{ $data->dana }}</td>
+                                            <td>{{ format_rp($data->dana) }}</td>
                                             <td>{{ $data->keterangan }}</td>
                                             <td class="text-center">
 
@@ -73,10 +80,11 @@
                                             <a href="/kegiatan_fisik/destroy/{{ $data->id }}" class="btn btn-sm btn-danger">Hapus</a> --}}
                                             @if ($data->status_kegiatan == "Menunggu")
                                                 <a href="/status_kegiatan/{{$data->id}}" class="btn btn-sm btn-success" >Setujui</a>
-
+                                                <a href="/tolak_status_kegiatan/{{$data->id}}" class="btn btn-sm btn-warning" >Tolak</a>
                                             @elseif($data->status_kegiatan == "Disetujui")
                                             <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
-                                            <a href="/detail_kegiatan/{{$data->id}}" class="btn btn-sm btn-primary"><i class="far fa-file-pdf"></i> Cetak</a>
+                                            @elseif($data->status_kegiatan == "Ditolak")
+                                            <a href="#" class="btn btn-sm btn-danger" disabled>Ditolak</a>
                                             @endif
 
                                     </td>

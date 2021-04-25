@@ -23,6 +23,7 @@ class JimpitanController extends Controller
         ->join('kk','kk.no_kk','=','uang_sosial.nkk')
         ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
         ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
+        ->orderBy('uang_sosial.created_at', 'DESC')
         ->get();
         return view('admin.jimpitan.index', ['jimpitan' => $jimpitan]);
     }

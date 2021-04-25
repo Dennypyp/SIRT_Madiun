@@ -12,12 +12,12 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Tambah Kegiatan Warga Fisik RT</h1>
+            <h1 class="h3 mb-2 text-gray-800">Tambah Kegiatan Fisik RT</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="md-0 font-weight-bold text-primary">Tambah Kegiatan Warga Fisik Pemasukan RT </h6>
+                    <h6 class="md-0 font-weight-bold text-primary">Tambah Kegiatan Fisik RT </h6>
                 </div>
 
                 <div class="card-body">

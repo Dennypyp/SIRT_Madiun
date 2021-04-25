@@ -46,7 +46,7 @@
     <table border="1" cellspacing="" cellpadding="4" width="100%">
         <tr>
             <th align="center">No</th>
-            <th align="center">Nik</th>
+            <th align="center">NIK</th>
             <th align="center">Nama Kegiatan</th>
             <th align="center">Nama Pengusul</th>
             <th align="center">Alamat Pengusul</th>
@@ -67,7 +67,7 @@
             <td align="center">{{ $key->nama }}</td>
             <td align="center">{{ $key->alamat }}</td>
             <td align="center">{{ $key->statusk }}</td>
-            <td align="center">{{ $key->dana }}</td>
+            <td align="center">{{ format_rp($key->dana) }}</td>
             <td align="center">{{ $key->keterangan }}</td>
             </tr>
             @endforeach
@@ -76,7 +76,7 @@
 
 
     </table>
-
+</center>
     <p>Demikian Detail Kegiatan Non Fisik Pada RT 03 RW 1 KELURAHAN JOSENAN KECAMATAN TAMAN</p>
     <table width="100%">
         <tr>
@@ -92,9 +92,12 @@
                 <br/>
                 <br/>
                 <center>
-                    <p>Muhammad Bisri</p>
+                    <p>
+                        <u>
+                            Muhamad Bisri
+                        </u>
+                    </p>
                 </center>
-            <p style="margin-top: -30px">__________________________</p>
             </td>
         </tr>
     </table>

@@ -54,7 +54,7 @@
             $tottrans['Pemasukan'] = 0;
             $tottrans['Pengeluaran'] = 0;
         @endphp
-        <h4>• {{ $jenis_transaksi }}</h4>
+        <h4>• {{ $uang->jenis_transaksi }}</h4>
         <table border="1" cellspacing="" cellpadding="4" width="100%">
             <thead>
                 <tr>
@@ -68,33 +68,34 @@
                     <th align="center">Pengeluaran</th>
                 </tr>
             </thead>
-            @foreach ($uang as $item)
-                <tbody>
-                    <tr>
-                        <td align="center">{{ $loop->iteration }}</td>
-                        <td align="center">{{ format_tgl($item->tanggal_transaksi) }}</td>
-                        <td align="center">{{ $item->keterangan_transaksi }}</td>
-                        @if ($item->status_transaksi == 'Pemasukan')
-                            <td align="center">{{ format_rp($item->jumlah_transaksi) }}</td>
-                            <td align="center">-</td>
-                        @elseif($item->status_transaksi=='Pengeluaran')
-                            <td align="center">-</td>
-                            <td align="center">{{ format_rp($item->jumlah_transaksi) }}</td>
+            <tbody>
+                @foreach ($transaksi2 as $item)
+                    @if ($uang->jenis_transaksi == $item->jenis_transaksi)
+                        <tr>
+                            <td align="center">{{ $loop->iteration }}</td>
+                            <td align="center">{{ format_tgl($item->tanggal_transaksi) }}</td>
+                            <td align="center">{{ $item->keterangan_transaksi }}</td>
+                            @if ($item->status_transaksi == 'Pemasukan')
+                                <td align="center">{{ format_rp($item->jumlah_transaksi) }}</td>
+                                <td align="center">-</td>
+                            @elseif($item->status_transaksi=='Pengeluaran')
+                                <td align="center">-</td>
+                                <td align="center">{{ format_rp($item->jumlah_transaksi) }}</td>
+                            @endif
+                        </tr>
+                        @php
+                            if ($item->status_transaksi == 'Pemasukan') {
+                                $tottrans['Pemasukan'] = $tottrans['Pemasukan'] + $item->jumlah_transaksi;
+                            }
+                            
+                            if ($item->status_transaksi == 'Pengeluaran') {
+                                $tottrans['Pengeluaran'] = $tottrans['Pengeluaran'] + $item->jumlah_transaksi;
+                            }
+                        @endphp
+                    @endif
 
-                        @endif
-                    </tr>
-
-                </tbody>
-                @php
-                    if ($item->status_transaksi == 'Pemasukan') {
-                        $tottrans['Pemasukan'] = $tottrans['Pemasukan'] + $item->jumlah_transaksi;
-                    }
-                    
-                    if ($item->status_transaksi == 'Pengeluaran') {
-                        $tottrans['Pengeluaran'] = $tottrans['Pengeluaran'] + $item->jumlah_transaksi;
-                    }
-                @endphp
-            @endforeach
+                @endforeach
+            </tbody>
             <tr>
                 <td colspan="3" align="center">TOTAL</td>
                 <td align="center"><b>{{ format_rp($tottrans['Pemasukan']) }}</b></td>
@@ -171,24 +172,26 @@
                     $tottrans['Pengeluaran'] = 0;
                 @endphp
                 <tr>
-                    <td align="center">{{ $jenis_transaksi }}</td>
-                    @foreach ($uang as $item)
-                        @php
-                            if ($item->status_transaksi == 'Pemasukan') {
-                                $tottrans['Pemasukan'] = $tottrans['Pemasukan'] + $item->jumlah_transaksi;
-                            }
-                            
-                        @endphp
+                    <td align="center">{{ $uang->jenis_transaksi }}</td>
+                    @foreach ($transaksi2 as $item)
+                        @if ($uang->jenis_transaksi == $item->jenis_transaksi)
+                            @php
+                                if ($item->status_transaksi == 'Pemasukan') {
+                                    $tottrans['Pemasukan'] = $tottrans['Pemasukan'] + $item->jumlah_transaksi;
+                                }
+                            @endphp
+                        @endif
                     @endforeach
                     <td align="center">{{ format_rp($tottrans['Pemasukan']) }}</td>
-                    <td align="center">{{ $jenis_transaksi }}</td>
-                    @foreach ($uang as $item)
-                        @php
-                            
-                            if ($item->status_transaksi == 'Pengeluaran') {
-                                $tottrans['Pengeluaran'] = $tottrans['Pengeluaran'] + $item->jumlah_transaksi;
-                            }
-                        @endphp
+                    <td align="center">{{ $uang->jenis_transaksi }}</td>
+                    @foreach ($transaksi2 as $item)
+                        @if ($uang->jenis_transaksi == $item->jenis_transaksi)
+                            @php
+                                if ($item->status_transaksi == 'Pengeluaran') {
+                                    $tottrans['Pengeluaran'] = $tottrans['Pengeluaran'] + $item->jumlah_transaksi;
+                                }
+                            @endphp
+                        @endif
                     @endforeach
                     <td align="center">{{ format_rp($tottrans['Pengeluaran']) }}</td>
                 </tr>
@@ -236,7 +239,7 @@
                         </u>
                     </p>
                 </center>
-                
+
             </td>
         </tr>
     </table>

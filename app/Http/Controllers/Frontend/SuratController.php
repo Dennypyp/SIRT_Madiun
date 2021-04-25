@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\anggota;
 use App\Surat;
-use App\kk;
 use Illuminate\Support\Facades\Auth;
 
 class SuratController extends Controller
@@ -19,7 +18,9 @@ class SuratController extends Controller
     public function index()
     {
         //
-        $surat = Surat::where("nik", Auth::user()->nik)->get();
+        $surat = Surat::where("nik", Auth::user()->nik)
+        ->orderBy('created_at', 'DESC')
+        ->get();
         return view('frontend.surat.index',['surat'=>$surat]);
     }
 

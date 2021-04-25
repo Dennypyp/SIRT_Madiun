@@ -86,7 +86,7 @@ class AnggotaKKController extends Controller
             $akk->status_kk = $request->get('status_kk');
             $akk->no_kk = $request->get('no_kk');
             $akk->save();
-            return redirect('anggota')->with('msg', 'Anggota KK Berhasil di simpan');
+            return redirect('anggota')->with('msg', 'Anggota KK Berhasil Disimpan');
         }
     }
 
@@ -157,7 +157,7 @@ class AnggotaKKController extends Controller
             $akk->status = $request->get('status');
             $akk->status_kk = $request->get('status_kk');
             $akk->save();
-            return redirect('anggota')->with('msg', 'Anggota KK Berhasil di Edit');
+            return redirect('anggota')->with('msg', 'Anggota KK Berhasil Diedit');
         }
     }
 
@@ -172,6 +172,6 @@ class AnggotaKKController extends Controller
         //
         $anggota = anggota::where('nik', '=', $id)->first();
         $anggota->delete();
-        return redirect('anggota')->with('msg', 'Anggota KK Berhasil di Hapus');
+        return redirect('anggota')->with('msg', 'Anggota KK Berhasil Dihapus');
     }
 }
