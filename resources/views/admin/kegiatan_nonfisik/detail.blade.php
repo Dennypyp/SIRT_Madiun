@@ -36,9 +36,9 @@
     <br>
     <center>
     <h3>
-        DAFTAR USULAN KEGIATAN NON FISIK
+        DAFTAR USULAN KEGIATAN NONFISIK
         <br>
-        RT 03 RW 1 KELURAHAN JOSENAN TAHUN {{date('Y')}}
+        RT 03 RW 1 KELURAHAN JOSENAN TAHUN {{$tahunDepan}}
         <br>
     </h3>
     <br>
@@ -77,7 +77,6 @@
 
     </table>
 </center>
-    <p>Demikian Detail Kegiatan Non Fisik Pada RT 03 RW 1 KELURAHAN JOSENAN KECAMATAN TAMAN</p>
     <table width="100%">
         <tr>
             <td></td>

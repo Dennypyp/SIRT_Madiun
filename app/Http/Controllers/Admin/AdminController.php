@@ -18,6 +18,7 @@ class AdminController extends Controller
     public function index()
     {
         //
+        
         $date = \Carbon\Carbon::now();
         $bulanLalu =  $date->subMonth()->format('Y-m'); // 11
 

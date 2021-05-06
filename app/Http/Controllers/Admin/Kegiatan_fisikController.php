@@ -145,7 +145,7 @@ class Kegiatan_fisikController extends Controller
 
     public function kegiatan_fisik()
     {
-        
+        $tahunDepan = date('Y', strtotime("+1 year", strtotime(date("Y-m-d"))));
 
         $kegiatan_fisik = DB::table('kegiatan_fisik')
         ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_fisik.kegiatan','kegiatan_fisik.volume','kegiatan_fisik.satuan','kegiatan_fisik.lokasi','kegiatan_fisik.statusk','kegiatan_fisik.dana','kegiatan_fisik.keterangan','kegiatan_fisik.status_kegiatan','kegiatan_fisik.id')
@@ -155,6 +155,7 @@ class Kegiatan_fisikController extends Controller
 
         $pdf= PDF::loadview("admin/kegiatan_fisik/detail", [
             "kegiatan_fisik"=>$kegiatan_fisik,
+            "tahunDepan"=>$tahunDepan
 
         ]);
         return $pdf->download("detail_kegiatan.pdf");

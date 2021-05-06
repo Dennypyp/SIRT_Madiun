@@ -23,9 +23,18 @@
     }
 </style>
 <body>
-    <center>
-		<h3>RT 03/RW 01
+	<center>
+		<h2>KECAMATAN TAMAN
 			<br>
+			KELURAHAN JOSENAN
+			<br>
+			RUKUN TETANGGA 03
+		</h2>
+	<br/>
+	</center>
+	<hr/>
+    <center>
+		<h3>
 			REKAP DANA SOSIAL (JIMPITAN)
 			<br>
 			BULAN {{ format_bln_kap($tanggal) }}
