@@ -36,13 +36,13 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="no_kk">Nomor KK</label>
-                                            <input type="text" id="no_kk" name="no_kk" class="form-control" placeholder="Nomor KK" value="{{ $kk->no_kk }}">
+                                            <input readonly type="text" id="no_kk" name="no_kk" class="form-control" placeholder="Nomor KK" value="{{ $kk->no_kk }}">
                                         </div>
                                     </div>
                                 </div>
                             <div class="row">
                                 <div class="col text-left">
-                                    <button type="submit" name="save" class="btn btn-primary">Edit</button>
+                                    {{--  <button type="submit" name="save" class="btn btn-primary">Edit</button>  --}}
                                     <a class="btn btn-secondary" href="{{ route('kk.index') }}" role="button">Kembali</a>
                                 </div>
                             </div>

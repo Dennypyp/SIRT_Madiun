@@ -15,6 +15,7 @@ Route::group([
     // Route Anggota KK
     Route::resource('anggota', 'AnggotaKKController');
     Route::get('anggota/destroy/{id}', 'AnggotaKKController@destroy');
+    Route::get('/warga', 'AnggotaKKController@laporan');
 
     // Route Transaksi
     Route::resource('transaksi', 'TransaksiController');
