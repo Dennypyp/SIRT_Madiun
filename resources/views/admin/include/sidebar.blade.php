@@ -82,7 +82,7 @@
         <div id="collapseKegiatan" class="collapse" aria-labelledby="headingKegiatan" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/kegiatan_fisik">Data Kegiatan Fisik</a>
-                <a class="collapse-item" href="/kegiatan_nonfisik">Data Kegiatan Non Fisik</a>
+                <a class="collapse-item" href="/kegiatan_nonfisik">Data Kegiatan Nonfisik</a>
             </div>
         </div>
     </li>

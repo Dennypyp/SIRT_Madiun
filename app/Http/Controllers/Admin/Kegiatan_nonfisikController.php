@@ -127,7 +127,8 @@ class Kegiatan_nonfisikController extends Controller
 
     public function kegiatan_nonfisik(){
 
-        
+        $tahunDepan = date('Y', strtotime("+1 year", strtotime(date("Y-m-d"))));
+
         $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
         ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan','kegiatan_nonfisik.status_kegiatan','kegiatan_nonfisik.id')
         ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
@@ -135,7 +136,8 @@ class Kegiatan_nonfisikController extends Controller
         ->get();
 
         $pdf= PDF::loadview("admin/kegiatan_nonfisik/detail", [
-            "kegiatan_nonfisik"=>$kegiatan_nonfisik
+            "kegiatan_nonfisik"=>$kegiatan_nonfisik,
+            "tahunDepan"=>$tahunDepan
         ]);
         return $pdf->download("nonfisik_detail_kegiatan.pdf");
     }

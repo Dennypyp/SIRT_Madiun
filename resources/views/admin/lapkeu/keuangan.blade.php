@@ -30,14 +30,17 @@
 
 <body>
     <center>
+		<h2>KECAMATAN TAMAN
+			<br>
+			KELURAHAN JOSENAN
+			<br>
+			RUKUN TETANGGA 03
+		</h2>
+	<br/>
+	</center>
+	<hr/>
+    <center>
         <h3>
-            RT 03/RW 01
-            <br>
-            KECAMATAN TAMAN
-            <br>
-            KELURAHAN JOSENAN
-            <br>
-            <br>
             REKAP LAPORAN KEUANGAN
             <br>
             BULAN {{ format_bln_kap($tanggal) }}
