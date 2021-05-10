@@ -48,13 +48,13 @@
                                         <label class="form-control-label" for="password">Password Baru</label>
                                         <input type="password" id="password" name="password" class="form-control"
                                             placeholder="Password">
-                                        <label class="form-control-label" style="font-size: 10px">Minimal 8 Karakter</label>
+                                        <label class="form-control-label" style="font-size: 10px">Minimal 6 Karakter</label>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label" for="password_con">Konfirmasi Password</label>
                                         <input type="password" id="password_confirmation" name="password_confirmation"
                                             class="form-control" placeholder="Konfirmasi Password">
-                                        <label class="form-control-label" style="font-size: 10px">Minimal 8 Karakter</label>
+                                        <label class="form-control-label" style="font-size: 10px">Minimal 6 Karakter</label>
                                     </div>
                                 </div>
                             </div>

@@ -42,8 +42,8 @@
                                     <th class="text-center" style="width:20%">Aksi</th>
                                 </tr>
                             </thead>
-                            @foreach ($akun as $item)
-                                <tbody>
+                            <tbody>
+                                @foreach ($akun as $item)
                                     <tr>
                                         <td>{{ $item->nik }}</td>
                                         <td>{{ $item->nama }}</td>
@@ -65,8 +65,8 @@
                                                 class="btn btn-sm btn-danger">Hapus</a>
                                         </td>
                                     </tr>
-                                </tbody>
-                            @endforeach
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
