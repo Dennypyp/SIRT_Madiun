@@ -78,33 +78,6 @@ class TransaksiController extends Controller
             // dd($saldo_baru->tanggal_saldo);
             $saldo_baru->save();
         }
-        // else if($checkSaldo->jumlah_saldo===0){
-        //     // Ambil Bulan Sebelumnya
-        //     $date = strtotime($request->get('tanggal_transaksi'));
-        //     $tgl = date('Y-m-d', $date);
-        //     $bulanLalu =  new DateTime($tgl, new DateTimeZone('UTC'));
-        //     $bulanLalu->modify('first day of previous month');
-        //     $month = $bulanLalu->format('m');
-        //     $year = $bulanLalu->format('Y');
-        //     // ======================
-
-        //     // Data Saldo Sebelumnya
-        //     $dulu = Saldo::whereMonth('tanggal_saldo', $month)
-        //     ->whereYear('tanggal_saldo', $year)
-        //     ->first();
-        //     // ======================
-
-        //     $saldo_baru = new Saldo();
-        //     $saldo_baru->tanggal_saldo = $request->get('tanggal_transaksi');
-        //     if ($dulu===null) {
-        //         $saldo_baru->jumlah_saldo = 0;
-        //     } else {
-        //         $saldo_baru->jumlah_saldo = $dulu->jumlah_saldo;
-        //     }
-        //     // dd($saldo_baru->tanggal_saldo);
-        //     // $saldo_baru->save();
-        // }
-        // $saldo_baru->save();
 
         // Simpan transaksi
         $transaksi = new transaksi();

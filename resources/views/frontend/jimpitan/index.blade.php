@@ -25,7 +25,13 @@
                 <div class="container mb-2 mt-2">
                     <div class="row row-sm">
                         <div class="col-lg-8">
-
+                            @if ($totTag>10000)
+                            <div class="alert alert-danger text-center" role="alert" >Keluarga Bapak <b>{{$kk->nama}}</b> memiliki tagihan jimpitan sebesar <b>{{ format_rp($totTag) }}</b></div>
+                            @elseif ($totTag==10000)
+                            <div class="alert alert-warning text-center" role="alert" >Keluarga Bapak <b>{{$kk->nama}}</b> memiliki tagihan jimpitan sebesar <b>{{ format_rp(10000) }}</b></div>
+                            @elseif ($totTag<10000)
+                                <div class="alert alert-success text-center" role="alert" >Keluarga Bapak <b>{{$kk->nama}}</b> masih memiliki kelebihan jimpitan sebesar <b>{{ format_rp($totTag*(-1)) }}</b></div>
+                            @endif
                         </div><!-- col-4 -->
                         <div class="col-lg-4 mg-t-20 mg-lg-t-0">
                             <form action="{{route('frontend.jimpitan_warga.index')}}" method="GET">
