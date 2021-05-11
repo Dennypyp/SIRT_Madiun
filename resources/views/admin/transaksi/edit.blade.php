@@ -61,6 +61,11 @@
                                             placeholder="Keterangan" value="{{ $transaksi->keterangan_transaksi }}">
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-control-label" for="sumber_transaksi">Sumber/Yang Menyerahkan/Yang Menggunakan Transaksi</label>
+                                        <input type="text" id="sumber_transaksi" name="sumber_transaksi" class="form-control"
+                                            placeholder="Sumber/Yang Menyerahkan/Yang Menggunakan Transaksi" value="{{ $transaksi->sumber_transaksi }}">
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-control-label" for="jumlah_transaksi">Jumlah Transaksi (Rp)</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">

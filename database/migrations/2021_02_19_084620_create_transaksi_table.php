@@ -19,6 +19,7 @@ class CreateTransaksiTable extends Migration
             $table->string('status_transaksi');
             $table->string('jenis_transaksi');
             $table->string('keterangan_transaksi');
+            $table->string('sumber_transaksi');
             $table->integer('jumlah_transaksi');
             $table->timestamps();
         });

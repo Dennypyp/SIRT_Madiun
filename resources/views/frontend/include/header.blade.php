@@ -98,7 +98,7 @@
                             <h6>{{ Auth::user()->nama }}</h6>
                             <span>{{ Auth::user()->role }}</span>
                         </div><!-- az-header-profile -->
-                        @if (Auth()->user()->role == 'admin')
+                        @if (Auth()->user()->role == 'admin'||Auth()->user()->role == 'bendahara')
                             <a href="/rt_admin" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Ke Halaman Admin</a>
                         @endif
                         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();

@@ -47,7 +47,7 @@
         {{-- ======================== --}}
     @endif
 
-    @if (Auth()->user()->role == 'admin')
+    @if (Auth()->user()->role == 'bendahara')
         {{-- Nav Keuangan --}}
         <li
             class="nav-item {{ 'jimpitan' == request()->segment(1) ? 'active' : '' }} {{ 'pengeluaran' == request()->segment(1) ? 'active' : '' }} {{ 'transaksi' == request()->segment(1) ? 'active' : '' }} {{ 'saldo' == request()->segment(1) ? 'active' : '' }} {{ 'lapkeu' == request()->segment(1) ? 'active' : '' }}">

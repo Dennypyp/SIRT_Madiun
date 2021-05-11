@@ -85,6 +85,7 @@ class TransaksiController extends Controller
         $transaksi->status_transaksi = $request->get('status_transaksi');
         $transaksi->jenis_transaksi = $request->get('jenis_transaksi');
         $transaksi->keterangan_transaksi = $request->get('keterangan_transaksi');
+        $transaksi->sumber_transaksi = $request->get('sumber_transaksi');
         $transaksi->jumlah_transaksi = $request->get('jumlah_transaksi');
         $transaksi->save();
         //========================
@@ -175,6 +176,7 @@ class TransaksiController extends Controller
         $transaksi->status_transaksi = $request->get('status_transaksi');
         $transaksi->jenis_transaksi = $request->get('jenis_transaksi');
         $transaksi->keterangan_transaksi = $request->get('keterangan_transaksi');
+        $transaksi->sumber_transaksi = $request->get('sumber_transaksi');
         $transaksi->jumlah_transaksi = $request->get('jumlah_transaksi');
         $transaksi->save();
         // =======================

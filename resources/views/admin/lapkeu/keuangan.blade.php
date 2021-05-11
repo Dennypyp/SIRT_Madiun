@@ -64,6 +64,7 @@
                     <th align="center" rowspan="2">No</th>
                     <th align="center" rowspan="2">Tanggal</th>
                     <th align="center" rowspan="2">Keterangan</th>
+                    <th align="center" rowspan="2">Sumber/Yang Menyerahkan/Yang Menggunakan</th>
                     <th align="center" colspan="2">Status</th>
                 </tr>
                 <tr>
@@ -78,6 +79,7 @@
                             <td align="center">{{ $loop->iteration }}</td>
                             <td align="center">{{ format_tgl($item->tanggal_transaksi) }}</td>
                             <td align="center">{{ $item->keterangan_transaksi }}</td>
+                            <td align="center">{{ $item->sumber_transaksi }}</td>
                             @if ($item->status_transaksi == 'Pemasukan')
                                 <td align="center">{{ format_rp($item->jumlah_transaksi) }}</td>
                                 <td align="center">-</td>
