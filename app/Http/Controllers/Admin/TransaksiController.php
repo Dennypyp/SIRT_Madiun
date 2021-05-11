@@ -52,7 +52,7 @@ class TransaksiController extends Controller
         ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
         ->first();
         // dd($checkSaldo);
-        if($checkSaldo==null){
+        if($checkSaldo===null){
             // Ambil Bulan Sebelumnya
             $date = strtotime($request->get('tanggal_transaksi'));
             $tgl = date('Y-m-d', $date);
@@ -70,7 +70,7 @@ class TransaksiController extends Controller
 
             $saldo_baru = new Saldo();
             $saldo_baru->tanggal_saldo = $request->get('tanggal_transaksi');
-            if ($dulu==null) {
+            if ($dulu===null) {
                 $saldo_baru->jumlah_saldo = 0;
             } else {
                 $saldo_baru->jumlah_saldo = $dulu->jumlah_saldo;
@@ -78,6 +78,33 @@ class TransaksiController extends Controller
             // dd($saldo_baru->tanggal_saldo);
             $saldo_baru->save();
         }
+        // else if($checkSaldo->jumlah_saldo===0){
+        //     // Ambil Bulan Sebelumnya
+        //     $date = strtotime($request->get('tanggal_transaksi'));
+        //     $tgl = date('Y-m-d', $date);
+        //     $bulanLalu =  new DateTime($tgl, new DateTimeZone('UTC'));
+        //     $bulanLalu->modify('first day of previous month');
+        //     $month = $bulanLalu->format('m');
+        //     $year = $bulanLalu->format('Y');
+        //     // ======================
+
+        //     // Data Saldo Sebelumnya
+        //     $dulu = Saldo::whereMonth('tanggal_saldo', $month)
+        //     ->whereYear('tanggal_saldo', $year)
+        //     ->first();
+        //     // ======================
+
+        //     $saldo_baru = new Saldo();
+        //     $saldo_baru->tanggal_saldo = $request->get('tanggal_transaksi');
+        //     if ($dulu===null) {
+        //         $saldo_baru->jumlah_saldo = 0;
+        //     } else {
+        //         $saldo_baru->jumlah_saldo = $dulu->jumlah_saldo;
+        //     }
+        //     // dd($saldo_baru->tanggal_saldo);
+        //     // $saldo_baru->save();
+        // }
+        // $saldo_baru->save();
 
         // Simpan transaksi
         $transaksi = new transaksi();
@@ -102,10 +129,10 @@ class TransaksiController extends Controller
 
         // Update saldo
         $saldo = Saldo::find($saldo_id->id);
-        if ($request->get('status_transaksi')=='Pemasukan') {
-            $saldo->jumlah_saldo = $saldo->jumlah_saldo + $request->get('jumlah_transaksi');
-        } else if($request->get('status_transaksi')=='Pengeluaran') {
-            $saldo->jumlah_saldo = $saldo->jumlah_saldo - $request->get('jumlah_transaksi');
+        if ($request->get('status_transaksi')==='Pemasukan') {
+            $saldo->jumlah_saldo = $saldo->jumlah_saldo + intval($request->get('jumlah_transaksi'));
+        } else if($request->get('status_transaksi')==='Pengeluaran') {
+            $saldo->jumlah_saldo = $saldo->jumlah_saldo - intval($request->get('jumlah_transaksi'));
         }
         // $saldo->jumlah_saldo = $saldo->jumlah_saldo + $request->get('jumlah_transaksi');
         $saldo->save();
@@ -161,13 +188,13 @@ class TransaksiController extends Controller
 
         // Update saldo
         $saldo = Saldo::find($saldo_id->id);
-        if ($request->get('status_transaksi')=='Pemasukan') {
-            $saldo->jumlah_saldo = ($saldo->jumlah_saldo - $transaksi->jumlah_transaksi) + $request->get('jumlah_transaksi');
-        } else if($request->get('status_transaksi')=='Pengeluaran') {
-            $saldo->jumlah_saldo = ($saldo->jumlah_saldo + $transaksi->jumlah_transaksi) - $request->get('jumlah_transaksi');
+        if ($request->get('status_transaksi')==='Pemasukan') {
+            $saldo->jumlah_saldo = ($saldo->jumlah_saldo + $transaksi->jumlah_transaksi) + intval($request->get('jumlah_transaksi'));
+        } else if($request->get('status_transaksi')==='Pengeluaran') {
+            $saldo->jumlah_saldo = ($saldo->jumlah_saldo - $transaksi->jumlah_transaksi) - intval($request->get('jumlah_transaksi'));
         }
-        
         $saldo->save();
+        
         // =======================
 
         // Simpan transaksi

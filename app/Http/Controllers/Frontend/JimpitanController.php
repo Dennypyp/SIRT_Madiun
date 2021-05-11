@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Jimpitan;
+use Illuminate\Support\Facades\Auth;
 
 class JimpitanController extends Controller
 {
@@ -17,20 +18,37 @@ class JimpitanController extends Controller
     public function index(Request $request)
     {
         //
-        if ($request->get('bln_jimpit')!=null) {
+        if ($request->get('bln_jimpit') != null) {
             $pecahkan = explode('-', $request->get('bln_jimpit'));
         } else {
             $pecahkan = explode('-', date('Y-m-d'));
         }
 
         $jimpitan = DB::table('uang_sosial')
-        ->join('kk','kk.no_kk','=','uang_sosial.nkk')
-        ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
-        ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
-        ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
-        ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
-        ->get();
-        
+            ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
+            ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
+            ->where('anggota_kk.status_kk', 'Bapak/Kepala Keluarga')
+            ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
+            ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
+            ->get();
+
+        // $tagihan = DB::table('uang_sosial')
+        // ->join('kk','kk.no_kk','=','uang_sosial.nkk')
+        // ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
+        // ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
+        // // ->where("anggota_kk.nik", Auth::user()->nik)
+        // ->get();
+        // dd($tagihan);
+        $d1 = strtotime("2013-12-09");
+        $d2 = strtotime("2014-03-17");
+        $min_date = min($d1, $d2);
+        $max_date = max($d1, $d2);
+        $i = 0;
+        while (($min_date = strtotime("+1 MONTH", $min_date)) <= $max_date) {
+            $i++;
+        }
+        dd($i+1);
+
         $total = DB::table('uang_sosial')
             ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
             ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
@@ -38,7 +56,9 @@ class JimpitanController extends Controller
 
         return view('frontend.jimpitan.index', [
             'jimpitan' => $jimpitan,
-            'total' => $total
+            'total' => $total,
+            // 'tagihan'=>$tagihan
+            'i'=>$i
         ]);
     }
 
