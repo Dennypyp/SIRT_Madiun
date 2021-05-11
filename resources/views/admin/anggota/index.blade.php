@@ -18,17 +18,18 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="md-0 font-weight-bold text-primary">Data Anggota KK</h6>
-                    <div class="col-1 text-right">
-                        <a href="{{ route('anggota.create') }}" class="btn btn-sm btn-primary">Tambah</a>
+                    <div class="col-1 text-right d-inline">
+                        <a href="{{ route('anggota.create') }}" class="btn btn-sm btn-primary ">Tambah</a>
+                        <a href="/warga" class="btn btn-sm btn-success" target="_blank"><i class="far fa-file-excel">         Cetak</i></a>
                     </div>
                     <br>
                     @if (session('msg'))
-                    <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
-                        {{ session('msg') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                            {{ session('msg') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                     @endif
                 </div>
 
@@ -67,7 +68,8 @@
                                         <td>{{ $data->nama_ibu_bapak }}</td>
                                         <td>{{ $data->status }}</td>
                                         <td>{{ $data->status_kk }}</td>
-                                        <td><a href="{{ route('anggota.edit',[$data->nik]) }}" class="btn btn-sm btn-info">Edit</a></td>
+                                        <td><a href="{{ route('anggota.edit', [$data->nik]) }}"
+                                                class="btn btn-sm btn-info">Edit</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\anggota;
 use App\kk;
+use App\Exports\AnggotaExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AnggotaKKController extends Controller
 {
@@ -174,4 +176,9 @@ class AnggotaKKController extends Controller
         $anggota->delete();
         return redirect('anggota')->with('msg', 'Anggota KK Berhasil Dihapus');
     }
+
+    public function laporan()
+	{
+		return Excel::download(new AnggotaExport, 'warga.xlsx');
+	}
 }

@@ -15,6 +15,7 @@ Route::group([
     // Route Anggota KK
     Route::resource('anggota', 'AnggotaKKController');
     Route::get('anggota/destroy/{id}', 'AnggotaKKController@destroy');
+    Route::get('/warga', 'AnggotaKKController@laporan');
 
     // Route Transaksi
     Route::resource('transaksi', 'TransaksiController');
@@ -32,6 +33,8 @@ Route::group([
     Route::resource('surat_admin', 'SuratController');
     Route::get('/surat_pengantar/{id}', 'SuratController@surat');
     Route::get('/status_surat/{id}', 'SuratController@status_surat');
+    Route::resource('laporan_surat', 'LaporanSuratController');
+    Route::get('/cetak_lapsurat', 'LaporanSuratController@lapsurat_pengantar');
 
     // Route Saldo
     Route::resource('saldo', 'SaldoController');

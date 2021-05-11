@@ -59,7 +59,7 @@
         </div>
     </li>
 
-    <li class="nav-item {{'surat_admin' == request()->segment(1) ? 'active' : ''}}">
+    <li class="nav-item {{'surat_admin' == request()->segment(1) ? 'active' : ''}} {{'laporan_surat' == request()->segment(1) ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSurat" aria-expanded="true"
             aria-controls="collapseSurat">
             <i class="fas fa-fw fa-file"></i>
@@ -68,6 +68,7 @@
         <div id="collapseSurat" class="collapse" aria-labelledby="headingSurat" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/surat_admin">Surat Pengantar</a>
+                <a class="collapse-item" href="/laporan_surat">Laporan</a>
             </div>
         </div>
     </li>

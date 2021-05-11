@@ -50,8 +50,8 @@ class AkunController extends Controller
         $validator = Validator::make(request()->all(), [
             'nama' => ['required', 'string', 'max:255'],
             'nik' => ['required', 'string',  'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'required_with:password_confirmation', 'same:password_confirmation'],
-            'password_confirmation' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'min:6', 'required_with:password_confirmation', 'same:password_confirmation'],
+            'password_confirmation' => ['required', 'string', 'min:6'],
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());
