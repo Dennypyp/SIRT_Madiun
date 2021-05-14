@@ -1,11 +1,14 @@
 <div class="az-header">
     <div class="container">
         <div class="az-header-left">
-            <img src="{{ asset('assets/img/logofix.png') }}" alt="" srcset="" style="width: 50px">
-            {{-- <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a> --}}
+            <img src="{{ asset('assets/img/logofix.png') }}" alt="" srcset="" style="width: 50px" class="az-logo">
+            <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
         </div><!-- az-header-left -->
         <div class="az-header-menu">
-
+            <div class="az-header-menu-header">
+                <img src="{{ asset('assets/img/logofix.png') }}" alt="" srcset="" style="width: 50px" class="az-logo">
+                <a href="" class="close">&times;</a>
+              </div><!-- az-header-menu-header -->
             <ul class="nav">
                 <li class="nav-item {{ '' == request()->segment(1) ? 'active' : '' }}">
                     <a href="/" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
@@ -95,7 +98,7 @@
                             <h6>{{ Auth::user()->nama }}</h6>
                             <span>{{ Auth::user()->role }}</span>
                         </div><!-- az-header-profile -->
-                        @if (Auth()->user()->role == 'admin')
+                        @if (Auth()->user()->role == 'admin'||Auth()->user()->role == 'bendahara')
                             <a href="/rt_admin" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Ke Halaman Admin</a>
                         @endif
                         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();

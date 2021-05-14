@@ -52,7 +52,7 @@ class TransaksiController extends Controller
         ->whereYear('saldo.tanggal_saldo',$pecahkan[0])
         ->first();
         // dd($checkSaldo);
-        if($checkSaldo==null){
+        if($checkSaldo===null){
             // Ambil Bulan Sebelumnya
             $date = strtotime($request->get('tanggal_transaksi'));
             $tgl = date('Y-m-d', $date);
@@ -70,7 +70,7 @@ class TransaksiController extends Controller
 
             $saldo_baru = new Saldo();
             $saldo_baru->tanggal_saldo = $request->get('tanggal_transaksi');
-            if ($dulu==null) {
+            if ($dulu===null) {
                 $saldo_baru->jumlah_saldo = 0;
             } else {
                 $saldo_baru->jumlah_saldo = $dulu->jumlah_saldo;
@@ -85,6 +85,7 @@ class TransaksiController extends Controller
         $transaksi->status_transaksi = $request->get('status_transaksi');
         $transaksi->jenis_transaksi = $request->get('jenis_transaksi');
         $transaksi->keterangan_transaksi = $request->get('keterangan_transaksi');
+        $transaksi->sumber_transaksi = $request->get('sumber_transaksi');
         $transaksi->jumlah_transaksi = $request->get('jumlah_transaksi');
         $transaksi->save();
         //========================
@@ -102,10 +103,10 @@ class TransaksiController extends Controller
 
         // Update saldo
         $saldo = Saldo::find($saldo_id->id);
-        if ($request->get('status_transaksi')=='Pemasukan') {
-            $saldo->jumlah_saldo = $saldo->jumlah_saldo + $request->get('jumlah_transaksi');
-        } else if($request->get('status_transaksi')=='Pengeluaran') {
-            $saldo->jumlah_saldo = $saldo->jumlah_saldo - $request->get('jumlah_transaksi');
+        if ($request->get('status_transaksi')==='Pemasukan') {
+            $saldo->jumlah_saldo = $saldo->jumlah_saldo + intval($request->get('jumlah_transaksi'));
+        } else if($request->get('status_transaksi')==='Pengeluaran') {
+            $saldo->jumlah_saldo = $saldo->jumlah_saldo - intval($request->get('jumlah_transaksi'));
         }
         // $saldo->jumlah_saldo = $saldo->jumlah_saldo + $request->get('jumlah_transaksi');
         $saldo->save();
@@ -161,13 +162,13 @@ class TransaksiController extends Controller
 
         // Update saldo
         $saldo = Saldo::find($saldo_id->id);
-        if ($request->get('status_transaksi')=='Pemasukan') {
-            $saldo->jumlah_saldo = ($saldo->jumlah_saldo - $transaksi->jumlah_transaksi) + $request->get('jumlah_transaksi');
-        } else if($request->get('status_transaksi')=='Pengeluaran') {
-            $saldo->jumlah_saldo = ($saldo->jumlah_saldo + $transaksi->jumlah_transaksi) - $request->get('jumlah_transaksi');
+        if ($request->get('status_transaksi')==='Pemasukan') {
+            $saldo->jumlah_saldo = ($saldo->jumlah_saldo + $transaksi->jumlah_transaksi) + intval($request->get('jumlah_transaksi'));
+        } else if($request->get('status_transaksi')==='Pengeluaran') {
+            $saldo->jumlah_saldo = ($saldo->jumlah_saldo - $transaksi->jumlah_transaksi) - intval($request->get('jumlah_transaksi'));
         }
-        
         $saldo->save();
+        
         // =======================
 
         // Simpan transaksi
@@ -175,6 +176,7 @@ class TransaksiController extends Controller
         $transaksi->status_transaksi = $request->get('status_transaksi');
         $transaksi->jenis_transaksi = $request->get('jenis_transaksi');
         $transaksi->keterangan_transaksi = $request->get('keterangan_transaksi');
+        $transaksi->sumber_transaksi = $request->get('sumber_transaksi');
         $transaksi->jumlah_transaksi = $request->get('jumlah_transaksi');
         $transaksi->save();
         // =======================

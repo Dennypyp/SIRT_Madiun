@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Jimpitan;
+use App\kk;
+use Illuminate\Support\Facades\Auth;
 
 class JimpitanController extends Controller
 {
@@ -16,21 +18,69 @@ class JimpitanController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        if ($request->get('bln_jimpit')!=null) {
+        //Ambil Daftar Bulan Jimpitan
+        if ($request->get('bln_jimpit') != null) {
             $pecahkan = explode('-', $request->get('bln_jimpit'));
         } else {
             $pecahkan = explode('-', date('Y-m-d'));
         }
+        // ==================
 
+        // Ambil Data Jimpitan
         $jimpitan = DB::table('uang_sosial')
-        ->join('kk','kk.no_kk','=','uang_sosial.nkk')
-        ->join('anggota_kk','anggota_kk.no_kk','=','kk.no_kk')
-        ->where('anggota_kk.status_kk','Bapak/Kepala Keluarga')
-        ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
-        ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
-        ->get();
-        
+            ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
+            ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
+            ->where('anggota_kk.status_kk', 'Bapak/Kepala Keluarga')
+            ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
+            ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
+            ->get();
+        // ====================
+
+        // Ambil Tanggal Warga Tinggal
+        $tglTinggal = DB::table('anggota_kk')
+            ->where('nik', Auth::user()->nik)
+            ->first();
+        // =========================
+
+        // Ambil jumlah jimpitan yang terbayar
+        $tagihan = DB::table('uang_sosial')
+            ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
+            ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
+            ->where("anggota_kk.nik", Auth::user()->nik)
+            ->sum('uang_sosial.jumlah_jimpitan');
+        // ===============================
+
+        // Hitung Jumlah bulan warga tinggal di RT
+        $d1 = strtotime($tglTinggal->created_at);
+        $d2 = strtotime(date('Y-m-d'));
+        $min_date = min($d1, $d2);
+        $max_date = max($d1, $d2);
+        $i = 0;
+        while (($min_date = strtotime("+1 MONTH", $min_date)) <= $max_date) {
+            $i++;
+        }
+        $jumlahBln = $i + 1;
+        // ==============
+
+        // Hitung Tagihan
+        $jmlTag = $jumlahBln * 10000;
+        $totTag = $jmlTag - intval($tagihan);
+        // ===================
+
+        // Ambil kk user
+        $user = DB::table('kk')
+            ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
+            ->where("anggota_kk.nik", Auth::user()->nik)
+            ->first();
+        // ===============================
+
+        // Ambil nama kepala keluarga
+        $kk = DB::table('anggota_kk')
+            ->where("no_kk", $user->no_kk)
+            ->first();
+        // ===============================
+        // dd($kk->nama);
+
         $total = DB::table('uang_sosial')
             ->whereMonth('uang_sosial.tanggal_jimpitan', $pecahkan[1])
             ->whereYear('uang_sosial.tanggal_jimpitan', $pecahkan[0])
@@ -38,7 +88,9 @@ class JimpitanController extends Controller
 
         return view('frontend.jimpitan.index', [
             'jimpitan' => $jimpitan,
-            'total' => $total
+            'total' => $total,
+            'totTag' => $totTag,
+            'kk' => $kk
         ]);
     }
 

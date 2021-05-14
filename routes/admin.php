@@ -33,6 +33,8 @@ Route::group([
     Route::resource('surat_admin', 'SuratController');
     Route::get('/surat_pengantar/{id}', 'SuratController@surat');
     Route::get('/status_surat/{id}', 'SuratController@status_surat');
+    Route::resource('laporan_surat', 'LaporanSuratController');
+    Route::get('/cetak_lapsurat', 'LaporanSuratController@lapsurat_pengantar');
 
     // Route Saldo
     Route::resource('saldo', 'SaldoController');
@@ -67,6 +69,47 @@ Route::group([
         Route::get('/editnama/{id}', 'AkunController@editnama');
         Route::post('/updatenama/{id}', 'AkunController@updatenama');
     });
+
+});
+
+Route::group([
+    'namespace' => 'Admin',
+    'middleware' => ['auth'=>'CheckRole:bendahara']
+], function () {
+    Route::resource('rt_admin', 'AdminController');
+    Route::get("dashboardchart","AdminController@chartku");
+    Route::get("dashboardchart2","AdminController@chartku2");
+
+    // Route KK
+    Route::resource('kk', 'KKController');
+    Route::get('kk/destroy/{id}', 'KKController@destroy');
+
+    // Route Anggota KK
+    Route::resource('anggota', 'AnggotaKKController');
+    Route::get('anggota/destroy/{id}', 'AnggotaKKController@destroy');
+    Route::get('/warga', 'AnggotaKKController@laporan');
+
+    // Route Transaksi
+    Route::resource('transaksi', 'TransaksiController');
+    Route::get('transaksi/destroy/{id}', 'TransaksiController@destroy');
+
+    // Route Jimpitan
+    Route::resource('jimpitan', 'JimpitanController');
+    Route::prefix('/jimpitan')->group(function ()
+    {
+        Route::get('/bayar/{id}', 'JimpitanController@bayar')->name('jimpitan.bayar');
+    });
+
+    // Route Saldo
+    Route::resource('saldo', 'SaldoController');
+    Route::get('saldo/destroy/{id}', 'SaldoController@destroy');
+
+    // Route Laporan Keungan
+    Route::resource('lapkeu', 'LaporanController');
+    Route::get('/laporan_jimpitan', 'LaporanController@jimpitan');
+    Route::get('/laporan_keuangan', 'LaporanController@keuangan');
+
+
 
 });
 

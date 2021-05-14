@@ -40,6 +40,7 @@
                                     <th class="text-center" rowspan="2">Tanggal</th>
                                     <th class="text-center" rowspan="2">Jenis</th>
                                     <th class="text-center" rowspan="2">Keterangan</th>
+                                    <th class="text-center" rowspan="2">Sumber/Yang Menyerahkan/Yang Menggunakan</th>
                                     <th class="text-center" colspan="2">Status</th>
                                     <th class="text-center" rowspan="2" style="width:30%">Aksi</th>
                                 </tr>
@@ -57,6 +58,7 @@
                                             <td class="text-center">{{ format_tgl($item->tanggal_transaksi) }}</td>
                                             <td>{{ $item->jenis_transaksi }}</td>
                                             <td>{{ $item->keterangan_transaksi }}</td>
+                                            <td>{{ $item->sumber_transaksi }}</td>
                                             @if ($item->status_transaksi=='Pemasukan')
                                                 <td>{{ format_rp($item->jumlah_transaksi) }}</td>
                                                 <td class="text-center">-</td>

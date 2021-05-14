@@ -13,12 +13,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('kk')->insert([
-            'no_kk'=> "admin"
-        ]);
+        DB::table('kk')->insert(
+            ['no_kk'=> "admin"]
+        );
 
-        DB::table('anggota_kk')->insert([
-            'nama'=> "Admin",
+        DB::table('anggota_kk')->insert(
+            ['nama'=> "Admin",
             'no_kk'=> "admin",
             'nik'=> "superAdmin",
             'tempat_lahir'=> "Madiun",
@@ -30,15 +30,42 @@ class UserSeeder extends Seeder
             'alamat'=>"Madiun",
             'nama_ibu_bapak'=> "Ibu/Bapak",
             'status'=> "Kawin",
-            'status_kk'=> "Bapak/Kepala Keluarga"
-        ]);
+            'status_kk'=> "Bapak/Kepala Keluarga"]
+        );
 
-        DB::table('users')->insert([
-            'nama'=> "Admin",
+        DB::table('users')->insert(
+            ['nama'=> "Admin",
             'nik'=> 'superAdmin',
             'password'=> Hash::make('superAdmin123'),
-            'role'=> "admin"
-        ]);
+            'role'=> "admin"]
+        );
+
+        DB::table('kk')->insert(
+            ['no_kk'=> "bendahara"]
+        );
+
+        DB::table('anggota_kk')->insert(
+            ['nama'=> "Bendahara",
+            'no_kk'=> "bendahara",
+            'nik'=> "BendaharaRT",
+            'tempat_lahir'=> "Madiun",
+            'tanggal_lahir'=> date('Y-m-d'),
+            'jenis_kelamin'=> "Laki-laki",
+            'pendidikan'=> "Sarjana",
+            'agama'=> "Islam",
+            'pekerjaan'=> "RT",
+            'alamat'=>"Madiun",
+            'nama_ibu_bapak'=> "Ibu/Bapak",
+            'status'=> "Kawin",
+            'status_kk'=> "Bapak/Kepala Keluarga"]
+        );
+
+        DB::table('users')->insert(
+            ['nama'=> "Bendahara",
+            'nik'=> 'BendaharaRT',
+            'password'=> Hash::make('bendahara03RT'),
+            'role'=> "bendahara"]
+        );
 
     }
 }
