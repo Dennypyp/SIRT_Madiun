@@ -39,8 +39,10 @@
             </a>
             <div id="collapseWarga" class="collapse" aria-labelledby="headingWarga" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/kk">Data KK</a>
-                    <a class="collapse-item" href="/anggota">Data Anggota KK</a>
+                    <a class="collapse-item" href="/kk">Data No KK</a>
+                    <a class="collapse-item" href="/anggota">Data Warga</a>
+                    <a class="collapse-item" href="/bukanwarga">Data Warga Bukan RT 03</a>
+                    <a class="collapse-item" href="/wargameninggal">Data Warga Meninggal</a>
                 </div>
             </div>
         </li>

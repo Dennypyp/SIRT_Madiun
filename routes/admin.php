@@ -15,7 +15,19 @@ Route::group([
     // Route Anggota KK
     Route::resource('anggota', 'AnggotaKKController');
     Route::get('anggota/destroy/{id}', 'AnggotaKKController@destroy');
+    Route::get('anggota/detail/{id}', 'AnggotaKKController@detail');
     Route::get('/warga', 'AnggotaKKController@laporan');
+    Route::get('/cetak_warga', 'AnggotaKKController@laporan_warga')->name('print');
+
+    // Route Bukan Warga RT 03
+    Route::resource('bukanwarga', 'BukanWargaController');
+    Route::get('bukanwarga/destroy/{id}', 'BukanWargaController@destroy');
+    Route::get('bukanwarga/detail/{id}', 'BukanWargaController@detail');
+
+    // Route Warga Meninggal
+    Route::resource('wargameninggal', 'WargaMeninggalController');
+    Route::get('wargameninggal/destroy/{id}', 'WargaMeninggalController@destroy');
+    Route::get('wargameninggal/detail/{id}', 'WargaMeninggalController@detail');
 
     // Route Transaksi
     Route::resource('transaksi', 'TransaksiController');

@@ -37,8 +37,8 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="nik">NIK</label>
-                                        <input readonly type="text" id="nik" name="nik" class="form-control" placeholder="NIK"
-                                            value="{{ $data->nik }}">
+                                        <input readonly type="text" id="nik" name="nik" class="form-control"
+                                            placeholder="NIK" value="{{ $data->nik }}">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label" for="nama">Nama Lengkap</label>
@@ -120,6 +120,24 @@
                                             <option value="Anak">Anak</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="keterangan_warga">Keterangan Warga</label>
+                                        <select class="form-control" id="keterangan_warga" name="keterangan_warga">
+                                            <option value="{{ $data->keterangan_warga }}">{{ $data->keterangan_warga }}</option>
+                                            <option value="Warga Asli">Warga Asli</option>
+                                            <option value="Warga Pindahan">Warga Pindahan</option>
+                                            <option value="Sudah Pindah">Sudah Pindah</option>
+                                            <option value="Meninggal">Meninggal</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="tgl_masuk">Tanggal Masuk/Keluar/Meninggal</label>
+                                        <input type="date" id="tanggal_ket" name="tanggal_ket" class="form-control" value="{{ $data->tanggal_ket }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="ket">Keterangan</label>
+                                        <textarea name="keterangan" id="keterangan" rows="5" class="form-control">{{ $data->keterangan }}</textarea>
+                                    </div>
                                     {{-- <div class="form-group">
                                         <label for="no_kk">No. KK</label>
                                         <select class="form-control" id="no_kk" name="no_kk">
@@ -134,7 +152,7 @@
                                 <div class="col text-left">
                                     <div class="col text-left">
                                         <button type="submit" name="save" class="btn btn-primary">Edit</button>
-                                        <a class="btn btn-secondary" href="{{ route('anggota.index') }}"
+                                        <a class="btn btn-danger" href="{{ route('anggota.index') }}"
                                             role="button">Kembali</a>
                                     </div>
                                 </div>
@@ -159,7 +177,8 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih "Hapus" untuk Menghapus Data <br> Data yang terhapus tidak bisa dikembalikan</div>
+                <div class="modal-body">Pilih "Hapus" untuk Menghapus Data <br> Data yang terhapus tidak bisa dikembalikan
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-danger" href="/anggota/destroy/{{ $data->nik }}">Hapus</a>

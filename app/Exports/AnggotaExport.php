@@ -17,7 +17,9 @@ class AnggotaExport implements FromCollection, WithHeadings, ShouldAutoSize
     {
         $anggota = DB::table('anggota_kk')
             ->select('nik','nama','no_kk','tempat_lahir','tanggal_lahir','jenis_kelamin','pendidikan','agama','pekerjaan','alamat','nama_ibu_bapak')
-            ->where('no_kk', '!=', 'admin')
+            ->where('keterangan_warga', '!=', 'Sudah Pindah')
+            ->where('keterangan_warga', '!=', 'Meninggal')
+            ->where('keterangan_warga', '!=', 'Admin')
             ->orderBy('no_kk')
             ->get();
         return $anggota;

@@ -10,9 +10,8 @@ use App\anggota;
 use App\kk;
 use App\Exports\AnggotaExport;
 use Maatwebsite\Excel\Facades\Excel;
-use PDF;
 
-class AnggotaKKController extends Controller
+class BukanWargaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,14 +21,11 @@ class AnggotaKKController extends Controller
     public function index()
     {
         //
-
         $anggota = DB::table('anggota_kk')
-            ->where('keterangan_warga', '!=', 'Sudah Pindah')
-            ->where('keterangan_warga', '!=', 'Meninggal')
-            ->where('keterangan_warga', '!=', 'Admin')
+            ->where('keterangan_warga', '=', 'Sudah Pindah')
             ->orderBy('no_kk')
             ->get();
-        return view('admin.anggota.index', ['anggota' => $anggota]);
+        return view('admin.bukanwarga.index', ['anggota' => $anggota]);
     }
 
     /**
@@ -40,13 +36,6 @@ class AnggotaKKController extends Controller
     public function create()
     {
         //
-
-        $kk = DB::table('kk')
-            ->where('no_kk', '!=', 'admin')
-            ->where('no_kk', '!=', 'bendahara')
-            ->get();
-        return view('admin.anggota.create', ['kk' => $kk]);
-
     }
 
     /**
@@ -58,47 +47,6 @@ class AnggotaKKController extends Controller
     public function store(Request $request)
     {
         //
-        $validator = Validator::make(request()->all(), [
-            'nik' => ['required', 'min:16', 'int'],
-            'nama' => 'required',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
-            'jenis_kelemin' => 'required',
-            'pendidikan' => 'required',
-            'agama' => 'required',
-            'pekerjaan' => 'required',
-            'alamat' => 'required',
-            'nama_ibu_bapak' => 'required',
-            'status' => 'required',
-            'status_kk' => 'required',
-            'keterangan_warga' => 'required',
-            'tanggal_ket' => 'required',
-            'no_kk' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator->errors());
-        } else {
-            $akk = new anggota();
-            $akk->nik = $request->get('nik');
-            $akk->nama = $request->get('nama');
-            $akk->tempat_lahir = $request->get('tempat_lahir');
-            $akk->tanggal_lahir = $request->get('tanggal_lahir');
-            $akk->jenis_kelamin = $request->get('jenis_kelemin');
-            $akk->pendidikan = $request->get('pendidikan');
-            $akk->agama = $request->get('agama');
-            $akk->pekerjaan = $request->get('pekerjaan');
-            $akk->alamat = $request->get('alamat');
-            $akk->nama_ibu_bapak = $request->get('nama_ibu_bapak');
-            $akk->status = $request->get('status');
-            $akk->status_kk = $request->get('status_kk');
-            $akk->keterangan_warga = $request->get('keterangan_warga');
-            $akk->tanggal_ket = $request->get('tanggal_ket');
-            $akk->keterangan = $request->get('keterangan');
-            $akk->no_kk = $request->get('no_kk');
-            $akk->save();
-            return redirect('anggota')->with('msg', 'Data Warga Berhasil Disimpan');
-        }
     }
 
     /**
@@ -123,7 +71,7 @@ class AnggotaKKController extends Controller
         //
         $data = DB::table('anggota_kk')->where('nik', '=', $id)->first();
         // dd($data);
-        return view('admin.anggota.edit', ['data' => $data]);
+        return view('admin.bukanwarga.edit', ['data' => $data]);
     }
 
     /**
@@ -137,7 +85,7 @@ class AnggotaKKController extends Controller
     {
         //
         $validator = Validator::make(request()->all(), [
-            'nik' => ['required', 'min:16', 'int'],
+            'nik' => ['required', 'min:16'],
             'nama' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
@@ -173,7 +121,7 @@ class AnggotaKKController extends Controller
             $akk->tanggal_ket = $request->get('tanggal_ket');
             $akk->keterangan = $request->get('keterangan');
             $akk->save();
-            return redirect('anggota')->with('msg', 'Data Warga Berhasil Diedit');
+            return redirect('bukanwarga')->with('msg', 'Data Warga Berhasil Diedit');
         }
     }
 
@@ -188,7 +136,7 @@ class AnggotaKKController extends Controller
         //
         $anggota = anggota::where('nik', '=', $id)->first();
         $anggota->delete();
-        return redirect('anggota')->with('msg', 'Data Warga Berhasil Dihapus');
+        return redirect('bukanwarga')->with('msg', 'Data Warga Berhasil Dihapus');
     }
 
     public function detail($id)
@@ -196,24 +144,6 @@ class AnggotaKKController extends Controller
         //
         $data = DB::table('anggota_kk')->where('nik', '=', $id)->first();
         // dd($data);
-        return view('admin.anggota.detail', ['data' => $data]);
-    }
-
-    public function laporan()
-	{
-		return Excel::download(new AnggotaExport, 'warga.xlsx');
-	}
-
-    public function laporan_warga()
-    {
-        $anggota = DB::table('anggota_kk')
-            ->where('keterangan_warga', '!=', 'Sudah Pindah')
-            ->where('keterangan_warga', '!=', 'Meninggal')
-            ->where('keterangan_warga', '!=', 'Admin')
-            ->orderBy('no_kk')
-            ->get();
-        $pdf = PDF::loadview("admin/anggota/cetak", ['anggota' => $anggota])
-        ->setPaper('a4','landscape');
-        return $pdf->download("data-warga-".date('Y-m-d_H-i-s').".pdf");
+        return view('admin.bukanwarga.detail', ['data' => $data]);
     }
 }

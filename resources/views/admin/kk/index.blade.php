@@ -37,7 +37,8 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No. KK</th>
+                                    <th style="width: 50%">No. KK</th>
+                                    <th>Tanggal Masuk</th>
                                     <th class="text-center" style="width:15%">Aksi</th>
                                 </tr>
                             </thead>
@@ -45,6 +46,7 @@
                             <tbody>
                                 <tr>
                                     <td><a>{{ $item->no_kk }}</a></td>
+                                    <td><a>{{ format_tgl($item->tanggal_masuk) }}</a></td>
                                     <td class="text-center"><a href="{{ route('kk.edit',[$item->no_kk]) }}" class="btn btn-sm btn-info">Edit</a></td>
                                 </tr>
                             </tbody>
