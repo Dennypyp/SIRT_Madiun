@@ -80,14 +80,14 @@ Route::group([
     Route::get("dashboardchart","AdminController@chartku");
     Route::get("dashboardchart2","AdminController@chartku2");
 
-    // Route KK
-    Route::resource('kk', 'KKController');
-    Route::get('kk/destroy/{id}', 'KKController@destroy');
+    // // Route KK
+    // Route::resource('kk', 'KKController');
+    // Route::get('kk/destroy/{id}', 'KKController@destroy');
 
-    // Route Anggota KK
-    Route::resource('anggota', 'AnggotaKKController');
-    Route::get('anggota/destroy/{id}', 'AnggotaKKController@destroy');
-    Route::get('/warga', 'AnggotaKKController@laporan');
+    // // Route Anggota KK
+    // Route::resource('anggota', 'AnggotaKKController');
+    // Route::get('anggota/destroy/{id}', 'AnggotaKKController@destroy');
+    // Route::get('/warga', 'AnggotaKKController@laporan');
 
     // Route Transaksi
     Route::resource('transaksi', 'TransaksiController');
