@@ -1,6 +1,6 @@
 <?php
 
-Route::name('admin.')->group(function () {
+// Route::name('admin.')->group(function () {
     Route::group(['namespace' => 'Admin'], function () {
         Route::resource('rt_admin', 'AdminController');
         Route::get("dashboardchart", "AdminController@chartku");
@@ -15,8 +15,6 @@ Route::name('admin.')->group(function () {
             Route::resource('anggota', 'AnggotaKKController');
             Route::get('anggota/destroy/{id}', 'AnggotaKKController@destroy');
             Route::get('/warga', 'AnggotaKKController@laporan');
-
-
 
             // Route Surat
             Route::resource('surat_admin', 'SuratController');
@@ -72,7 +70,7 @@ Route::name('admin.')->group(function () {
             Route::get('/laporan_keuangan', 'LaporanController@keuangan');
         });
     });
-});
+// });
 
 
 // Route::group([
