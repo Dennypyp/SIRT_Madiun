@@ -14,7 +14,7 @@
                     <a href="/" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
                 </li>
 
-                {{-- @if (Auth()->user())
+                @if (Auth()->user())
                     <li class="nav-item {{ 'surat' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat Pengantar</a>
                     </li>
@@ -28,7 +28,7 @@
                     <li class="nav-item {{ 'jimpitan_warga' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/jimpitan_warga" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i>
                             Jimpitan</a>
-                    </li> --}}
+                    </li>
                 @endif
             </ul>
         </div><!-- az-header-menu -->
