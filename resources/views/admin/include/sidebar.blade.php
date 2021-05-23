@@ -49,7 +49,7 @@
 
     @if (Auth()->user()->role == 'bendahara')
         {{-- Nav Keuangan --}}
-        <li
+        {{-- <li
             class="nav-item {{ 'jimpitan' == request()->segment(1) ? 'active' : '' }} {{ 'pengeluaran' == request()->segment(1) ? 'active' : '' }} {{ 'transaksi' == request()->segment(1) ? 'active' : '' }} {{ 'saldo' == request()->segment(1) ? 'active' : '' }} {{ 'lapkeu' == request()->segment(1) ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKeuangan"
                 aria-expanded="true" aria-controls="collapseKeuangan">
@@ -65,13 +65,13 @@
                     <a class="collapse-item" href="/lapkeu">Laporan</a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         {{-- =============================== --}}
     @endif
 
     @if (Auth()->user()->role == 'admin')
         {{-- Nav Surat --}}
-        <li
+        {{-- <li
             class="nav-item {{ 'surat_admin' == request()->segment(1) ? 'active' : '' }} {{ 'laporan_surat' == request()->segment(1) ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSurat"
                 aria-expanded="true" aria-controls="collapseSurat">
@@ -84,11 +84,11 @@
                     <a class="collapse-item" href="/laporan_surat">Laporan</a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         {{-- =========================== --}}
 
         {{-- Nav Kegiatan --}}
-        <li
+        {{-- <li
             class="nav-item {{ 'kegiatan_fisik' == request()->segment(1) ? 'active' : '' }} {{ 'kegiatan_nonfisik' == request()->segment(1) ? 'active' : '' }} ">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKegiatan"
                 aria-expanded="true" aria-controls="collapseKegiatan">
@@ -102,7 +102,7 @@
                     <a class="collapse-item" href="/kegiatan_nonfisik">Data Kegiatan Nonfisik</a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         {{-- ========================= --}}
 
         {{-- <!-- Divider --> --}}
@@ -110,12 +110,12 @@
 
         {{-- Nav Akun --}}
         {{-- <!-- Heading --> --}}
-        <div class="sidebar-heading">
+        {{-- <div class="sidebar-heading">
             Akun Warga
-        </div>
+        </div> --}}
 
         {{-- <!-- Nav Item - Pages Collapse Menu --> --}}
-        <li class="nav-item {{ 'akun' == request()->segment(1) ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ 'akun' == request()->segment(1) ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                 aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-user-circle"></i>
@@ -126,7 +126,7 @@
                     <a class="collapse-item" href="/akun">Data Akun</a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         {{-- ======================================= --}}
     @endif
 
