@@ -12,16 +12,13 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Table Anggota KK/Warga</h1>
+            <h1 class="h3 mb-2 text-gray-800">Data Warga Bukan RT 03</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="md-0 font-weight-bold text-primary">Data Anggota KK/Warga</h6>
+                    <h6 class="md-0 font-weight-bold text-primary">Data Warga Bukan RT 03</h6>
                     <div class="col-1 text-right d-inline">
-                        <a href="{{ route('anggota.create') }}" class="btn btn-sm btn-primary ">Tambah</a>
-                        {{--  <a href="/warga" class="btn btn-sm btn-success" target="_blank"><i class="far fa-file-excel">         Cetak</i></a>  --}}
-                        <a href="/cetak_warga" class="btn btn-sm btn-danger" target="_blank"><i class="far fa-file-pdf">         Cetak</i></a>
                     </div>
                     <br>
                     @if (session('msg'))
@@ -69,9 +66,11 @@
                                         <td>{{ $data->nama_ibu_bapak }}</td>
                                         <td>{{ $data->status }}</td>
                                         <td>{{ $data->status_kk }}</td>
-                                        <td><a href="{{ route('anggota.edit', [$data->nik]) }}"
+                                        <td><a href="{{ route('bukanwarga.edit', [$data->nik]) }}"
                                                 class="btn btn-sm btn-info">Edit</a>
-                                            <a href="/anggota/detail/{{ $data->nik }}" class="btn btn-sm btn-success">Detail</a></td>
+                                            <a href="/bukanwarga/detail/{{ $data->nik }}"
+                                                class="btn btn-sm btn-success">Detail</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

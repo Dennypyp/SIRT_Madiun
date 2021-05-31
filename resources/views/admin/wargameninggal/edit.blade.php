@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('anggota.update', [$data->nik]) }}">
+                    <form method="POST" action="{{ route('wargameninggal.update', [$data->nik]) }}">
                         {{ method_field('PUT') }}
                         @csrf
                         @if ($errors->any())
@@ -152,7 +152,7 @@
                                 <div class="col text-left">
                                     <div class="col text-left">
                                         <button type="submit" name="save" class="btn btn-primary">Edit</button>
-                                        <a class="btn btn-danger" href="{{ route('anggota.index') }}"
+                                        <a class="btn btn-danger" href="{{ route('wargameninggal.index') }}"
                                             role="button">Kembali</a>
                                     </div>
                                 </div>
@@ -181,7 +181,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="/anggota/destroy/{{ $data->nik }}">Hapus</a>
+                    <a class="btn btn-danger" href="/wargameninggal/destroy/{{ $data->nik }}">Hapus</a>
                 </div>
             </div>
         </div>

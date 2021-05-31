@@ -14,7 +14,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('kk')->insert(
-            ['no_kk'=> "admin"]
+            ['no_kk'=> "admin",
+            'tanggal_masuk'=> date('Y-m-d')]
         );
 
         DB::table('anggota_kk')->insert(
@@ -30,7 +31,10 @@ class UserSeeder extends Seeder
             'alamat'=>"Madiun",
             'nama_ibu_bapak'=> "Ibu/Bapak",
             'status'=> "Kawin",
-            'status_kk'=> "Bapak/Kepala Keluarga"]
+            'status_kk'=> "Bapak/Kepala Keluarga",
+            'keterangan_warga'=> "admin",
+            'tanggal_ket'=> date('Y-m-d'),
+            'keterangan'=> "-"]
         );
 
         DB::table('users')->insert(
@@ -41,7 +45,8 @@ class UserSeeder extends Seeder
         );
 
         DB::table('kk')->insert(
-            ['no_kk'=> "bendahara"]
+            ['no_kk'=> "bendahara",
+            'tanggal_masuk'=> date('Y-m-d')]
         );
 
         DB::table('anggota_kk')->insert(
@@ -57,7 +62,10 @@ class UserSeeder extends Seeder
             'alamat'=>"Madiun",
             'nama_ibu_bapak'=> "Ibu/Bapak",
             'status'=> "Kawin",
-            'status_kk'=> "Bapak/Kepala Keluarga"]
+            'status_kk'=> "Bapak/Kepala Keluarga",
+            'keterangan_warga'=> "admin",
+            'tanggal_ket'=> date('Y-m-d'),
+            'keterangan'=> "-"]
         );
 
         DB::table('users')->insert(

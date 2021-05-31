@@ -36,6 +36,10 @@
                                         <input type="text" id="no_kk" name="no_kk" class="form-control"
                                             placeholder="Nomor KK">
                                     </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="tgl_masuk">Tanggal Masuk</label>
+                                        <input type="date" id="tanggal_masuk" name="tanggal_masuk" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

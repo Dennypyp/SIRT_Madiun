@@ -117,6 +117,23 @@
                                             <option value="Anak">Anak</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="keterangan_warga">Keterangan Warga</label>
+                                        <select class="form-control" id="keterangan_warga" name="keterangan_warga">
+                                            <option value="Warga Asli">Warga Asli</option>
+                                            <option value="Warga Pindahan">Warga Pindahan</option>
+                                            <option value="Sudah Pindah">Sudah Pindah</option>
+                                            <option value="Meninggal">Meninggal</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="tgl_masuk">Tanggal Masuk/Pindah</label>
+                                        <input type="date" id="tanggal_ket" name="tanggal_ket" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="ket">Keterangan</label>
+                                        <textarea name="keterangan" id="keterangan" rows="5" class="form-control"></textarea>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

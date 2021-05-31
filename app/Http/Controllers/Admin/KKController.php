@@ -47,7 +47,8 @@ class KKController extends Controller
     {
         //
         $validator = Validator::make(request()->all(), [
-            'no_kk' => 'required',
+            'no_kk' => ['required', 'min:16', 'int'],
+            'tanggal_masuk' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -55,6 +56,7 @@ class KKController extends Controller
         } else {
             $kk = new kk();
             $kk->no_kk = $request->get('no_kk');
+            $kk->tanggal_masuk = $request->get('tanggal_masuk');
             $kk->save();
             return redirect('kk')->with('msg', 'Nomor KK Berhasil Disimpan');
         }
@@ -96,7 +98,8 @@ class KKController extends Controller
     {
         //
         $validator = Validator::make(request()->all(), [
-            'no_kk' => 'required',
+            'no_kk' => ['required', 'min:16'],
+            'tanggal_masuk' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -104,6 +107,7 @@ class KKController extends Controller
         } else {
             $data = kk::where('no_kk', '=', $id)->first();
             $data->no_kk = $request->get('no_kk');
+            $data->tanggal_masuk = $request->get('tanggal_masuk');
             $data->save();
             return redirect('kk')->with('msg', 'Nomor KK Berhasil Diedit');
         }
@@ -118,8 +122,15 @@ class KKController extends Controller
     public function destroy($id)
     {
         //
-        $kk = kk::where('no_kk', '=', $id)->first();
-        $kk->delete();
-        return redirect('kk')->with('msg', 'Nomor KK Berhasil Dihapus');
+        $val = DB::table('anggota_kk')
+        ->where('no_kk','=',$id)
+        ->first();
+        if ($val === null) {
+            $kk = kk::where('no_kk', '=', $id)->first();
+            $kk->delete();
+            return redirect('kk')->with('msg', 'Nomor KK Berhasil Dihapus');
+        } else {
+            return back()->with('msg', 'Nomor KK Masih Digunakan');
+        }
     }
 }

@@ -15,6 +15,7 @@ class CreateKKTable extends Migration
     {
         Schema::create('kk', function (Blueprint $table) {
             $table->string('no_kk',20)->primary();
+            $table->date('tanggal_masuk');
             $table->timestamps();
         });
     }
