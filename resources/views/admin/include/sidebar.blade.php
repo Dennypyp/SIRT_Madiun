@@ -86,7 +86,7 @@
                     <a class="collapse-item" href="/laporan_surat">Laporan</a>
                 </div>
             </div>
-        </li>
+        </li> 
         {{-- =========================== --}}
 
         {{-- Nav Kegiatan --}}
@@ -111,12 +111,12 @@
         <hr class="sidebar-divider">
 
         {{-- Nav Akun --}}
-        {{-- <!-- Heading --> --}}
+        <!-- Heading -->
         <div class="sidebar-heading">
             Akun Warga
         </div>
 
-        {{-- <!-- Nav Item - Pages Collapse Menu --> --}}
+        <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item {{ 'akun' == request()->segment(1) ? 'active' : '' }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                 aria-expanded="true" aria-controls="collapsePages">

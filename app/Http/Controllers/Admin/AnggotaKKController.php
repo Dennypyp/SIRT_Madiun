@@ -24,9 +24,13 @@ class AnggotaKKController extends Controller
         //
 
         $anggota = DB::table('anggota_kk')
+
             ->where('keterangan_warga', '!=', 'Sudah Pindah')
             ->where('keterangan_warga', '!=', 'Meninggal')
             ->where('keterangan_warga', '!=', 'Admin')
+
+            ->where('no_kk', '!=', 'bendahara')
+
             ->orderBy('no_kk')
             ->get();
         return view('admin.anggota.index', ['anggota' => $anggota]);

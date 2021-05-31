@@ -61,7 +61,7 @@
         <table border="1" cellspacing="" cellpadding="4" width="100%">
             <thead>
                 <tr>
-                    <th align="center" rowspan="2">No</th>
+                    {{-- <th align="center" rowspan="2">No</th> --}}
                     <th align="center" rowspan="2">Tanggal</th>
                     <th align="center" rowspan="2">Keterangan</th>
                     <th align="center" rowspan="2">Sumber/Yang Menyerahkan/Yang Menggunakan</th>
@@ -76,7 +76,7 @@
                 @foreach ($transaksi2 as $item)
                     @if ($uang->jenis_transaksi == $item->jenis_transaksi)
                         <tr>
-                            <td align="center">{{ $loop->iteration }}</td>
+                            {{-- <td align="center">{{ $loop->iteration }}</td> --}}
                             <td align="center">{{ format_tgl($item->tanggal_transaksi) }}</td>
                             <td align="center">{{ $item->keterangan_transaksi }}</td>
                             <td align="center">{{ $item->sumber_transaksi }}</td>
