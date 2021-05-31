@@ -21,6 +21,7 @@ class KKController extends Controller
 
         $kk = DB::table('kk')
             ->where('no_kk', '!=', 'admin')
+            ->where('no_kk', '!=', 'bendahara')
             ->get();
         return view('admin.kk.index', ['kk' => $kk]);
     }

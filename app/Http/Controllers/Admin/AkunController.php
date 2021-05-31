@@ -22,6 +22,7 @@ class AkunController extends Controller
         //
         $akun = DB::table('users')
         ->where('nik','!=','superAdmin')
+        ->where('nik','!=','BendaharaRT')
         ->orderBy('created_at', 'DESC')
         ->get();
         return view('admin.akun.index', ['akun' => $akun]);

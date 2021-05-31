@@ -24,6 +24,7 @@ class AnggotaKKController extends Controller
 
         $anggota = DB::table('anggota_kk')
             ->where('no_kk', '!=', 'admin')
+            ->where('no_kk', '!=', 'bendahara')
             ->orderBy('no_kk')
             ->get();
         return view('admin.anggota.index', ['anggota' => $anggota]);
@@ -40,6 +41,7 @@ class AnggotaKKController extends Controller
 
         $kk = DB::table('kk')
             ->where('no_kk', '!=', 'admin')
+            ->where('no_kk', '!=', 'bendahara')
             ->get();
         return view('admin.anggota.create', ['kk' => $kk]);
 
