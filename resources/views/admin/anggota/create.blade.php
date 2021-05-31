@@ -127,7 +127,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="tgl_masuk">Tanggal Masuk</label>
+                                        <label class="form-control-label" for="tgl_masuk">Tanggal Masuk/Pindah</label>
                                         <input type="date" id="tanggal_ket" name="tanggal_ket" class="form-control">
                                     </div>
                                     <div class="form-group">
