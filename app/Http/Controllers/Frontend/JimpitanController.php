@@ -37,8 +37,12 @@ class JimpitanController extends Controller
         // ====================
 
         // Ambil Tanggal Warga Tinggal
-        $tglTinggal = DB::table('anggota_kk')
-            ->where('nik', Auth::user()->nik)
+        // $tglTinggal = DB::table('anggota_kk')
+        //     ->where('nik', Auth::user()->nik)
+        //     ->first();
+        $tglTinggal = DB::table('kk')
+            ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
+            ->where("anggota_kk.nik", Auth::user()->nik)
             ->first();
         // =========================
 
@@ -51,7 +55,7 @@ class JimpitanController extends Controller
         // ===============================
 
         // Hitung Jumlah bulan warga tinggal di RT
-        $d1 = strtotime($tglTinggal->created_at);
+        $d1 = strtotime($tglTinggal->tanggal_masuk);
         $d2 = strtotime(date('Y-m-d'));
         $min_date = min($d1, $d2);
         $max_date = max($d1, $d2);

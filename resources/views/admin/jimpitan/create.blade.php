@@ -45,8 +45,9 @@
                                         {{-- ================================================ --}}
                                         @php
                                             // Ambil Tanggal Warga Tinggal
-                                            $tglTinggal = DB::table('anggota_kk')
-                                                ->where('nik', $item->nik)
+                                            $tglTinggal = DB::table('kk')
+                                                ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
+                                                ->where('anggota_kk.nik', $item->nik)
                                                 ->first();
                                             // =========================
                                             
@@ -59,7 +60,7 @@
                                             // ===============================
                                             
                                             // Hitung Jumlah bulan warga tinggal di RT
-                                            $d1 = strtotime($tglTinggal->created_at);
+                                            $d1 = strtotime($tglTinggal->tanggal_masuk);
                                             $d2 = strtotime(date('Y-m-d'));
                                             $min_date = min($d1, $d2);
                                             $max_date = max($d1, $d2);
@@ -79,19 +80,15 @@
                                         @if ($totTag >= 10000)
                                             <td>{{ format_rp($totTag) }}</td>
                                             <td class="text-center">-</td>
-                                        @elseif($totTag<10000) 
-                                            @if ($totTag === 0) 
-                                                <td class="text-center">-</td>
-                                                <td class="text-center">-</td>
+                                        @elseif($totTag<10000) @if ($totTag === 0) <td class="text-center">-</td>
+                                                    <td class="text-center">-</td>
                                             @else
-                                                <td class="text-center">-</td>
-                                                <td>{{ format_rp($totTag * -1) }}</td> 
-                                            @endif 
-                                        @endif
-                                        <td class="text-center">
-                                            <a href="{{ route('jimpitan.bayar', ['id' => $item->no_kk]) }}"
-                                            class="btn btn-sm btn-primary">Bayar</a>
-                                        </td>
+                                                    <td class="text-center">-</td>
+                                                    <td>{{ format_rp($totTag * -1) }}</td> @endif @endif
+                                                <td class="text-center">
+                                                    <a href="{{ route('jimpitan.bayar', ['id' => $item->no_kk]) }}"
+                                                        class="btn btn-sm btn-primary">Bayar</a>
+                                                </td>
                                     </tr>
                                 @endforeach
                                 {{-- @else

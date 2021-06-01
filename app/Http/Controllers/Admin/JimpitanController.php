@@ -45,36 +45,6 @@ class JimpitanController extends Controller
             ->where('kk.no_kk', '!=', 0)
             ->get();
 
-        // Ambil Tanggal Warga Tinggal
-        $tglTinggal = DB::table('anggota_kk')
-            ->where('nik', Auth::user()->nik)
-            ->first();
-        // =========================
-
-        // Ambil jumlah jimpitan yang terbayar
-        $tagihan = DB::table('uang_sosial')
-            ->join('kk', 'kk.no_kk', '=', 'uang_sosial.nkk')
-            ->join('anggota_kk', 'anggota_kk.no_kk', '=', 'kk.no_kk')
-            ->where("anggota_kk.nik", Auth::user()->nik)
-            ->sum('uang_sosial.jumlah_jimpitan');
-        // ===============================
-
-        // Hitung Jumlah bulan warga tinggal di RT
-        $d1 = strtotime($tglTinggal->created_at);
-        $d2 = strtotime(date('Y-m-d'));
-        $min_date = min($d1, $d2);
-        $max_date = max($d1, $d2);
-        $i = 0;
-        while (($min_date = strtotime("+1 MONTH", $min_date)) <= $max_date) {
-            $i++;
-        }
-        $jumlahBln = $i + 1;
-        // ==============
-
-        // Hitung Tagihan
-        $jmlTag = $jumlahBln * 10000;
-        $totTag = $jmlTag - intval($tagihan);
-        // ===================
 
         return view('admin.jimpitan.create', [
             'jimpitan' => $jimpitan

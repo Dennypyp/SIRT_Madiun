@@ -35,7 +35,7 @@
         <div class="col-lg-12 col-xl-12 mg-t-20 mg-lg-t-0">
           <div class="card card-table-one">
             <h4 class="az-dashboard-title">Sistem Informasi RT.03</h4>
-            <p class="az-dashboard-text">Warga dapat mengajukan <b>Surat Pengantar</b> dan melihat data Pembayayaran <b>Jimpitan</b>.</p>
+            <p class="az-dashboard-text">Warga dapat mengajukan <b>Surat Pengantar</b>, mengajukan <b>Kegiatan Fisik</b> dan <b>Kegiatan Nonfisik</b>, serta melihat data Pembayayaran <b>Jimpitan</b>.</p>
             <br>
             
             
