@@ -30,6 +30,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Kegiatan</th>
+                                    <th>Nama Penerima</th>
+                                    <th>Penerima Alamat</th>
                                     <th>Status Kegiatan</th>
                                     <th>Besar Dana</th>
                                     <th>Keterangan</th>
@@ -41,6 +43,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->kegiatan }}</td>
+                                        <td>{{ $data->nama_penerima }}</td>
+                                        <td>{{ $data->alamat_penerima }}</td>
                                         <td>{{ $data->statusk }}</td>
                                         <td>{{ format_rp($data->dana) }}</td>
                                         <td>{{ $data->keterangan }}</td>

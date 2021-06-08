@@ -25,10 +25,10 @@
                           <a href="/kegiatan_nonfisik_warga" class="nav-link">Kegiatan Nonfisik</a>
                         </nav>
                     </li>
-                    {{-- <li class="nav-item {{ 'jimpitan_warga' == request()->segment(1) ? 'active' : '' }}">
+                    <li class="nav-item {{ 'jimpitan_warga' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/jimpitan_warga" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i>
                             Jimpitan</a>
-                    </li> --}}
+                    </li>
                 @endif
             </ul>
         </div><!-- az-header-menu -->

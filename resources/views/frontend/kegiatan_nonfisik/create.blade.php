@@ -49,7 +49,19 @@
                         <div class="form-group">
                             <label class="form-control-label" for="kegiatan">Nama Kegiatan</label>
                             <input type="text" id="kegiatan" name="kegiatan" class="form-control"
-                                placeholder="kegiatan">
+                                placeholder="Nama Kegiatan">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" for="nama_penerima">Nama Penerima</label>
+                            <input type="text" id="nama_penerima" name="nama_penerima" class="form-control"
+                                placeholder="Nama Penerima">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" for="alamat_penerima">Alamat Penerima</label>
+                            <input type="text" id="alamat_penerima" name="alamat_penerima" class="form-control"
+                                placeholder="Alamat Penerima">
                         </div>
 
                         <div class="form-group">

@@ -17,6 +17,8 @@ class CreateKegiatanNonfisikTable extends Migration
             $table->id();
             $table->string('nik',20)->index()->nullable();
             $table->string('kegiatan');
+            $table->string('nama_penerima');
+            $table->string('alamat_penerima');
             $table->string('statusk');
             $table->integer('dana');
             $table->string('keterangan');

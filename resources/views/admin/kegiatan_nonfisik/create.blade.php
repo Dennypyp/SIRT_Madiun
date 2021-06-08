@@ -33,25 +33,37 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="nik">NIK</label>
-                                        <input type="text" id="nik" name="nik" class="form-control" placeholder="NIK" value="{{ Auth::user()->nik}}" readonly>
+                                        <input type="text" id="nik" name="nik" class="form-control" placeholder="NIK">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-control-label" for="nama">Nama Pengusul</label>
                                         <input type="text" id="nama" name="nama" class="form-control"
-                                            placeholder="Nama Lengkap" value="{{ Auth::user()->nama}}" readonly>
+                                            placeholder="Nama Lengkap">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-control-label" for="alamat">Alamat Pengusul</label>
                                         <input type="text" id="alamat" name="alamat" class="form-control"
-                                            placeholder="Alamat" value="{{ $anggota->alamat }}" readonly>
+                                            placeholder="Alamat">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-control-label" for="kegiatan">Nama Kegiatan</label>
                                         <input type="text" id="kegiatan" name="kegiatan" class="form-control"
-                                            placeholder="kegiatan">
+                                            placeholder="Nama Kegiatan">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="nama_penerima">Nama Penerima</label>
+                                        <input type="text" id="nama_penerima" name="nama_penerima" class="form-control"
+                                            placeholder="Nama Penerima">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="alamat_penerima">AlamatPenerima</label>
+                                        <input type="text" id="alamat_penerima" name="alamat_penerima" class="form-control"
+                                            placeholder="Alamat Penerima">
                                     </div>
 
                                     <div class="form-group">

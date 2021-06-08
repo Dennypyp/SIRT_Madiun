@@ -43,6 +43,8 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Alamat</th>
                                     <th class="text-center">Kegiatan</th>
+                                    <th class="text-center">Nama Penerima</th>
+                                    <th class="text-center">Alamat Penerima</th>
                                     <th class="text-center">Status Kegiatan</th>
                                     <th class="text-center">Dana</th>
                                     <th class="text-center">Keterangan</th>
@@ -58,6 +60,8 @@
                                         <td>{{ $key->nama }}</td>
                                         <td>{{ $key->alamat }}</td>
                                         <td>{{ $key->kegiatan }}</td>
+                                        <td>{{ $key->nama_penerima }}</td>
+                                        <td>{{ $key->alamat_penerima }}</td>
                                         <td>{{ $key->statusk }}</td>
                                         <td>{{ format_rp($key->dana) }}</td>
                                         <td>{{ $key->keterangan }}</td>

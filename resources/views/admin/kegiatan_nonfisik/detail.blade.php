@@ -47,9 +47,11 @@
         <tr>
             <th align="center">No</th>
             <th align="center">NIK</th>
-            <th align="center">Nama Kegiatan</th>
             <th align="center">Nama Pengusul</th>
             <th align="center">Alamat Pengusul</th>
+            <th align="center">Nama Kegiatan</th>
+            <th align="center">Nama Penerima</th>
+            <th align="center">Alamat Penerima</th>
             <th align="center">Status</th>
             <th align="center">Jumlah Dana</th>
             <th align="center">Keterangan</th>
@@ -63,9 +65,11 @@
 
             <td align="center">{{ $loop->iteration }}</td>
             <td align="center">{{ $key->nik }}</td>
-            <td align="center">{{ $key->kegiatan }}</td>
             <td align="center">{{ $key->nama }}</td>
             <td align="center">{{ $key->alamat }}</td>
+            <td align="center">{{ $key->kegiatan }}</td>
+            <td align="center">{{ $key->nama_penerima }}</td>
+            <td align="center">{{ $key->alamat_penerima }}</td>
             <td align="center">{{ $key->statusk }}</td>
             <td align="center">{{ format_rp($key->dana) }}</td>
             <td align="center">{{ $key->keterangan }}</td>
