@@ -18,22 +18,22 @@
                     <li class="nav-item {{ 'surat' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/surat" class="nav-link"><i class="typcn typcn-document"></i>Surat Pengantar</a>
                     </li>
-                    <li class="nav-item {{'kegiatan_fisik' == request()->segment(1) ? 'active' : ''}} {{'kegiatan_nonfisik' == request()->segment(1) ? 'active' : ''}}">
+                    <li class="nav-item {{'kegiatan_fisik_warga' == request()->segment(1) ? 'active' : ''}} {{'kegiatan_nonfisik_warga' == request()->segment(1) ? 'active' : ''}}">
                         <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Kegiatan</a>
                         <nav class="az-menu-sub">
                           <a href="/kegiatan_fisik_warga" class="nav-link">Kegiatan Fisik</a>
-                          <a href="/kegiatan_nonfisik_warga" class="nav-link">Kegiatan Non Fisik</a>
+                          <a href="/kegiatan_nonfisik_warga" class="nav-link">Kegiatan Nonfisik</a>
                         </nav>
                     </li>
-                    <li class="nav-item {{ 'jimpitan_warga' == request()->segment(1) ? 'active' : '' }}">
+                    {{-- <li class="nav-item {{ 'jimpitan_warga' == request()->segment(1) ? 'active' : '' }}">
                         <a href="/jimpitan_warga" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i>
                             Jimpitan</a>
-                    </li>
+                    </li> --}}
                 @endif
             </ul>
         </div><!-- az-header-menu -->
         <div class="az-header-right">
-            <div class="dropdown az-header-notification">
+            {{-- <div class="dropdown az-header-notification">
                 <a href="" class="new"><i class="typcn typcn-bell"></i></a>
                 <div class="dropdown-menu">
                     <div class="az-dropdown-header mg-b-20 d-sm-none">
@@ -77,7 +77,7 @@
                     </div><!-- az-notification-list -->
                     <div class="dropdown-footer"><a href="">View All Notifications</a></div>
                 </div><!-- dropdown-menu -->
-            </div><!-- az-header-notification -->
+            </div><!-- az-header-notification --> --}}
 
 
             @if (Auth()->user())

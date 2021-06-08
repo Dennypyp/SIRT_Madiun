@@ -10,12 +10,12 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<center><h1 class="h3 mb-3 mt-3 text-gray-800">Pengajuan Kegiatan Non Fisik</h1></center>
+<center><h1 class="h3 mb-3 mt-3 text-gray-800">Pengajuan Kegiatan Nonfisik</h1></center>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="md-0 font-weight-bold text-primary">Form Pengajuan Kegiatan Non Fisik</h6>
+        <h6 class="md-0 font-weight-bold text-primary">Form Pengajuan Kegiatan Nonfisik</h6>
     </div>
 
     <div class="card-body">
