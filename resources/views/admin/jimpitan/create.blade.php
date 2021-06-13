@@ -80,15 +80,29 @@
                                         @if ($totTag >= 10000)
                                             <td>{{ format_rp($totTag) }}</td>
                                             <td class="text-center">-</td>
-                                        @elseif($totTag<10000) @if ($totTag === 0) <td class="text-center">-</td>
+                                            <td class="text-center">
+                                                <a href="{{ route('jimpitan.bayar', ['id' => $item->no_kk]) }}"
+                                                    class="btn btn-sm btn-primary">Bayar</a>
+                                            </td>
+                                        @elseif($totTag<10000) 
+                                            @if ($totTag === 0) 
                                                     <td class="text-center">-</td>
+                                                    <td class="text-center">-</td>
+                                                    <td class="text-center">
+                                                        -
+                                                    </td>
                                             @else
                                                     <td class="text-center">-</td>
-                                                    <td>{{ format_rp($totTag * -1) }}</td> @endif @endif
-                                                <td class="text-center">
+                                                    <td>{{ format_rp($totTag * -1) }}</td>
+                                                    <td class="text-center">
+                                                        -
+                                                    </td>
+                                            @endif 
+                                        @endif
+                                                {{-- <td class="text-center">
                                                     <a href="{{ route('jimpitan.bayar', ['id' => $item->no_kk]) }}"
                                                         class="btn btn-sm btn-primary">Bayar</a>
-                                                </td>
+                                                </td> --}}
                                     </tr>
                                 @endforeach
                                 {{-- @else
