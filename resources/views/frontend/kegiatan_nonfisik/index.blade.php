@@ -31,7 +31,7 @@
                                     <th>No</th>
                                     <th>Nama Kegiatan</th>
                                     <th>Nama Penerima</th>
-                                    <th>Penerima Alamat</th>
+                                    <th>Alamat Penerima</th>
                                     <th>Status Kegiatan</th>
                                     <th>Besar Dana</th>
                                     <th>Keterangan</th>

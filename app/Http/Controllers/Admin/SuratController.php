@@ -99,6 +99,14 @@ class SuratController extends Controller
         return redirect('surat_admin');
     }
 
+    public function tolak_status_surat($id)
+    {
+        $suratp = Surat::where('id','=',$id)->first();
+        $suratp->status_surat = 'Ditolak';
+        $suratp->save();
+        return redirect('surat_admin');
+    }
+
     public function surat($id){
        
         $surat = DB::table('surat')

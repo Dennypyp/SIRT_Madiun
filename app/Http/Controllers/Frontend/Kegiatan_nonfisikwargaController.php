@@ -60,8 +60,8 @@ class Kegiatan_nonfisikwargaController extends Controller
         $kegiatan_nonfisikk= new Kegiatan_nonfisik();
         $kegiatan_nonfisikk->nik = $request->get('nik');
         $kegiatan_nonfisikk->kegiatan = $request->get('kegiatan');
-        $kegiatan_nonfisikk->kegiatan = $request->get('nama_penerima');
-        $kegiatan_nonfisikk->kegiatan = $request->get('alamat_penerima');
+        $kegiatan_nonfisikk->nama_penerima = $request->get('nama_penerima');
+        $kegiatan_nonfisikk->alamat_penerima = $request->get('alamat_penerima');
         $kegiatan_nonfisikk->statusk = $request->get('statusk');
         $kegiatan_nonfisikk->dana = $request->get('dana');
         $kegiatan_nonfisikk->keterangan = $request->get('keterangan');

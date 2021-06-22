@@ -23,7 +23,7 @@ class Kegiatan_nonfisikController extends Controller
     public function index()
     {
         $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
-        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan','kegiatan_nonfisik.status_kegiatan','kegiatan_nonfisik.id')
+        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan', 'kegiatan_nonfisik.nama_penerima','kegiatan_nonfisik.alamat_penerima','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan','kegiatan_nonfisik.status_kegiatan','kegiatan_nonfisik.id')
         ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
         ->get();
         // dd($kegiatan_nonfisik);
@@ -55,8 +55,8 @@ class Kegiatan_nonfisikController extends Controller
         $kegiatan_nonfisikk= new Kegiatan_nonfisik();
         $kegiatan_nonfisikk->nik = $request->get('nik');
         $kegiatan_nonfisikk->kegiatan = $request->get('kegiatan');
-        $kegiatan_nonfisikk->kegiatan = $request->get('nama_penerima');
-        $kegiatan_nonfisikk->kegiatan = $request->get('alamat_penerima');
+        $kegiatan_nonfisikk->nama_penerima = $request->get('nama_penerima');
+        $kegiatan_nonfisikk->alamat_penerima = $request->get('alamat_penerima');
         $kegiatan_nonfisikk->statusk = $request->get('statusk');
         $kegiatan_nonfisikk->dana = $request->get('dana');
         $kegiatan_nonfisikk->keterangan = $request->get('keterangan');
@@ -132,7 +132,7 @@ class Kegiatan_nonfisikController extends Controller
         $tahunDepan = date('Y', strtotime("+1 year", strtotime(date("Y-m-d"))));
 
         $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
-        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan','kegiatan_nonfisik.status_kegiatan','kegiatan_nonfisik.id')
+        ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan','kegiatan_nonfisik.nama_penerima','kegiatan_nonfisik.alamat_penerima','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan','kegiatan_nonfisik.status_kegiatan','kegiatan_nonfisik.id')
         ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
         ->where('kegiatan_nonfisik.status_kegiatan','Disetujui')
         ->get();

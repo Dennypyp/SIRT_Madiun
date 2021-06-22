@@ -44,10 +44,12 @@
                                             {{-- <a href="#" class="btn btn-sm btn-info">Setujui</a> --}}
                                             @if ($item->status_surat == "Menunggu")
                                                 <a href="/status_surat/{{$item->id}}" class="btn btn-sm btn-success" >Setujui</a>
-
+                                                <a href="/tolak_status_surat/{{$item->id}}" class="btn btn-sm btn-warning" >Tolak</a>
                                             @elseif($item->status_surat == "Disetujui")
                                             <a href="#" class="btn btn-sm btn-secondary" disabled>Disetujui</a>
                                             <a href="/surat_pengantar/{{$item->id}}" class="btn btn-sm btn-primary"><i class="far fa-file-pdf"></i> Cetak</a>
+                                            @elseif($item->status_surat == "Ditolak")
+                                            <a href="#" class="btn btn-sm btn-danger" disabled>Ditolak</a>
                                             @endif
 
 
