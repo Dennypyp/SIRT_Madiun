@@ -25,6 +25,7 @@ class Kegiatan_nonfisikController extends Controller
         $kegiatan_nonfisik = DB::table('kegiatan_nonfisik')
         ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_nonfisik.kegiatan', 'kegiatan_nonfisik.nama_penerima','kegiatan_nonfisik.alamat_penerima','kegiatan_nonfisik.statusk','kegiatan_nonfisik.dana','kegiatan_nonfisik.keterangan','kegiatan_nonfisik.status_kegiatan','kegiatan_nonfisik.id')
         ->join('anggota_kk','anggota_kk.nik','=','kegiatan_nonfisik.nik')
+        ->orderBy('id','DESC')
         ->get();
         // dd($kegiatan_nonfisik);
         return view('admin.kegiatan_nonfisik.index',['kegiatan_nonfisik'=>$kegiatan_nonfisik]);
@@ -62,7 +63,7 @@ class Kegiatan_nonfisikController extends Controller
         $kegiatan_nonfisikk->keterangan = $request->get('keterangan');
         $kegiatan_nonfisikk->status_kegiatan = 'Menunggu';
         $kegiatan_nonfisikk->save();
-        return redirect('kegiatan_nonfisik_warga')->with('msg','Kegiatan Nonfisik Berhasil Ditambah!');
+        return redirect('kegiatan_nonfisik')->with('msg','Kegiatan Nonfisik Berhasil Ditambah!');
     }
 
     /**

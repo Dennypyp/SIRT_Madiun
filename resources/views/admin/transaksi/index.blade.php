@@ -40,7 +40,7 @@
                                     <th class="text-center" rowspan="2">Tanggal</th>
                                     <th class="text-center" rowspan="2">Jenis</th>
                                     <th class="text-center" rowspan="2">Keterangan</th>
-                                    <th class="text-center" rowspan="2">Sumber/Yang Menyerahkan/Yang Menggunakan</th>
+                                    <th class="text-center" rowspan="2">Sumber/Penanggungjawab</th>
                                     <th class="text-center" colspan="2">Status</th>
                                     <th class="text-center" rowspan="2" style="width:30%">Aksi</th>
                                 </tr>

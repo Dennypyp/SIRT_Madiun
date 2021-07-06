@@ -64,7 +64,7 @@
                     {{-- <th align="center" rowspan="2">No</th> --}}
                     <th align="center" rowspan="2">Tanggal</th>
                     <th align="center" rowspan="2">Keterangan</th>
-                    <th align="center" rowspan="2">Sumber/Yang Menyerahkan/Yang Menggunakan</th>
+                    <th align="center" rowspan="2">Sumber/Penanggungjawab</th>
                     <th align="center" colspan="2">Status</th>
                 </tr>
                 <tr>

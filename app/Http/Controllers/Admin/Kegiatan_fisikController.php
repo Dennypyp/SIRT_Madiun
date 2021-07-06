@@ -25,6 +25,7 @@ class Kegiatan_fisikController extends Controller
         $kegiatan_fisik = DB::table('kegiatan_fisik')
         ->select('anggota_kk.nik','anggota_kk.nama','anggota_kk.alamat','kegiatan_fisik.kegiatan','kegiatan_fisik.volume','kegiatan_fisik.satuan','kegiatan_fisik.lokasi','kegiatan_fisik.statusk','kegiatan_fisik.dana','kegiatan_fisik.keterangan','kegiatan_fisik.status_kegiatan','kegiatan_fisik.id')
         ->join('anggota_kk','anggota_kk.nik','=','kegiatan_fisik.nik')
+        ->orderBy('id','DESC')
         ->get();
         return view('admin.kegiatan_fisik.index',['kegiatan_fisik'=>$kegiatan_fisik]);
     }
@@ -61,7 +62,7 @@ class Kegiatan_fisikController extends Controller
         $kegiatan_fisikk->keterangan = $request->get('keterangan');
         $kegiatan_fisikk->status_kegiatan = 'Menunggu';
         $kegiatan_fisikk->save();
-        return redirect('kegiatan_fisik_warga')->with('msg','Kegiatan Fisik Berhasil Ditambah!');
+        return redirect('kegiatan_fisik')->with('msg','Kegiatan Fisik Berhasil Ditambah!');
     }
 
     /**

@@ -33,7 +33,8 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="tanggal_transaksi">Tanggal Transaksi</label>
-                                        <input type="date" id="tanggal_transaksi" name="tanggal_transaksi" class="form-control">
+                                        <input type="date" id="tanggal_transaksi" name="tanggal_transaksi"
+                                            class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="status_transaksi">Status Transaksi</label>
@@ -55,23 +56,26 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="keterangan_transaksi">Keterangan Transaksi</label>
-                                        <input type="text" id="keterangan_transaksi" name="keterangan_transaksi" class="form-control"
-                                            placeholder="Keterangan">
+                                        <label class="form-control-label" for="keterangan_transaksi">Keterangan
+                                            Transaksi</label>
+                                        <input type="text" id="keterangan_transaksi" name="keterangan_transaksi"
+                                            class="form-control" placeholder="Keterangan">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="sumber_transaksi">Sumber/Yang Menyerahkan/Yang Menggunakan Transaksi</label>
-                                        <input type="text" id="sumber_transaksi" name="sumber_transaksi" class="form-control"
-                                            placeholder="Sumber/Yang Menyerahkan/Yang Menggunakan Transaksi">
+                                        <label class="form-control-label"
+                                            for="sumber_transaksi">Sumber/Penanggungjawab</label>
+                                        <input type="text" id="sumber_transaksi" name="sumber_transaksi"
+                                            class="form-control" placeholder="Sumber/Penanggungjawab">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-control-label" for="jumlah_transaksi">Jumlah Transaksi (Rp)</label>
+                                        <label class="form-control-label" for="jumlah_transaksi">Jumlah Transaksi
+                                            (Rp)</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">Rp</span>
                                             </div>
-                                            <input type="text" id="jumlah_transaksi" name="jumlah_transaksi" class="form-control"
-                                            placeholder="Jumlah Transaksi">
+                                            <input type="text" id="jumlah_transaksi" name="jumlah_transaksi"
+                                                class="form-control" placeholder="Jumlah Transaksi">
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +84,8 @@
                                 <div class="col text-left">
                                     <div class="col text-left">
                                         <button type="submit" name="save" class="btn btn-primary">Create</button>
-                                        <a class="btn btn-danger" href="{{ route('transaksi.index') }}" role="button">Kembali</a>
+                                        <a class="btn btn-danger" href="{{ route('transaksi.index') }}"
+                                            role="button">Kembali</a>
                                     </div>
                                 </div>
                             </div>

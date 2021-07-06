@@ -20,8 +20,7 @@
                     <h6 class="md-0 font-weight-bold text-primary">Data Anggota KK/Warga</h6>
                     <div class="col-1 text-right d-inline">
                         <a href="{{ route('anggota.create') }}" class="btn btn-sm btn-primary ">Tambah</a>
-                        {{--  <a href="/warga" class="btn btn-sm btn-success" target="_blank"><i class="far fa-file-excel">         Cetak</i></a>  --}}
-                        <a href="/cetak_warga" class="btn btn-sm btn-danger" target="_blank"><i class="far fa-file-pdf">         Cetak</i></a>
+
                     </div>
                     <br>
                     @if (session('msg'))
